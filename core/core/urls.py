@@ -35,10 +35,10 @@ urlpatterns = [
     path('weba-admin/', include(wagtailadmin_urls)),
     path('pages/', include(wagtail_urls)),
     path('', include('search.urls')),
-    path('blog/', include('blog.urls')),
+    # path('blog/', include('blog.urls')),
     path('', include('accounts.urls')),
     path('', include('abonnements.urls')),
     path('', include('analytics.urls')),
-    path('', include('seo.urls')),
+    # path('', include('seo.urls')),
     path('', include('portfolio.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

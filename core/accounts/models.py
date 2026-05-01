@@ -45,8 +45,8 @@ class ProfilUtilisateur(models.Model):
     def __str__(self):
         return f"Profil de {self.user.username}"
 
-    def a_un_blog(self):
-        return self.blog is not None
+    # def a_un_blog(self):
+    #     return self.blog is not None
 
 
 # def creer_blog_pour_utilisateur(user, nom_entreprise, ville, secteur):

@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("blog", "0002_blogpost_likes_blogpost_vues_blogposttag_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -44,16 +43,7 @@ class Migration(migrations.Migration):
                         max_length=20,
                     ),
                 ),
-                (
-                    "blog",
-                    models.OneToOneField(
-                        blank=True,
-                        null=True,
-                        on_delete=django.db.models.deletion.SET_NULL,
-                        related_name="proprietaire",
-                        to="blog.blogindexpage",
-                    ),
-                ),
+
                 (
                     "user",
                     models.OneToOneField(
