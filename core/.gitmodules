@@ -1,0 +1,3 @@
+[submodule "plausible"]
+	path = plausible
+	url = https://github.com/plausible/analytics.git

@@ -1,0 +1,32 @@
+<section id="contact" class="py-32 px-6">
+    <div class="max-w-3xl mx-auto border p-8 md:p-12 shadow-2xl"
+         style="background-color: var(--t-bg-2); border-color: rgba(255,255,255,0.05); border-radius: var(--t-radius);">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-2" style="color: var(--t-text);">Initialize_Connection</h2>
+            <p class="font-mono text-xs opacity-50" style="color: var(--t-primary);">root@uni.africa:~$ ./send_message</p>
+        </div>
+
+        <form hx-post="{% url 'portfolio:envoyer_message' portfolio.slug %}" hx-target="#contact-feedback" hx-swap="innerHTML" class="space-y-6" id="contact-form">
+            {% csrf_token %}
+            <div id="contact-feedback"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" name="nom" required placeholder="NAME_IDENTIFIER" 
+                       class="w-full border px-6 py-4 font-mono text-sm outline-none bg-black/20 focus:border-[var(--t-primary)] transition-all"
+                       style="border-color: rgba(255,255,255,0.1); color: var(--t-primary); border-radius: 12px;">
+                <input type="email" name="email" required placeholder="EMAIL_ADDRESS" 
+                       class="w-full border px-6 py-4 font-mono text-sm outline-none bg-black/20 focus:border-[var(--t-primary)] transition-all"
+                       style="border-color: rgba(255,255,255,0.1); color: var(--t-primary); border-radius: 12px;">
+            </div>
+            
+            <textarea name="message" rows="5" required placeholder="COMMAND_MESSAGE_BODY" 
+                      class="w-full border px-6 py-4 font-mono text-sm outline-none bg-black/20 focus:border-[var(--t-primary)] transition-all resize-none"
+                      style="border-color: rgba(255,255,255,0.1); color: var(--t-primary); border-radius: 12px;"></textarea>
+            
+            <button type="submit" class="w-full text-white font-bold py-5 transition-all active:scale-95 uppercase tracking-widest text-xs"
+                    style="background-color: var(--t-primary); border-radius: var(--t-radius); box-shadow: 0 0 20px rgba(var(--t-primary-rgb), 0.3);">
+                EXECUTE_SEND
+            </button>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard | WEBA{% endblock %}
+
+{% block content %}
+<div class="pt-24 pb-12 px-4 max-w-7xl mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-emerald-200">
+                    <i class="fas fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-black text-slate-900 tracking-tight">Tableau de bord</h1>
+                    <p class="text-slate-500 text-sm">Bienvenue, {{ request.user.first_name|default:request.user.username }} 👋</p>
+                </div>
+            </div>
+        </div>
+        
+        {% if portfolio %}
+        <div class="flex flex-wrap items-center gap-3">
+            <a href="{% url 'portfolio:messages_recus' %}"
+               class="relative flex items-center gap-2 bg-white border border-slate-200 text-slate-600 px-5 py-3 rounded-2xl text-sm font-bold hover:bg-slate-50 transition shadow-sm">
+                <i class="fas fa-envelope text-slate-400"></i>
+                <span>Messages</span>
+                {% if messages_non_lus_count > 0 %}
+<span class="absolute -top-2 -right-1 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full border-2 border-white animate-pulse font-black">
+    {{ messages_non_lus_count }}
+</span>
+{% endif %}
+            </a>
+
+            <a href="{% url 'portfolio:portfolio_public_preview' slug=portfolio.slug %}" target="_blank"
+               class="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-2xl text-sm font-bold hover:bg-slate-800 shadow-lg shadow-slate-200 transition active:scale-95">
+                <span>Voir mon site live</span>
+                <i class="fas fa-external-link-alt text-xs opacity-50"></i>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if not portfolio %}
+    <div class="text-center py-24 bg-white border-2 border-dashed border-slate-200 rounded-[3rem] shadow-sm">
+        <div class="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8">
+            <i class="fas fa-magic text-3xl"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Lancez votre vitrine pro</h2>
+        <a href="{% url 'portfolio:template_list' %}"
+           class="inline-block bg-emerald-600 text-white px-10 py-5 rounded-2xl font-black hover:bg-emerald-700 transition shadow-xl shadow-emerald-100 active:scale-95 uppercase tracking-widest text-xs">
+            Démarrer la création
+        </a>
+    </div>
+
+    {% else %}
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+
+        <div class="lg:col-span-8 space-y-8">
+
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <i class="fas fa-id-card text-emerald-600"></i>
+                        Identité du Site
+                    </h2>
+                    <button hx-get="{% url 'portfolio:modifier_infos' %}" 
+        hx-target="#zone-identite" 
+        hx-swap="innerHTML">
+    Modifier
+</button>
+                </div>
+                
+             <div id="zone-identite">
+    {% include 'portfolio/partials/identite/identite_content.html' %}
+</div>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <i class="fas fa-project-diagram text-emerald-600"></i>
+                        Projets & Travaux
+                    </h2>
+                    <button hx-get="{% url 'portfolio:ajouter_realisation' %}" hx-target="#form-realisation" hx-swap="innerHTML"
+                        class="flex items-center gap-2 bg-emerald-600 text-white text-[10px] font-black tracking-widest px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition uppercase shadow-lg shadow-emerald-100">
+                        <i class="fas fa-plus"></i> Nouveau
+                    </button>
+                </div>
+                <div id="form-realisation" class="mb-6"></div>
+                <div id="liste-realisations" class="flex flex-col gap-4">
+                    {% for r in realisations %}
+                        {% include 'portfolio/partials/realisations/realisation_item.html' %}
+                    {% empty %}
+                        <div class="col-span-full text-center py-12 bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                            <p class="text-slate-400 text-sm italic">Aucun projet pour le moment.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100 mb-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                    <i class="fas fa-chart-line text-emerald-600"></i> Statistiques
+                </h2>
+                <button hx-get="{% url 'portfolio:ajouter_statistique' %}" hx-target="#form-stat"                         class="flex items-center gap-2 bg-emerald-600 text-white text-[10px] font-black tracking-widest px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition uppercase shadow-lg shadow-emerald-100">+ Ajouter</button>
+            </div>
+            <div id="form-stat"></div>
+            <div id="liste-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {% for stat in portfolio.stats.all %}
+                    {% include 'portfolio/partials/stat_item.html' %}
+                    {% empty %}
+                       <div class="col-span-full text-center py-12 bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                            <p class="text-slate-400 text-sm italic">Aucun stat pour le moment</p>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <i class="fas fa-concierge-bell text-emerald-600"></i>
+                        Mes offres
+                    </h2>
+                    <button hx-get="{% url 'portfolio:ajouter_service' %}" hx-target="#form-service" hx-swap="innerHTML"
+                        class="flex items-center gap-2 bg-emerald-600 text-white text-[10px] font-black tracking-widest px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition uppercase shadow-lg shadow-emerald-100">
+
+                        <i class="fas fa-plus"></i> Ajouter
+                    </button>
+                </div>
+                <div id="form-service" class="mb-6"></div>
+                <div id="liste-services" class="space-y-3">
+                    {% for s in services %}
+                        {% include 'portfolio/partials/services/service_item.html' %}
+                        {% empty %}
+                           <div class="col-span-full text-center py-12 bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                            <p class="text-slate-400 text-sm italic">Aucun service pour le moment.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <i class="fas fa-comment-dots text-emerald-600"></i>
+                        Témoignages Clients
+                    </h2>
+                    <button hx-get="#" hx-target="#form-temoignage"                         class="flex items-center gap-2 bg-emerald-600 text-white text-[10px] font-black tracking-widest px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition uppercase shadow-lg shadow-emerald-100">+ Ajouter</button>
+                </div>
+                <div id="form-temoignage" class="mb-4"></div>
+                <div id="liste-temoignages" class="space-y-4">
+                    {% for t in portfolio.temoignages.all %}
+                        {% include 'portfolio/partials/temoignage/temoignage_item.html' %}
+                    {% empty %}
+                        <p class="text-center text-slate-400 py-6 italic text-sm">Aucun témoignage reçu.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="lg:col-span-4 space-y-8">
+
+            <div class="bg-slate-900 rounded-[2.5rem] p-8 shadow-2xl text-white relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-yellow-400/10 rounded-full blur-2xl group-hover:bg-yellow-400/20 transition-all"></div>
+                
+                <h2 class="text-lg font-bold mb-6 flex items-center gap-3 relative z-10">
+                    <i class="fas fa-paint-brush text-yellow-400"></i>
+                    Style du site
+                </h2>
+                
+                <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 mb-8">
+                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl">
+                        🎨
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Modèle</p>
+                        <p class="text-white font-bold text-sm">{{ portfolio.get_template_choisi_display }}</p>
+                    </div>
+                </div>
+
+                <a href="{% url 'portfolio:customizer' %}?template={{ portfolio.template_choisi }}" 
+                   class="relative z-10 w-full flex items-center justify-center gap-3 bg-yellow-400 text-slate-900 py-4 rounded-2xl text-sm font-black hover:bg-yellow-300 transition shadow-xl active:scale-95">
+                    PERSONNALISER LE DESIGN
+                </a>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+                <h2 class="text-lg font-bold text-slate-900 mb-8 flex items-center gap-3">
+                    <i class="fas fa-chart-pie text-emerald-600"></i>
+                    Stats en bref
+                </h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-2xl text-center">
+                        <span class="block text-xl font-black text-slate-900">{{ realisations.count }}</span>
+                        <span class="text-[9px] uppercase font-bold text-slate-400 tracking-widest">Projets</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl text-center">
+                        <span class="block text-xl font-black text-slate-900">{{ services.count }}</span>
+                        <span class="text-[9px] uppercase font-bold text-slate-400 tracking-widest">Services</span>
+                    </div>
+                </div>
+            </div>
+
+         <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-3">
+            <i class="fas fa-share-alt text-emerald-600"></i>
+            Réseaux
+        </h2>
+        <button hx-get="{% url 'portfolio:modifier_reseaux' %}" 
+                hx-target="#zone-reseaux" 
+                class="text-[10px] font-black uppercase text-emerald-600 hover:bg-emerald-50 px-3 py-1 rounded-lg transition">
+            Modifier
+        </button>
+    </div>
+    
+    <div id="zone-reseaux">
+        {% include 'portfolio/partials/reseau_sociaux/reseaux_content.html' %}
+    </div>
+</div>
+
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

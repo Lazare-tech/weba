@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}WEBA | Créez votre présence pro en 2 minutes{% endblock %}
+
+{% block content %}
+<div class="bg-white">
+
+    <section class="relative overflow-hidden bg-white py-20 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
+                
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-50 px-3 py-1 rounded-full text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Propulsez votre business en Afrique</span>
+                    </div>
+                    <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-7xl leading-[1.1]">
+                        Votre site web pro, <span class="text-emerald-600">sans code.</span>
+                    </h1>
+                    <p class="mt-8 text-lg leading-8 text-slate-600">
+                        WEBA permet aux entrepreneurs et freelances de créer un portfolio haut de gamme, de lister leurs services et de recevoir des paiements. Simple. Rapide. Efficace.
+                    </p>
+                    <div class="mt-10 flex items-center gap-x-6">
+                        <a href="{% url 'portfolio:creer_portfolio' %}" class="rounded-full bg-slate-900 px-8 py-4 text-sm font-bold text-white shadow-xl hover:bg-slate-800 transition-all hover:scale-105 active:scale-95">
+                            Lancer mon projet gratuitement
+                        </a>
+                        <a href="#templates" class="text-sm font-bold leading-6 text-slate-900 flex items-center group">
+                            Voir les modèles <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center gap-x-4">
+                        <div class="flex -space-x-2">
+                            <img class="h-8 w-8 rounded-full ring-2 ring-white bg-slate-200" src="https://ui-avatars.com/api/?name=Koffi" alt="">
+                            <img class="h-8 w-8 rounded-full ring-2 ring-white bg-slate-200" src="https://ui-avatars.com/api/?name=Sara" alt="">
+                            <img class="h-8 w-8 rounded-full ring-2 ring-white bg-slate-200" src="https://ui-avatars.com/api/?name=Oumar" alt="">
+                        </div>
+                        <p class="text-sm text-slate-500 font-medium">+150 entrepreneurs nous font confiance</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative mx-auto w-full max-w-[500px] rounded-[2rem] bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-900/10">
+                        <div class="overflow-hidden rounded-[1.8rem] bg-white aspect-[9/16] sm:aspect-[4/3] flex items-center justify-center border border-slate-100 italic text-slate-300">
+                            Visualisation Template
+                        </div>
+                    </div>
+                    <div class="absolute -top-10 -right-10 h-32 w-32 bg-yellow-400/20 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-10 -left-10 h-40 w-40 bg-emerald-400/20 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl text-center mb-16">
+                <h2 class="text-base font-bold leading-7 text-emerald-600 uppercase tracking-widest">Tout-en-un</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Conçu pour les entrepreneurs qui avancent</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Templates Modernes</h3>
+                    <p class="text-slate-600 leading-relaxed">Choisissez parmi nos designs gratuits ou premium optimisés pour le mobile et le SEO.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Messagerie Directe</h3>
+                    <p class="text-slate-600 leading-relaxed">Recevez les demandes de vos clients directement dans votre dashboard et par email.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Paiements Intégrés</h3>
+                    <p class="text-slate-600 leading-relaxed">Bientôt disponible : Encaissez vos prestations via Orange Money ou Moov Money.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="templates" class="py-24">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">Prêt à briller ? Choisissez votre modèle.</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="relative group cursor-pointer overflow-hidden rounded-2xl border border-slate-200">
+                    <div class="aspect-[4/5] bg-slate-100 flex items-center justify-center italic text-slate-400">Template Minimal</div>
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4">
+                        <p class="text-white font-bold text-lg mb-4 italic">"Idéal pour les consultants"</p>
+                        <a href="{% url 'portfolio:creer_portfolio' %}" class="bg-white text-slate-900 px-6 py-2 rounded-full font-bold text-sm">Choisir</a>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-emerald-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="h-full w-full" fill="currentColor"><rect width="100%" height="100%" fill="url(#grid)"></rect><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="white"></path></pattern></defs></svg>
+        </div>
+        <div class="mx-auto max-w-4xl text-center px-6">
+            <h2 class="text-4xl font-extrabold text-white sm:text-5xl leading-tight">
+                Rejoignez la nouvelle génération d'entrepreneurs africains.
+            </h2>
+            <p class="mt-8 text-xl text-emerald-100">
+                Ne laissez pas votre business dans l'ombre. Créez votre portfolio aujourd'hui.
+            </p>
+            <div class="mt-12">
+                <a href="{% url 'accounts:inscription' %}" class="inline-block bg-white text-emerald-700 px-10 py-5 rounded-full font-black text-lg shadow-2xl hover:bg-slate-50 hover:scale-105 transition-all">
+                    Démarrer gratuitement
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock content %}

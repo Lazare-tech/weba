@@ -1,0 +1,167 @@
+
+<style>
+.t4 { font-family: var(--font-sans); background: #26215C; color: #EEEDFE; }
+.t4-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 36px; border-bottom: 0.5px solid #3C3489; }
+.t4-logo { font-size: 17px; font-weight: 500; color: #CECBF6; letter-spacing: 0.02em; }
+.t4-links { display: flex; gap: 24px; font-size: 13px; color: #AFA9EC; }
+.t4-cta { border: 0.5px solid #7F77DD; color: #CECBF6; padding: 8px 18px; border-radius: 6px; font-size: 13px; }
+.t4-hero { padding: 72px 36px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; border-bottom: 0.5px solid #3C3489; }
+.t4-status { display: inline-flex; align-items: center; gap: 8px; background: #3C3489; border: 0.5px solid #534AB7; border-radius: 20px; padding: 5px 14px; font-size: 11px; color: #AFA9EC; margin-bottom: 24px; }
+.t4-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; }
+.t4-h1 { font-size: 38px; font-weight: 500; line-height: 1.15; color: #EEEDFE; margin: 0 0 16px; }
+.t4-h1 span { color: #7F77DD; }
+.t4-sub { font-size: 15px; color: #AFA9EC; line-height: 1.7; margin: 0 0 32px; }
+.t4-btns { display: flex; gap: 12px; }
+.t4-btn-p { background: #7F77DD; color: #EEEDFE; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.t4-btn-s { border: 0.5px solid #534AB7; color: #AFA9EC; padding: 12px 24px; border-radius: 8px; font-size: 14px; }
+.t4-code-block { background: #3C3489; border: 0.5px solid #534AB7; border-radius: 12px; padding: 24px; font-family: var(--font-mono); }
+.t4-code-bar { display: flex; gap: 6px; margin-bottom: 16px; }
+.t4-code-dot { width: 10px; height: 10px; border-radius: 50%; }
+.t4-code-line { font-size: 12px; color: #AFA9EC; margin-bottom: 6px; line-height: 1.8; }
+.t4-code-key { color: #7F77DD; }
+.t4-code-str { color: #5DCAA5; }
+.t4-code-num { color: #EF9F27; }
+.t4-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.t4-tech { background: #26215C; border: 0.5px solid #534AB7; color: #AFA9EC; font-size: 11px; padding: 4px 12px; border-radius: 4px; font-family: var(--font-mono); }
+.t4-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0.5px solid #3C3489; border-bottom: 0.5px solid #3C3489; }
+.t4-stat { padding: 28px 36px; border-right: 0.5px solid #3C3489; }
+.t4-stat:last-child { border-right: none; }
+.t4-stat-num { font-size: 30px; font-weight: 500; color: #7F77DD; }
+.t4-stat-label { font-size: 12px; color: #AFA9EC; margin-top: 4px; }
+.t4-services4 { padding: 56px 36px; }
+.t4-eyebrow { font-size: 11px; letter-spacing: 0.12em; color: #7F77DD; margin-bottom: 8px; }
+.t4-section-title { font-size: 26px; font-weight: 500; color: #EEEDFE; margin: 0 0 32px; }
+.t4-services4-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.t4-svc4 { background: #3C3489; border: 0.5px solid #534AB7; border-radius: 10px; padding: 24px; }
+.t4-svc4-num { font-size: 11px; color: #534AB7; font-family: var(--font-mono); margin-bottom: 12px; }
+.t4-svc4-title { font-size: 15px; font-weight: 500; color: #CECBF6; margin-bottom: 8px; }
+.t4-svc4-desc { font-size: 13px; color: #AFA9EC; line-height: 1.5; }
+.t4-svc4-price { font-size: 13px; color: #7F77DD; margin-top: 12px; font-family: var(--font-mono); }
+.t4-works4 { padding: 56px 36px; background: #1a1645; }
+.t4-works4-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.t4-work4 { background: #26215C; border: 0.5px solid #3C3489; border-radius: 10px; overflow: hidden; }
+.t4-work4-header { padding: 16px 20px; background: #3C3489; display: flex; justify-content: space-between; align-items: center; }
+.t4-work4-title { font-size: 14px; font-weight: 500; color: #CECBF6; }
+.t4-work4-tag { font-size: 10px; background: #534AB7; color: #CECBF6; padding: 3px 8px; border-radius: 4px; }
+.t4-work4-body { padding: 16px 20px; }
+.t4-work4-desc { font-size: 12px; color: #AFA9EC; line-height: 1.5; margin-bottom: 12px; }
+.t4-work4-techs { display: flex; gap: 6px; flex-wrap: wrap; }
+.t4-work4-tech { font-size: 10px; border: 0.5px solid #534AB7; color: #AFA9EC; padding: 2px 8px; border-radius: 3px; font-family: var(--font-mono); }
+.t4-temo4 { padding: 56px 36px; }
+.t4-temo4-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.t4-temo4-item { background: #3C3489; border: 0.5px solid #534AB7; border-radius: 10px; padding: 20px; }
+.t4-temo4-stars { color: #7F77DD; font-size: 13px; margin-bottom: 10px; }
+.t4-temo4-text { font-size: 13px; color: #AFA9EC; line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+.t4-temo4-name { font-size: 13px; font-weight: 500; color: #CECBF6; }
+.t4-temo4-co { font-size: 11px; color: #7F77DD; font-family: var(--font-mono); }
+.t4-contact4 { padding: 56px 36px; background: #1a1645; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.t4-input4 { width: 100%; background: #26215C; border: 0.5px solid #534AB7; border-radius: 8px; padding: 10px 14px; color: #EEEDFE; font-size: 13px; margin-bottom: 12px; box-sizing: border-box; }
+.t4-textarea4 { width: 100%; background: #26215C; border: 0.5px solid #534AB7; border-radius: 8px; padding: 10px 14px; color: #EEEDFE; font-size: 13px; height: 100px; box-sizing: border-box; margin-bottom: 12px; }
+.t4-submit4 { width: 100%; background: #7F77DD; color: #EEEDFE; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; }
+.t4-contact-right { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.t4-contact-row { display: flex; gap: 12px; align-items: center; }
+.t4-contact-icon { width: 36px; height: 36px; background: #3C3489; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.t4-contact-label { font-size: 11px; color: #7F77DD; font-family: var(--font-mono); }
+.t4-contact-val { font-size: 14px; color: #CECBF6; }
+.t4-footer4 { padding: 20px 36px; border-top: 0.5px solid #3C3489; display: flex; justify-content: space-between; font-size: 12px; color: #534AB7; font-family: var(--font-mono); }
+</style>
+
+<div class="t4">
+  <nav class="t4-nav">
+    <div class="t4-logo">{ Issouf.dev }</div>
+    <div class="t4-links"><span>Services</span><span>Projets</span><span>Témoignages</span><span>Contact</span></div>
+    <div class="t4-cta">Hire me</div>
+  </nav>
+
+  <div class="t4-hero">
+    <div>
+      <div class="t4-status"><div class="t4-status-dot"></div>Disponible pour missions</div>
+      <h1 class="t4-h1">Développeur fullstack <span>Django & React</span> basé à Dakar</h1>
+      <p class="t4-sub">Je construis des applications web performantes et des APIs robustes pour les startups et PME d'Afrique de l'Ouest. Livraison rapide, code propre.</p>
+      <div class="t4-btns">
+        <div class="t4-btn-p">Voir mes projets</div>
+        <div class="t4-btn-s">Télécharger CV</div>
+      </div>
+    </div>
+    <div class="t4-code-block">
+      <div class="t4-code-bar">
+        <div class="t4-code-dot" style="background:#E24B4A"></div>
+        <div class="t4-code-dot" style="background:#EF9F27"></div>
+        <div class="t4-code-dot" style="background:#5DCAA5"></div>
+      </div>
+      <div class="t4-code-line"><span class="t4-code-key">const</span> issouf = {</div>
+      <div class="t4-code-line" style="padding-left:16px"><span class="t4-code-key">nom:</span> <span class="t4-code-str">"Issouf Diallo"</span>,</div>
+      <div class="t4-code-line" style="padding-left:16px"><span class="t4-code-key">role:</span> <span class="t4-code-str">"Fullstack Developer"</span>,</div>
+      <div class="t4-code-line" style="padding-left:16px"><span class="t4-code-key">experience:</span> <span class="t4-code-num">7</span>,</div>
+      <div class="t4-code-line" style="padding-left:16px"><span class="t4-code-key">projets:</span> <span class="t4-code-num">42</span>,</div>
+      <div class="t4-code-line" style="padding-left:16px"><span class="t4-code-key">disponible:</span> <span class="t4-code-str">true</span></div>
+      <div class="t4-code-line">}</div>
+      <div class="t4-stack">
+        <div class="t4-tech">Django</div>
+        <div class="t4-tech">React</div>
+        <div class="t4-tech">PostgreSQL</div>
+        <div class="t4-tech">Docker</div>
+        <div class="t4-tech">AWS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t4-stats">
+    <div class="t4-stat"><div class="t4-stat-num">7 ans</div><div class="t4-stat-label">D'expérience</div></div>
+    <div class="t4-stat"><div class="t4-stat-num">42</div><div class="t4-stat-label">Projets livrés</div></div>
+    <div class="t4-stat"><div class="t4-stat-num">18</div><div class="t4-stat-label">Clients actifs</div></div>
+    <div class="t4-stat"><div class="t4-stat-num">4 pays</div><div class="t4-stat-label">BF · SN · CI · FR</div></div>
+  </div>
+
+  <div class="t4-services4">
+    <div class="t4-eyebrow">CE QUE JE FAIS</div>
+    <div class="t4-section-title">Services</div>
+    <div class="t4-services4-grid">
+      <div class="t4-svc4"><div class="t4-svc4-num">// 01</div><div class="t4-svc4-title">Application web</div><div class="t4-svc4-desc">Développement d'applications sur mesure avec Django, React et PostgreSQL.</div><div class="t4-svc4-price">À partir de 150 000 FCFA</div></div>
+      <div class="t4-svc4"><div class="t4-svc4-num">// 02</div><div class="t4-svc4-title">API REST</div><div class="t4-svc4-desc">Conception et développement d'APIs robustes, documentées et sécurisées.</div><div class="t4-svc4-price">À partir de 80 000 FCFA</div></div>
+      <div class="t4-svc4"><div class="t4-svc4-num">// 03</div><div class="t4-svc4-title">Déploiement & DevOps</div><div class="t4-svc4-desc">Mise en production, CI/CD, Docker, monitoring et maintenance applicative.</div><div class="t4-svc4-price">À partir de 50 000 FCFA</div></div>
+    </div>
+  </div>
+
+  <div class="t4-works4">
+    <div class="t4-eyebrow">MES PROJETS</div>
+    <div class="t4-section-title">Réalisations récentes</div>
+    <div class="t4-works4-grid">
+      <div class="t4-work4"><div class="t4-work4-header"><div class="t4-work4-title">WEBA Platform</div><div class="t4-work4-tag">En production</div></div><div class="t4-work4-body"><div class="t4-work4-desc">Plateforme SaaS de création de blogs et portfolios pour l'Afrique de l'Ouest.</div><div class="t4-work4-techs"><div class="t4-work4-tech">Django</div><div class="t4-work4-tech">Wagtail</div><div class="t4-work4-tech">HTMX</div><div class="t4-work4-tech">Tailwind</div></div></div></div>
+      <div class="t4-work4"><div class="t4-work4-header"><div class="t4-work4-title">FinTech Dakar</div><div class="t4-work4-tag">Livré 2024</div></div><div class="t4-work4-body"><div class="t4-work4-desc">Application de transfert d'argent mobile pour 50 000 utilisateurs actifs.</div><div class="t4-work4-techs"><div class="t4-work4-tech">DRF</div><div class="t4-work4-tech">React Native</div><div class="t4-work4-tech">Redis</div></div></div></div>
+      <div class="t4-work4"><div class="t4-work4-header"><div class="t4-work4-title">AgriConnect BF</div><div class="t4-work4-tag">Livré 2023</div></div><div class="t4-work4-body"><div class="t4-work4-desc">Marketplace agricole connectant 2 000 producteurs aux acheteurs.</div><div class="t4-work4-techs"><div class="t4-work4-tech">Django</div><div class="t4-work4-tech">Celery</div><div class="t4-work4-tech">PostgreSQL</div></div></div></div>
+      <div class="t4-work4"><div class="t4-work4-header"><div class="t4-work4-title">EduSahel</div><div class="t4-work4-tag">Livré 2023</div></div><div class="t4-work4-body"><div class="t4-work4-desc">Plateforme e-learning pour 15 000 étudiants dans 5 pays de la sous-région.</div><div class="t4-work4-techs"><div class="t4-work4-tech">Django</div><div class="t4-work4-tech">React</div><div class="t4-work4-tech">AWS S3</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="t4-temo4">
+    <div class="t4-eyebrow">TÉMOIGNAGES</div>
+    <div class="t4-section-title">Clients satisfaits</div>
+    <div class="t4-temo4-grid">
+      <div class="t4-temo4-item"><div class="t4-temo4-stars">★★★★★</div><div class="t4-temo4-text">"Issouf a livré notre app en 6 semaines. Code propre, bien documenté. On retravaille avec lui."</div><div class="t4-temo4-name">Cheikh Ndiaye</div><div class="t4-temo4-co">// CTO, FinTech Dakar</div></div>
+      <div class="t4-temo4-item"><div class="t4-temo4-stars">★★★★★</div><div class="t4-temo4-text">"Notre marketplace agricole a dépassé tous nos objectifs. Issouf est vraiment top."</div><div class="t4-temo4-name">Aminata Koné</div><div class="t4-temo4-co">// CEO, AgriConnect BF</div></div>
+    </div>
+  </div>
+
+  <div class="t4-contact4">
+    <div>
+      <div class="t4-eyebrow">CONTACT</div>
+      <div class="t4-section-title">Démarrons un projet</div>
+      <input class="t4-input4" placeholder="Votre nom">
+      <input class="t4-input4" placeholder="Email professionnel">
+      <textarea class="t4-textarea4" placeholder="Décrivez votre projet..."></textarea>
+      <button class="t4-submit4">Envoyer le message</button>
+    </div>
+    <div class="t4-contact-right">
+      <div class="t4-contact-row"><div class="t4-contact-icon"><svg width="14" height="14" fill="none" stroke="#7F77DD" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.63 3.36 2 2 0 013.6 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.84a16 16 0 006.29 6.29l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="t4-contact-label">// phone</div><div class="t4-contact-val">+221 77 000 00 00</div></div></div>
+      <div class="t4-contact-row"><div class="t4-contact-icon"><svg width="14" height="14" fill="none" stroke="#7F77DD" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="t4-contact-label">// email</div><div class="t4-contact-val">issouf@weba.sn</div></div></div>
+      <div class="t4-contact-row"><div class="t4-contact-icon"><svg width="14" height="14" fill="none" stroke="#7F77DD" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="t4-contact-label">// location</div><div class="t4-contact-val">Dakar, Sénégal</div></div></div>
+      <div class="t4-contact-row"><div class="t4-contact-icon"><svg width="14" height="14" fill="none" stroke="#7F77DD" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="t4-contact-label">// disponibilité</div><div class="t4-contact-val">Réponse sous 24h</div></div></div>
+    </div>
+  </div>
+
+  <div class="t4-footer4">
+    <span>// © 2024 Issouf Diallo — WEBA</span>
+    <span>// Développeur fullstack · Dakar, Sénégal</span>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+{% extends "portfolio/public_base.html" %}
+
+{% block content %}
+<div class="bg-[#0B0F1A] text-slate-200 font-sans selection:bg-indigo-500">
+
+    <section class="relative pt-48 pb-32 px-6 text-center overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold mb-8">
+                ✨ Disponible pour de nouveaux défis
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-white tracking-tight leading-none mb-8">
+                {{ portfolio.titre|default:"Code. Design. <span class='text-indigo-500'>Futur.</span>"|safe }}
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
+                {{ portfolio.bio|default:"Je construis les interfaces de demain avec les technologies les plus performantes du moment." }}
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20">
+                    Démarrer un projet
+                </a>
+                <a href="#services" class="px-8 py-4 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl font-bold hover:bg-slate-800 transition-all">
+                    Mes Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="max-w-7xl mx-auto py-24 px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for service in services %}
+            <div class="bg-slate-800/30 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] hover:border-indigo-500/50 transition-all group">
+                <div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">{{ service.titre }}</h3>
+                <p class="text-slate-400 mb-6 text-sm leading-relaxed">{{ service.description }}</p>
+                <p class="text-indigo-400 font-mono font-bold">{{ service.prix }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer id="contact" class="max-w-7xl mx-auto mb-12 px-6">
+        <div class="bg-gradient-to-r from-indigo-900/40 to-slate-900/40 backdrop-blur-2xl border border-white/5 rounded-[3rem] p-12 lg:p-20 flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="text-center md:text-left">
+                <h2 class="text-4xl font-black text-white mb-4 italic">Parlons de votre vision.</h2>
+                <p class="text-slate-400">{{ portfolio.email_contact|default:portfolio.user.email }}</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end gap-6">
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                </div>
+                <p class="text-[10px] uppercase tracking-[0.5em] text-slate-600">Power by WEBA</p>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock content %}

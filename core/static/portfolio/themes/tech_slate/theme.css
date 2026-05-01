@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+/* Note : On ne définit plus les couleurs ici, 
+   car elles arrivent du layout.html via la DB.
+*/
+
+body {
+    background-color: var(--t-bg); /* Utilise le token de fond */
+    color: var(--t-text);         /* Utilise le token de texte */
+    font-family: var(--t-font), sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- COMPOSANTS SPECIFIQUES AU THÈME --- */
+
+.tech-card {
+    background-color: var(--t-bg-2); /* Fond secondaire pour les cartes */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--t-radius);
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    border-color: var(--t-primary); /* Brille avec la couleur primaire */
+}
+
+.glow-shadow {
+    /* On génère une lueur basée sur la couleur primaire choisie */
+    box-shadow: 0 0 20px var(--t-primary);
+    opacity: 0.8;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--t-primary), var(--t-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Boutons typés Tech */
+.btn-tech {
+    background-color: var(--t-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--t-radius);
+    font-weight: bold;
+    transition: filter 0.2s;
+}
+
+.btn-tech:hover {
+    filter: brightness(1.2); /* Éclaircit la couleur choisie au survol */
+}

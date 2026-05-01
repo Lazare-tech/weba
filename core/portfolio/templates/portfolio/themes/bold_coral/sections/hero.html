@@ -1,0 +1,54 @@
+<section class="relative pt-20 pb-24 overflow-hidden border-b" style="background-color: var(--t-bg); border-color: rgba(0,0,0,0.05);">
+    <div class="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" 
+         style="background-image: radial-gradient(var(--t-primary) 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 border text-[10px] uppercase font-bold tracking-widest px-4 py-2 rounded-full mb-8 shadow-sm"
+                     style="background-color: var(--t-bg-2); border-color: var(--t-primary); color: var(--t-accent);">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ portfolio.secteur|default:"Secteur d'activité" }} · {{ portfolio.ville|default:"Ville, Pays" }}
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight" style="color: var(--t-text);">
+                    {% if portfolio.titre %}{{ portfolio.titre }}{% else %}Faites briller votre <span style="color: var(--t-primary);">expertise</span>.{% endif %}
+                </h1>
+
+                <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl font-light" style="color: var(--t-text-muted);">
+                    {{ portfolio.bio|default:"Transformez votre passion en une présence en ligne inoubliable."|linebreaksbr }}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="#contact" class="flex items-center justify-center gap-3 text-white font-bold px-8 py-4 transition-all duration-300 shadow-xl active:scale-95"
+                       style="background-color: var(--t-primary); border-radius: var(--t-radius);">
+                        <i class="fas fa-paper-plane text-sm"></i> Me contacter
+                    </a>
+                    <a href="#realisations" class="flex items-center justify-center gap-3 bg-white font-bold px-8 py-4 transition-all duration-300 border-2"
+                       style="color: var(--t-text-muted); border-color: var(--t-border); border-radius: var(--t-radius);">
+                        <i class="fas fa-th-large text-sm"></i> Voir mes projets
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
+                <div class="absolute -top-10 -right-10 w-64 h-64 rounded-full blur-3xl opacity-20 z-0" style="background-color: var(--t-primary);"></div>
+                <div class="relative z-10 group">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 border-8 border-white shadow-2xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]"
+                         style="background-color: var(--t-bg-2); border-radius: var(--t-radius-xl);">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            {% if portfolio.photo %}
+                                <img src="{{ portfolio.photo.url }}" class="absolute inset-0 w-full h-full object-cover">
+                            {% else %}
+                                <div class="w-24 h-24 rounded-full flex items-center justify-center text-white text-4xl font-bold mb-4 shadow-lg"
+                                     style="background-color: var(--t-primary);">{{ portfolio.user.username|slice:":1"|upper }}</div>
+                                <p class="font-bold text-lg uppercase tracking-wider" style="color: var(--t-text);">{{ portfolio.user.get_full_name|default:portfolio.user.username }}</p>
+                                <p class="text-sm font-medium mt-1 uppercase tracking-widest" style="color: var(--t-primary);">{{ portfolio.secteur|default:"Expert Digital" }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

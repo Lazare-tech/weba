@@ -1,0 +1,45 @@
+{% extends "portfolio/public_base.html" %}
+
+{% block content %}
+<style> @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&display=swap'); </style>
+
+<div class="bg-[#F9F7F2] text-[#1A1A1A] font-sans selection:bg-[#D4AF37] selection:text-white">
+    
+    <section class="max-w-6xl mx-auto pt-48 pb-32 px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end gap-12">
+            <h1 style="font-family: 'Playfair Display', serif;" class="text-6xl md:text-9xl leading-none">
+                {{ portfolio.titre|default:"L'Art de <br> la Stratégie"|safe }}
+            </h1>
+            <div class="max-w-sm pb-4">
+                <p class="text-lg leading-relaxed text-slate-600 mb-8 italic">
+                    {{ portfolio.bio|default:"Accompagnement exclusif pour leaders visionnaires." }}
+                </p>
+                <a href="#contact" class="inline-block text-xs font-black uppercase tracking-[0.4em] border-b border-black pb-2">
+                    Prendre rendez-vous
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-32 px-6 border-t border-black/5">
+        <div class="space-y-0">
+            {% for service in services %}
+            <div class="group py-12 border-b border-black/5 flex flex-col md:flex-row justify-between items-center hover:px-8 transition-all duration-500">
+                <span class="text-slate-300 font-mono text-sm">0{{ forloop.counter }}</span>
+                <h3 style="font-family: 'Playfair Display', serif;" class="text-4xl md:text-5xl group-hover:italic transition-all italic md:not-italic">
+                    {{ service.titre }}
+                </h3>
+                <span class="text-sm font-bold uppercase tracking-widest text-slate-400">
+                    {{ service.prix|default:"Sur Devis" }}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer class="py-20 text-center">
+        <p class="text-[10px] font-black uppercase tracking-[0.5em] mb-4">WEBA Africa Excellence Edition</p>
+        <p class="font-serif text-2xl italic">{{ portfolio.user.email }}</p>
+    </footer>
+</div>
+{% endblock content %}

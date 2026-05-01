@@ -1,0 +1,31 @@
+/* 1. LES TOKENS (S'injectent ici via Alpine.js ou Backend) */
+body {
+    /* On définit la variable pivot qui sera pilotée par le JS */
+    --t-radius: 12px; 
+    
+    background-color: var(--t-bg);
+    color: var(--t-text);
+    font-family: 'Plus Jakarta Sans', var(--t-font), sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* 3. UTILITAIRES DE BOUTONS DYNAMIQUES */
+.btn-primary {
+    background-color: var(--t-primary);
+    color: var(--t-white);
+    /* Idem ici */
+    border-radius: var(--t-radius-md) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(var(--t-primary-rgb), 0.3);
+}
+.card {
+    background-color: var(--t-bg-2);
+    border: 1px solid var(--t-border);
+    border-radius: var(--t-radius-xl); /* Coins plus arrondis pour le côté Luxury */
+    padding: 2rem;
+}

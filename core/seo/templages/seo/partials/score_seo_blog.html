@@ -1,0 +1,42 @@
+<div class="space-y-3">
+
+    <!-- Score global -->
+    <div class="flex items-center gap-4">
+        <div class="relative w-16 h-16">
+            <svg viewBox="0 0 36 36" class="w-16 h-16 -rotate-90">
+                <circle cx="18" cy="18" r="15.9" fill="none"
+                        stroke="var(--color-border-tertiary)" stroke-width="3"/>
+                <circle cx="18" cy="18" r="15.9" fill="none"
+                        stroke="{% if niveau.couleur == 'green' %}#1D9E75{% elif niveau.couleur == 'blue' %}#378ADD{% elif niveau.couleur == 'amber' %}#EF9F27{% else %}#E24B4A{% endif %}"
+                        stroke-width="3"
+                        stroke-dasharray="{{ score }} 100"
+                        stroke-linecap="round"/>
+            </svg>
+            <span class="absolute inset-0 flex items-center justify-center text-sm font-bold"
+                  style="color: {% if niveau.couleur == 'green' %}#1D9E75{% elif niveau.couleur == 'blue' %}#378ADD{% elif niveau.couleur == 'amber' %}#EF9F27{% else %}#E24B4A{% endif %}">
+                {{ score }}
+            </span>
+        </div>
+        <div>
+            <p class="font-semibold text-gray-800">Score SEO : {{ niveau.label }}</p>
+            <p class="text-xs text-gray-500">{{ nb_articles }} article(s) publié(s)</p>
+        </div>
+    </div>
+
+    <!-- Conseils -->
+    {% if conseils %}
+    <div class="space-y-1">
+        {% for conseil in conseils %}
+        <div class="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 px-3 py-2 rounded-lg">
+            <span class="mt-0.5">⚠</span>
+            <span>{{ conseil }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-xs text-emerald-700 bg-emerald-50 px-3 py-2 rounded-lg">
+        Votre blog est parfaitement optimisé !
+    </div>
+    {% endif %}
+
+</div>

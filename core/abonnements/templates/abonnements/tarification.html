@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Tarification — WEBA{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">
+        Choisissez votre plan
+    </h1>
+    <p class="text-gray-500">
+        Commencez gratuitement, évoluez selon vos besoins
+    </p>
+</div>
+
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+
+    {% for plan in plans %}
+    <div class="bg-white border rounded-2xl p-8 shadow-sm flex flex-col
+        {% if plan.nom == 'pro' %}border-emerald-500 border-2 relative{% else %}border-gray-200{% endif %}">
+
+        {% if plan.nom == 'pro' %}
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-emerald-600 text-white text-xs px-4 py-1 rounded-full font-medium">
+                Le plus populaire
+            </span>
+        </div>
+        {% endif %}
+
+        <!-- En-tête plan -->
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-gray-900 capitalize mb-1">
+                {{ plan.get_nom_display }}
+            </h2>
+            <p class="text-gray-500 text-sm mb-4">{{ plan.description }}</p>
+            <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-gray-900">
+                    {% if plan.prix_mensuel == 0 %}
+                        Gratuit
+                    {% else %}
+                        {{ plan.prix_mensuel|floatformat:0 }} FCFA
+                    {% endif %}
+                </span>
+                {% if plan.prix_mensuel > 0 %}
+                    <span class="text-gray-400 text-sm">/mois</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Fonctionnalités -->
+        <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-emerald-500">✓</span> Blog + domaine inclus
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-emerald-500">✓</span> Articles illimités
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-emerald-500">✓</span> SEO automatique
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.templates_premium %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.templates_premium %}✓{% else %}✕{% endif %}</span>
+                Templates premium
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.analytics_avances %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.analytics_avances %}✓{% else %}✕{% endif %}</span>
+                Analytics avancés
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.portfolio %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.portfolio %}✓{% else %}✕{% endif %}</span>
+                Portfolio professionnel
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.ia_branding %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.ia_branding %}✓{% else %}✕{% endif %}</span>
+                IA branding (couleurs logo)
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.app_web %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.app_web %}✓{% else %}✕{% endif %}</span>
+                Application web
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.automatisations %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.automatisations %}✓{% else %}✕{% endif %}</span>
+                Automatisations MCP
+            </li>
+            <li class="flex items-center gap-2 text-sm
+                {% if plan.portfolio_equipe %}text-gray-600{% else %}text-gray-300{% endif %}">
+                <span>{% if plan.portfolio_equipe %}✓{% else %}✕{% endif %}</span>
+                Portfolio conçu par l'équipe
+            </li>
+        </ul>
+
+        <!-- Bouton -->
+        {% if plan_actuel == plan.nom %}
+            <div class="w-full text-center bg-gray-100 text-gray-500 py-3 rounded-xl text-sm font-medium">
+                Plan actuel
+            </div>
+        {% elif plan.prix_mensuel == 0 %}
+            <a href="{% url 'inscription' %}"
+               class="w-full text-center bg-gray-800 hover:bg-gray-900 text-white py-3 rounded-xl text-sm font-medium transition block">
+                Commencer gratuitement
+            </a>
+        {% else %}
+            <a href="{% url 'demander_upgrade' plan.nom %}"
+               class="w-full text-center bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl text-sm font-medium transition block">
+                Passer au plan {{ plan.get_nom_display }}
+            </a>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- Note paiement -->
+<div class="mt-10 bg-amber-50 border border-amber-200 rounded-xl p-6 text-center">
+    <p class="text-amber-800 font-medium mb-1">💳 Paiement via Wave ou Orange Money</p>
+    <p class="text-amber-700 text-sm">
+        Effectuez votre paiement puis soumettez la référence de transaction.
+        Votre plan sera activé sous 24h.
+    </p>
+</div>
+
+{% endblock content %}

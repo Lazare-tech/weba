@@ -1,0 +1,26 @@
+<section id="testimonials" class="py-32 px-6 overflow-hidden" style="background-color: var(--t-bg);">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-center" style="color: var(--t-text);">
+                Feedbacks_<span style="color: var(--t-primary);">Loop</span>
+            </h2>
+        </div>
+
+        <div class="flex overflow-x-auto gap-8 pb-12 snap-x hide-scrollbar">
+            {% for t in temoignages %}
+            <div class="flex-none w-[320px] md:w-[400px] snap-center border p-8 relative" 
+                 style="background-color: var(--t-bg-2); border-color: rgba(255,255,255,0.05); border-radius: var(--t-radius);">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white mb-6"
+                     style="background-color: var(--t-primary);">
+                    <i class="fas fa-terminal text-xs"></i>
+                </div>
+                <p class="text-lg italic opacity-90 leading-relaxed" style="color: var(--t-text);">"{{ t.contenu }}"</p>
+                <div class="mt-6 pt-6 border-t border-white/5">
+                    <p class="font-bold tracking-tight uppercase text-[10px]" style="color: var(--t-primary);">{{ t.nom_client }}</p>
+                    <p class="text-[9px] opacity-40 uppercase">{{ t.entreprise|default:"Client" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

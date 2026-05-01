@@ -1,0 +1,79 @@
+<section id="contact" class="relative py-24 overflow-hidden" style="background-color: var(--t-bg);">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-5">
+                <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6" style="color: var(--t-text);">
+                    Prêt à lancer votre <span style="color: var(--t-primary);">projet</span> ?
+                </h2>
+
+                <div class="space-y-8">
+                    {% if portfolio.telephone %}
+                    <div class="group flex items-center gap-5">
+                        <div class="w-14 h-14 border flex items-center justify-center shadow-sm" style="background-color: var(--t-white); border-color: var(--t-border); border-radius: var(--t-radius-md);">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest mb-1" style="color: var(--t-text-light);">Appelez-moi</p>
+                            <a href="tel:{{ portfolio.telephone }}" class="text-base font-bold" style="color: var(--t-text);">{{ portfolio.telephone }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if portfolio.email_contact %}
+                    <div class="group flex items-center gap-5">
+                        <div class="w-14 h-14 border flex items-center justify-center shadow-sm" style="background-color: var(--t-white); border-color: var(--t-border); border-radius: var(--t-radius-md);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest mb-1" style="color: var(--t-text-light);">Écrivez-moi</p>
+                            <a href="mailto:{{ portfolio.email_contact }}" class="text-base font-bold" style="color: var(--t-text);">{{ portfolio.email_contact }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if portfolio.whatsapp %}
+                    <div class="group flex items-center gap-5">
+                        <div class="w-14 h-14 border flex items-center justify-center shadow-sm" style="background-color: var(--t-white); border-color: var(--t-border); border-radius: var(--t-radius-md);">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest mb-1" style="color: var(--t-text-light);">WhatsApp</p>
+                            <a href="https://wa.me/{{ portfolio.whatsapp }}" class="text-base font-bold" style="color: var(--t-text);">Discuter en direct</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="border p-8 md:p-12 shadow-2xl" style="background-color: var(--t-bg-2); border-color: rgba(0,0,0,0.05); border-radius: var(--t-radius-xl);">
+                    {% comment %} <form method="POST" action="{% url 'portfolio:envoyer_message' portfolio.slug %}" class="space-y-6"> {% endcomment %}
+                      <form hx-post="{% url 'portfolio:envoyer_message' portfolio.slug %}" hx-target="#contact-feedback" hx-swap="innerHTML" class="space-y-6" id="contact-form">
+    {% csrf_token %}
+    <div id="contact-feedback"></div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" name="nom" placeholder="Votre nom" required class="w-full bg-white border px-6 py-4 outline-none focus:border-[var(--t-primary)] transition-all" style="border-radius: var(--t-radius-md);">
+        <input type="email" name="email" placeholder="Votre email" required class="w-full bg-white border px-6 py-4 outline-none focus:border-[var(--t-primary)] transition-all" style="border-radius: var(--t-radius-md);">
+    </div>
+
+    <select name="sujet" required class="w-full bg-white border px-6 py-4 outline-none focus:border-[var(--t-primary)] transition-all" style="border-radius: var(--t-radius-md);">
+        <option value="" disabled selected>De quoi souhaitez-vous discuter ?</option>
+        <option value="Demande de devis">Demande de devis</option>
+        <option value="Question technique">Question technique</option>
+        <option value="Collaboration">Collaboration</option>
+        <option value="Autre">Autre</option>
+    </select>
+    
+    <textarea name="message" rows="5" placeholder="Dites-m'en plus sur votre projet..." required class="w-full bg-white border px-6 py-4 outline-none resize-none focus:border-[var(--t-primary)] transition-all" style="border-radius: var(--t-radius-md);"></textarea>
+
+    <button type="submit" class="w-full text-white font-bold uppercase tracking-[0.2em] text-xs py-5 shadow-xl active:scale-95 flex items-center justify-center gap-3 transition-all" style="background-color: var(--t-primary); border-radius: var(--t-radius);">
+        <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i> 
+        <span>Envoyer mon message</span>
+    </button>
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

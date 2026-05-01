@@ -1,0 +1,42 @@
+<div class="t-section" id="contact">
+    <div class="t-contact-grid">
+        <div>
+            <div class="t-section-label">TRAVAILLONS ENSEMBLE</div>
+            <div class="t-section-title">Me contacter</div>
+            {% include 'portfolio/components/contact_form.html' with portfolio=portfolio %}
+        </div>
+        <div>
+            <div class="t-section-label">COORDONNÉES</div>
+            <div class="t-section-title" style="font-size:20px">Disponible maintenant</div>
+            <div class="t-contact-info">
+                {% if portfolio.telephone %}
+                <div class="t-contact-row"><div class="t-contact-dot"></div>{{ portfolio.telephone }}</div>
+                {% endif %}
+                {% if portfolio.email_contact %}
+                <div class="t-contact-row"><div class="t-contact-dot"></div>{{ portfolio.email_contact }}</div>
+                {% endif %}
+                {% if portfolio.whatsapp %}
+                <div class="t-contact-row"><div class="t-contact-dot"></div>WhatsApp : {{ portfolio.whatsapp }}</div>
+                {% endif %}
+                {% if portfolio.ville %}
+                <div class="t-contact-row"><div class="t-contact-dot"></div>{{ portfolio.ville }}</div>
+                {% endif %}
+            </div>
+            <!-- Réseaux sociaux -->
+            <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+                {% if portfolio.whatsapp %}
+                <a href="https://wa.me/{{ portfolio.whatsapp }}" target="_blank"
+                   style="background:#25D366;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px">WhatsApp</a>
+                {% endif %}
+                {% if portfolio.facebook %}
+                <a href="{{ portfolio.facebook }}" target="_blank"
+                   style="background:#1877F2;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px">Facebook</a>
+                {% endif %}
+                {% if portfolio.linkedin %}
+                <a href="{{ portfolio.linkedin }}" target="_blank"
+                   style="background:#0A66C2;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px">LinkedIn</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

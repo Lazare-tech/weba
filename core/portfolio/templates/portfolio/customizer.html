@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load portfolio_extras %}
+{% block title %}Personnaliser mon portfolio — WEBA{% endblock %}
+
+{% block content %}
+<div x-data="customizer()" class="flex gap-0 -mx-4" style="height:calc(100vh - 64px)">
+
+    <div class="flex-1 bg-gray-100 border-r border-gray-200">
+        <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center gap-3">
+            <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+            </div>
+            <div class="flex-1 bg-gray-100 rounded px-3 py-1 text-xs text-gray-500 font-mono">
+                {{ request.scheme }}://{{ request.get_host }}/p/{{ portfolio.slug }}/
+            </div>
+        </div>
+        <iframe
+            id="preview-frame"
+            @load="updatePreview()" 
+            src="{% url 'portfolio:portfolio_public_preview' portfolio.slug %}?template={{ template_a_afficher }}"
+            class="w-full"
+            style="height:calc(100% - 40px);border:0;">
+        </iframe>
+    </div>
+
+    <div class="w-80 bg-white overflow-y-auto flex flex-col">
+
+        <div class="px-5 py-4 border-b border-gray-100">
+            <h2 class="text-base font-semibold text-gray-900">Personnalisation</h2>
+            <p class="text-xs text-gray-400 mt-0.5">Design intelligent par Uni</p>
+        </div>
+
+        <div class="flex-1 px-5 py-4 space-y-6 overflow-y-auto">
+            
+            <template x-if="getContrastYIQ(tokens.couleur_fond) === getContrastYIQ(tokens.couleur_texte)">
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-2">
+                    <i class="fas fa-exclamation-triangle text-amber-500 text-xs mt-0.5"></i>
+                    <p class="text-[10px] text-amber-900 leading-tight">
+                        <strong>Conseil :</strong> Le contraste entre le fond et le texte est trop faible.
+                    </p>
+                </div>
+            </template>
+
+            <div>
+                <label class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">Template</label>
+                <select x-model="template" @change="changerTemplate"
+                        class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm">
+                    {% for value, label in portfolio.THEMES_CHOICES %}
+                    <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">Palettes Expert</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <template x-for="(pal, id) in palettes" :key="id">
+                        <button @click="appliquerPalette(id)"
+                                class="h-10 rounded-lg border-2 border-transparent hover:border-gray-300 transition flex overflow-hidden shadow-sm"
+                                :title="pal.name">
+                            <div class="flex-1 h-full" :style="'background:' + pal.tokens.couleur_primaire"></div>
+                            <div class="flex-1 h-full" :style="'background:' + pal.tokens.couleur_fond"></div>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <div>
+                <label class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">Couleurs</label>
+                <div class="space-y-3">
+                    {% for field, label in tokens_fields %}
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">{{ label }}</span>
+                        <input type="color" x-model="tokens.{{ field }}" @input="updatePreview"
+                               class="w-8 h-8 rounded-lg border border-gray-200 cursor-pointer p-0.5">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+                    <div>
+    <label class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">
+        Police de caractères
+    </label>
+    <div class="space-y-2">
+        {% for value, label in polices %}
+        <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition"
+               :class="tokens.police === '{{ value }}' ? 'border-emerald-500 bg-emerald-50' : ''">
+            <input type="radio" name="police" value="{{ value }}"
+                   x-model="tokens.police"
+                   @change="updatePreview"
+                   class="text-emerald-600">
+            <div>
+                <div class="text-sm font-medium text-gray-800">{{ label|split:" — "|first }}</div>
+                <div class="text-xs text-gray-400">{{ label|split:" — "|last }}</div>
+            </div>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+
+<div>
+    <label class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">
+        Coins des éléments
+    </label>
+    <div class="grid grid-cols-3 gap-2">
+        {% for value, label in rayons %}
+        <button @click="setRadius('{{ value }}')"
+                :class="tokens.rayon_bordure === '{{ value }}' ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-gray-200 text-gray-600'"
+                class="border rounded-lg p-3 text-xs font-medium transition hover:border-gray-300">
+            {{ label|split:" — "|first }}
+        </button>
+        {% endfor %}
+    </div>
+</div>
+            </div>
+
+            <div class="px-5 py-6 border-t border-gray-100 space-y-3 bg-gray-50">
+    
+    <button @click="sauvegarder" :disabled="sauvegarde"
+            type="button"
+            class="w-full text-white py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.98]"
+            :class="sauvegarde ? 'bg-emerald-500 cursor-not-allowed' : 'bg-emerald-700 hover:bg-emerald-800'">
+        
+        <i class="fas" :class="sauvegarde ? 'fa-check' : 'fa-save'"></i>
+        <span x-text="sauvegarde ? 'Changements publiés !' : 'Publier sur le web'"></span>
+    </button>
+
+    <a href="{% url 'portfolio:dashboard_portfolio' %}" 
+       class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-600 bg-white border border-gray-200 rounded-xl shadow-sm hover:bg-gray-50 hover:text-gray-900 hover:border-gray-300 transition-all duration-200 group">
+        
+        <i class="fas fa-arrow-left text-xs text-gray-400 group-hover:-translate-x-1 transition-transform"></i>
+        <span>Retour au dashboard</span>
+    </a>
+
+</div>
+    </div>
+</div>
+<script>
+function customizer() {
+    return {
+        template: '{{ portfolio.template_choisi }}',
+        sauvegarde: false,
+        tokens: {
+            couleur_primaire: '{{ portfolio.couleur_primaire|default:"#3b82f6" }}',
+            couleur_accent:   '{{ portfolio.couleur_accent|default:"#60a5fa" }}',
+            couleur_fond:     '{{ portfolio.couleur_fond|default:"#020617" }}',
+            couleur_fond_2:   '{{ portfolio.couleur_fond_2|default:"#0f172a" }}',
+            couleur_texte:    '{{ portfolio.couleur_texte|default:"#f8fafc" }}',
+            police:           '{{ portfolio.police|default:"inter" }}',
+            rayon_bordure:    '{{ portfolio.rayon_bordure|default:"12px" }}',
+        },
+
+        palettes: {
+            tech_midnight: { name: "Tech Midnight", tokens: { couleur_primaire: '#3B82F6', couleur_accent: '#60A5FA', couleur_fond: '#020617', couleur_fond_2: '#0F172A', couleur_texte: '#F8FAFC', police: 'mono' }},
+            minimal_luxury: { name: "Minimal Luxury", tokens: { couleur_primaire: '#171717', couleur_accent: '#737373', couleur_fond: '#FFFFFF', couleur_fond_2: '#F5F5F5', couleur_texte: '#262626', police: 'playfair' }},
+            terra_warmth: { name: "Terra Warmth", tokens: { couleur_primaire: '#D97706', couleur_accent: '#F59E0B', couleur_fond: '#FFFBEB', couleur_fond_2: '#FEF3C7', couleur_texte: '#451A03', police: 'inter' }},
+            cyber_pink: { name: "Cyber Punk", tokens: { couleur_primaire: '#D946EF', couleur_accent: '#22D3EE', couleur_fond: '#020617', couleur_fond_2: '#0F172A', couleur_texte: '#F8FAFC', police: 'mono' }},
+            royal_gold: { name: "Royal Gold", tokens: { couleur_primaire: '#C9A84C', couleur_accent: '#A38637', couleur_fond: '#0A0A0A', couleur_fond_2: '#171717', couleur_texte: '#FAFAFA', police: 'playfair' }}
+        },
+
+        updatePreview() {
+            const frame = document.getElementById('preview-frame');
+            if (!frame || !frame.contentDocument) return;
+            
+            // On cible le body pour écraser les styles par défaut
+            const target = frame.contentDocument.body;
+            if(!target) return;
+
+            const s = target.style;
+            s.setProperty('--t-primary', this.tokens.couleur_primaire);
+            s.setProperty('--t-accent',  this.tokens.couleur_accent);
+            s.setProperty('--t-bg',      this.tokens.couleur_fond);
+            s.setProperty('--t-bg-2',    this.tokens.couleur_fond_2);
+            s.setProperty('--t-text',    this.tokens.couleur_texte);
+            s.setProperty('--t-radius',  this.tokens.rayon_bordure);
+
+            const rgb = this.hexToRgb(this.tokens.couleur_primaire);
+            if (rgb) s.setProperty('--t-primary-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+        },
+
+        hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : null;
+        },
+
+        getContrastYIQ(hexcolor){
+            if(!hexcolor) return 'dark';
+            hexcolor = hexcolor.replace("#", "");
+            const r = parseInt(hexcolor.substr(0,2),16);
+            const g = parseInt(hexcolor.substr(2,2),16);
+            const b = parseInt(hexcolor.substr(4,2),16);
+            return (((r*299)+(g*587)+(b*114))/1000 >= 128) ? 'light' : 'dark';
+        },
+
+        appliquerPalette(id) {
+            const palette = this.palettes[id];
+            if (palette) {
+                this.tokens = { ...this.tokens, ...palette.tokens };
+                this.$nextTick(() => this.updatePreview());
+            }
+        },
+
+        setRadius(value) {
+            this.tokens.rayon_bordure = value;
+            this.updatePreview();
+        },
+
+        changerTemplate() {
+            const frame = document.getElementById('preview-frame');
+            const url = new URL(frame.src);
+            url.searchParams.set('template', this.template);
+            frame.src = url.href;
+        },
+
+        async sauvegarder() {
+            if (this.sauvegarde) return;
+            this.sauvegarde = true;
+
+            try {
+                const payload = { ...this.tokens, template_choisi: this.template };
+
+                const response = await fetch('{% url "portfolio:sauvegarder_tokens" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    // Refresh l'iframe avec anti-cache
+                    const frame = document.getElementById('preview-frame');
+                    const freshUrl = new URL(frame.src);
+                    freshUrl.searchParams.set('v', Date.now()); 
+                    frame.src = freshUrl.href;
+                    
+                    setTimeout(() => { this.sauvegarde = false; }, 2000);
+                } else {
+                    throw new Error();
+                }
+            } catch (e) {
+                alert("Erreur lors de la publication.");
+                this.sauvegarde = false;
+            }
+        }
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,126 @@
+<section id="avis" class="relative py-24 overflow-hidden" style="background-color: var(--t-bg);">
+    <div class="absolute -left-10 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none" style="color: var(--t-primary);">
+        <i class="fas fa-quote-left text-[25rem]"></i>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <span class="text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-4 inline-block"
+                      style="background-color: var(--t-bg-2); color: var(--t-primary);">
+                    Témoignages
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight" style="color: var(--t-text);">
+                    Ils me font <span style="color: var(--t-primary);">confiance</span>
+                </h2>
+                <button onclick="revelerEtScroller()" 
+                        class="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:opacity-70 transition-all cursor-pointer"
+                        style="color: var(--t-primary);">
+                    <i class="fas fa-plus-circle w-4 h-4"></i>
+                    Laisser un avis
+                </button>
+            </div>
+            
+            <div class="hidden md:flex gap-2">
+                <button onclick="document.getElementById('slider-avis').scrollBy({left: -400, behavior: 'smooth'})" 
+                        class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-white transition shadow-sm cursor-pointer">
+                    <i class="fas fa-chevron-left" style="color: var(--t-primary);"></i>
+                </button>
+                <button onclick="document.getElementById('slider-avis').scrollBy({left: 400, behavior: 'smooth'})" 
+                        class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-white transition shadow-sm cursor-pointer">
+                    <i class="fas fa-chevron-right" style="color: var(--t-primary);"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="slider-avis" class="flex overflow-x-auto gap-8 pb-10 pt-12 -mt-12 hide-scrollbar snap-x snap-mandatory scroll-smooth">
+            {% for t in temoignages %}
+            <div class="flex-shrink-0 w-[85vw] md:w-[420px] snap-center group relative p-8 transition-all duration-500 border border-transparent shadow-sm hover:shadow-2xl"
+                 style="background-color: var(--t-bg-2); border-radius: var(--t-radius-xl);">
+                
+                <div class="absolute -top-5 left-8 w-11 h-11 flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform z-30"
+                     style="background-color: var(--t-primary); border-radius: var(--t-radius-md);">
+                    <i class="fas fa-quote-left text-sm"></i>
+                </div>
+
+                <div class="flex gap-1 mb-6" style="color: var(--t-primary);">
+                    {% for i in "12345" %}
+                        <i class="fas fa-star text-xs {% if forloop.counter > t.note %}opacity-20{% endif %}"></i>
+                    {% endfor %}
+                </div>
+
+                <p class="text-base leading-relaxed italic mb-8 min-h-[80px]" style="color: var(--t-text-muted);">
+                    "{{ t.contenu }}"
+                </p>
+
+                <div class="flex items-center gap-4 pt-6 border-t" style="border-color: rgba(0,0,0,0.05);">
+                    <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-white font-bold text-lg shadow-inner"
+                         style="background: linear-gradient(to bottom right, var(--t-primary), var(--t-accent)); border-radius: var(--t-radius-md);">
+                        {{ t.nom_client|slice:":1" }}
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-bold" style="color: var(--t-text);">{{ t.nom_client }}</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--t-text-light);">{{ t.entreprise|default:"Client" }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div id="zone-formulaire-avis" class="hidden animate-in fade-in slide-in-from-top-10 duration-700">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+        <div id="form-container" class="max-w-2xl mx-auto bg-white p-10 rounded-[2.5rem] shadow-2xl border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full" style="background-color: var(--t-primary);"></div>
+            <div class="mb-8">
+                <h3 class="text-2xl font-black text-slate-900 mb-2">Partagez votre expérience</h3>
+                <p class="text-slate-500 text-sm">Votre avis sera publié après validation par l'équipe.</p>
+            </div>
+
+            <form hx-post="{% url 'portfolio:laisser_avis_public' portfolio.slug %}" hx-target="#form-container" hx-swap="outerHTML" class="space-y-6">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="nom_client" required placeholder="Nom Complet" 
+                           class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[var(--t-primary)] transition-all outline-none">
+                    <input type="text" name="entreprise" placeholder="Entreprise" 
+                           class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[var(--t-primary)] transition-all outline-none">
+                </div>
+                <select name="note" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm font-bold outline-none">
+                    <option value="5">⭐⭐⭐⭐⭐ Incroyable</option>
+                    <option value="4">⭐⭐⭐⭐ Très satisfait</option>
+                    <option value="3">⭐⭐⭐ Satisfait</option>
+                </select>
+                <textarea name="contenu" required rows="4" placeholder="Votre message..."
+                          class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[var(--t-primary)] transition-all outline-none"></textarea>
+                <div class="flex flex-col md:flex-row gap-4 pt-2">
+    <button type="submit" class="flex-[2] bg-slate-900 text-white font-black py-5 rounded-2xl text-xs uppercase tracking-widest hover:bg-[var(--t-primary)] transition-all shadow-xl cursor-pointer">
+        Envoyer le témoignage
+    </button>
+    
+    <button type="button" 
+            onclick="document.getElementById('zone-formulaire-avis').classList.add('hidden')"
+            class="flex-1 bg-slate-100 text-slate-500 font-bold py-5 rounded-2xl text-xs uppercase tracking-widest hover:bg-slate-200 transition-all cursor-pointer">
+        Annuler
+    </button>
+</div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function revelerEtScroller() {
+    const zone = document.getElementById('zone-formulaire-avis');
+    zone.classList.remove('hidden');
+    setTimeout(() => {
+        zone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+}
+</script>
+
+<style>
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

@@ -1,0 +1,17 @@
+<div id="zone-contact-{{ portfolio.slug }}">
+    <form
+        hx-post="{% url 'portfolio:portfolio_public' portfolio.slug %}"
+        hx-target="#zone-contact-{{ portfolio.slug }}"
+        hx-swap="innerHTML"
+        hx-encoding="multipart/form-data"
+    >
+        {% csrf_token %}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0">
+            <input class="t-input" type="text" name="nom" placeholder="Votre nom *">
+            <input class="t-input" type="email" name="email" placeholder="Email *">
+        </div>
+        <input class="t-input" type="text" name="telephone" placeholder="Téléphone">
+        <textarea class="t-textarea" name="message" placeholder="Votre message *"></textarea>
+        <button class="t-submit" type="submit">Envoyer le message</button>
+    </form>
+</div>

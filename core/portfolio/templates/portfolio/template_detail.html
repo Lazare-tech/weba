@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ template.nom }} — Détails{% endblock %}
+
+{% block content %}
+<main class="bg-white min-h-screen">
+    <div class="border-b border-slate-100 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <nav class="flex text-sm font-medium">
+                <a href="{% url 'portfolio:template_list' %}" class="text-slate-400 hover:text-emerald-600 transition">Templates</a>
+                <span class="mx-2 text-slate-300">/</span>
+                <span class="text-slate-900 font-bold">{{ template.nom }}</span>
+            </nav>
+            <button class="text-slate-400 hover:text-emerald-600 transition">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-7">
+                <div class="group relative rounded-[2rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-xl transition-all duration-700">
+                    {% if template.image_preview %}
+                        <img src="{{ template.image_preview.url }}" alt="{{ template.nom }}" class="w-full h-auto group-hover:scale-[1.01] transition-transform duration-700">
+                    {% else %}
+                        <div class="aspect-video bg-slate-200 flex items-center justify-center text-slate-400">
+                            <i class="fas fa-image text-6xl"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">Live Preview Ready</span>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-emerald-600 shadow-sm shrink-0">
+            <i class="fas fa-bolt text-sm"></i>
+        </div>
+        <div>
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900">Performance</h4>
+            <p class="text-[10px] text-slate-500 leading-tight mt-1">Score SEO 100/100 et chargement instantané.</p>
+        </div>
+    </div>
+
+    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
+            <i class="fas fa-edit text-sm"></i>
+        </div>
+        <div>
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900">Customisable</h4>
+            <p class="text-[10px] text-slate-500 leading-tight mt-1">Changez couleurs et polices en un clic.</p>
+        </div>
+    </div>
+
+    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-purple-600 shadow-sm shrink-0">
+            <i class="fas fa-shield-alt text-sm"></i>
+        </div>
+        <div>
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-900">Support</h4>
+            <p class="text-[10px] text-slate-500 leading-tight mt-1">Assistance technique et mises à jour incluses.</p>
+        </div>
+    </div>
+</div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+                <div class="space-y-4">
+                    {% if template.est_premium %}
+                        <span class="inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                            <i class="fas fa-gem text-[8px]"></i> Premium
+                        </span>
+                    {% else %}
+                        <span class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                            Gratuit
+                        </span>
+                    {% endif %}
+
+                    <h1 class="text-5xl font-black text-slate-900 tracking-tighter leading-none">
+                        {{ template.nom }}
+                    </h1>
+                    
+                    <div class="flex items-center gap-3">
+                        <div class="flex text-amber-400 text-[10px]">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Design Certifié WEBA</span>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-lg leading-relaxed font-light italic border-l-4 border-emerald-500 pl-6">
+                    "{{ template.description_longue }}"
+                </p>
+
+                <div class="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tarif unique</span>
+                        <div class="flex items-baseline gap-1">
+                            {% if template.est_premium %}
+                                <span class="text-3xl font-black text-slate-900">{{ template.prix_cfa }}</span>
+                                <span class="text-xs font-bold text-slate-400 uppercase">CFA</span>
+                            {% else %}
+                                <span class="text-3xl font-black text-emerald-600 uppercase">Gratuit</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <a href="{% url 'portfolio:customizer' %}?template={{ template.slug_technique }}" 
+                           class="flex items-center justify-center gap-3 w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all active:scale-95 uppercase tracking-widest text-xs">
+                            <i class="fas fa-magic"></i> Utiliser ce modèle
+                        </a>
+                        <a href="{% url 'portfolio:portfolio_demo' template.slug %}" target="_blank"
+                           class="w-full bg-white text-slate-900 border border-slate-200 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-3 uppercase tracking-widest text-xs">
+                            <i class="fas fa-eye text-slate-400"></i> Démo Live
+                        </a>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-50 flex justify-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Orange_logo.svg" class="h-4" alt="Orange">
+                        <img src="https://www.moov-africa.ga/PublishingImages/Logos/Logo_Moov_Africa.png" class="h-3" alt="Moov">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <section class="mt-32 pt-20 border-t border-slate-100">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <span class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em] mb-4 block">
+                    Recommandations
+                </span>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase leading-none">
+                    Dans la catégorie <span class="text-emerald-600">{{ template.categorie.nom }}</span>
+                </h3>
+            </div>
+            
+            <a href="{% url 'portfolio:template_list' %}" 
+               class="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-emerald-600 uppercase tracking-widest transition-all group">
+                Tout explorer 
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {% for sug in suggestions %}
+                
+                {% include 'portfolio/partials/template_grid_item.html' with t=sug %}
+            
+            {% empty %}
+                
+                <div class="col-span-full py-20 bg-slate-50/50 rounded-[3rem] border-2 border-dashed border-slate-100 flex flex-col items-center justify-center text-center px-6">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-slate-300 mb-6 shadow-sm">
+                        <i class="fas fa-layer-group text-3xl"></i>
+                    </div>
+                    
+                    <h4 class="text-xl font-black text-slate-900 uppercase tracking-tight">C'est un modèle unique !</h4>
+                    
+                    <p class="text-sm text-slate-500 max-w-sm mx-auto mt-3 italic font-light leading-relaxed">
+                        Pour l'instant, c'est le seul joyau de cette catégorie. <br class="hidden md:block"> 
+                        Pourquoi ne pas jeter un œil à nos autres designs ?
+                    </p>
+                    
+                    <a href="{% url 'portfolio:template_list' %}" 
+                       class="mt-10 px-10 py-4 bg-slate-900 text-white rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-emerald-600 shadow-xl shadow-slate-200 transition-all active:scale-95">
+                        Voir tous les templates
+                    </a>
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}

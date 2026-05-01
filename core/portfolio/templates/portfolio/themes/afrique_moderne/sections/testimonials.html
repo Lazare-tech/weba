@@ -1,0 +1,18 @@
+<div class="t-section-alt" id="avis">
+    <div class="t-section-label">AVIS CLIENTS</div>
+    <div class="t-section-title">Ce qu'ils disent</div>
+    <div class="t-temo-grid">
+        {% for t in temoignages %}
+        <div class="t-temo">
+            <div class="t-stars">{% for i in "12345" %}{% if forloop.counter <= t.note %}★{% else %}☆{% endif %}{% endfor %}</div>
+            <div class="t-temo-text">"{{ t.contenu }}"</div>
+            <div class="t-temo-name">{{ t.nom_client }}</div>
+            {% if t.entreprise %}<div class="t-temo-co">{{ t.entreprise }}</div>{% endif %}
+        </div>
+        {% empty %}
+        <div style="grid-column:1/-1;text-align:center;color:var(--t-text-muted);font-size:14px;padding:32px">
+            Aucun avis pour l'instant.
+        </div>
+        {% endfor %}
+    </div>
+</div>

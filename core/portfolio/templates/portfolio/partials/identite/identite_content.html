@@ -1,0 +1,38 @@
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+    <div class="flex-shrink-0">
+        {% if portfolio.photo %}
+            <img src="{{ portfolio.photo.url }}" class="w-32 h-32 rounded-[2rem] object-cover border-4 border-white shadow-xl shadow-slate-200">
+        {% else %}
+            <div class="w-32 h-32 rounded-[2rem] bg-emerald-50 flex items-center justify-center text-emerald-600 border-2 border-dashed border-emerald-100">
+                <i data-lucide="user" class="w-12 h-12"></i>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="flex-grow w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Titre Professionnel</p>
+                <p class="font-bold text-slate-800">{{ portfolio.titre|default:"Non défini" }}</p>
+            </div>
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Coordonnées</p>
+                <p class="font-bold text-slate-800 text-sm">{{ portfolio.telephone|default:"Aucun numéro" }}</p>
+            </div>
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100 md:col-span-2">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Email de contact</p>
+                <p class="font-bold text-slate-800 text-sm">{{ portfolio.email_contact|default:"Aucun email" }}</p>
+            </div>
+        </div>
+
+        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Ma Bio / Présentation</p>
+            <p class="text-slate-600 text-sm leading-relaxed">{{ portfolio.bio|linebreaksbr|default:"Aucune bio." }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Relancer les icônes Lucide après le swap HTMX
+    lucide.createIcons();
+</script>

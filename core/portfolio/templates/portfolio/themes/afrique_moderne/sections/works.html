@@ -1,0 +1,26 @@
+<div class="t-section" id="realisations">
+    <div class="t-section-label">MON TRAVAIL</div>
+    <div class="t-section-title">Réalisations récentes</div>
+    <div class="t-works-grid">
+        {% for r in realisations %}
+        <div class="t-work">
+            {% if r.image %}
+            <img src="{{ r.image.url }}" style="width:100%;height:140px;object-fit:cover">
+            {% else %}
+            <div class="t-work-img">{{ r.titre }}</div>
+            {% endif %}
+            <div class="t-work-body">
+                <div class="t-work-title">{{ r.titre }}</div>
+                <div class="t-work-tag">
+                    {% if r.date %}{{ r.date|date:"M Y" }}{% endif %}
+                    {% if r.lien %} · <a href="{{ r.lien }}" style="color:var(--t-accent)">Voir →</a>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div style="grid-column:1/-1;text-align:center;color:var(--t-text-muted);font-size:14px;padding:32px">
+            Aucune réalisation ajoutée pour l'instant.
+        </div>
+        {% endfor %}
+    </div>
+</div>

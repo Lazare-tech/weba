@@ -1,0 +1,43 @@
+{% extends 'portfolio/themes/_base/layout.html' %}
+{% load static %}
+
+{% block theme_css %}
+<link rel="stylesheet" href="{% static 'portfolio/themes/creative_can/theme.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% include 'portfolio/themes/creative_can/sections/navbar.html' %}
+{% endblock %}
+
+{% block hero %}
+{% include 'portfolio/themes/creative_can/sections/hero.html' %}
+{% endblock %}
+
+{% block stats %}
+{% include 'portfolio/themes/creative_can/sections/stats.html' %}
+{% endblock %}
+
+{% block services %}
+{% include 'portfolio/themes/creative_can/sections/services.html' %}
+{% endblock %}
+
+{% block works %}
+{% include 'portfolio/themes/creative_can/sections/works.html' %}
+{% endblock %}
+
+{% block testimonials %}
+{% include 'portfolio/themes/creative_can/sections/testimonials.html' %}
+{% endblock %}
+
+{% block contact %}
+{% include 'portfolio/themes/creative_can/sections/contact.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'portfolio/themes/creative_can/sections/footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}

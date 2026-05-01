@@ -1,0 +1,22 @@
+<div class="t-hero">
+    <div>
+        <span class="t-badge">{{ portfolio.secteur }} · {{ portfolio.ville }}</span>
+        <h1 class="t-h1">{{ portfolio.titre }}</h1>
+        <p class="t-sub">{{ portfolio.bio }}</p>
+        <div class="t-btns">
+            <a href="#contact" class="t-btn-primary">Me contacter</a>
+            <a href="#realisations" class="t-btn-secondary">Mes réalisations</a>
+        </div>
+    </div>
+    <div class="t-avatar-box">
+        {% if portfolio.photo %}
+            <img src="{{ portfolio.photo.url }}" style="width:120px;height:120px;border-radius:50%;object-fit:cover">
+        {% else %}
+            <div>
+                <div class="t-avatar">{{ portfolio.user.username|first|upper }}</div>
+                <div style="text-align:center;font-size:14px;font-weight:500;color:var(--t-text)">{{ portfolio.titre|truncatechars:25 }}</div>
+                <div style="text-align:center;font-size:12px;color:var(--t-text-muted);margin-top:4px">{{ portfolio.secteur }}</div>
+            </div>
+        {% endif %}
+    </div>
+</div>

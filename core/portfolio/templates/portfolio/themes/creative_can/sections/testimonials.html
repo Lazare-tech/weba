@@ -1,0 +1,28 @@
+<section id="avis" class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-4">
+                <h2 class="text-5xl font-black uppercase mb-6 leading-none">Les <br> Retours</h2>
+                <div class="w-20 h-1 bg-[var(--t-primary)]"></div>
+            </div>
+            
+            <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                {% for t in temoignages %}
+                <div class="glass p-10 rounded-[var(--t-radius)] hover:border-[var(--t-primary)] transition-all">
+                    <i class="fas fa-quote-left text-3xl mb-8" style="color: var(--t-primary);"></i>
+                    <p class="text-lg font-light italic opacity-80 mb-10">"{{ t.contenu }}"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[var(--t-primary)] flex items-center justify-center text-black font-bold">
+                            {{ t.nom_client|slice:":1" }}
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold uppercase">{{ t.nom_client }}</p>
+                            <p class="text-[8px] uppercase tracking-widest opacity-40">{{ t.entreprise|default:"Client" }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+:root {
+    --t-bg: #050505;
+    --t-bg-2: #0f0f0f;
+    --t-primary: #ff3e00; /* Orange vibrant par défaut */
+    --t-accent: #00f0ff;
+    --t-text: #ffffff;
+    --t-text-muted: #a3a3a3;
+    --t-border: rgba(255,255,255,0.1);
+    --t-radius: 24px;
+    --t-radius-md: 12px;
+    --t-radius-xl: 40px;
+}
+
+body {
+    background-color: var(--t-bg);
+    color: var(--t-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.text-outline {
+    -webkit-text-stroke: 1px var(--t-text);
+    color: transparent;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--t-border);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; }
+        .header { background: #0F6E56; padding: 30px; text-align: center; border-radius: 12px 12px 0 0; }
+        .header h1 { color: white; margin: 0; font-size: 20px; }
+        .body { background: #f9f9f9; padding: 30px; border-radius: 0 0 12px 12px; }
+        .message { background: white; padding: 20px; border-radius: 8px; margin: 15px 0; }
+        .info { font-size: 13px; color: #666; margin: 4px 0; }
+        .btn { display: inline-block; background: #0F6E56; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Nouveau message via votre portfolio</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong>{{ username }}</strong>,</p>
+        <p>Vous avez reçu un nouveau message :</p>
+        <div class="message">
+            <p class="info"><strong>De :</strong> {{ nom }}</p>
+            <p class="info"><strong>Email :</strong> {{ email }}</p>
+            {% if telephone %}
+            <p class="info"><strong>Téléphone :</strong> {{ telephone }}</p>
+            {% endif %}
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+            <p style="margin: 0;">{{ message }}</p>
+        </div>
+        <a href="mailto:{{ email }}" class="btn">Répondre par email →</a>
+        {% if telephone %}
+        <a href="https://wa.me/{{ telephone }}"
+           style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 20px 0 20px 10px;">
+            WhatsApp →
+        </a>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <p>WEBA — La visibilité digitale pour l'Afrique de l'Ouest</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<footer class="py-12 border-t" style="background-color: var(--t-text); border-color: rgba(255,255,255,0.05);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                <div class="w-8 h-8 flex items-center justify-center text-white shadow-lg" style="background-color: var(--t-primary); border-radius: var(--t-radius-sm);">
+                    <i class="fas fa-user text-sm"></i>
+                </div>
+                <p class="text-white font-bold text-lg tracking-tight">{{ portfolio.user.get_full_name|default:portfolio.user.username }}</p>
+            </div>
+            <p class="text-xs font-medium uppercase tracking-[0.15em]" style="color: var(--t-text-light);">{{ portfolio.secteur|default:"Expert Digital" }} · {{ portfolio.ville }}</p>
+        </div>
+
+        <div class="flex items-center gap-6">
+            {% if portfolio.whatsapp %}<a href="https://wa.me/{{ portfolio.whatsapp }}" class="group w-10 h-10 rounded-full flex items-center justify-center transition-all text-white" style="background-color: rgba(255,255,255,0.05); color: var(--t-white);"><i class="fab fa-whatsapp text-lg text-white"></i></a>{% endif %}
+            {% if portfolio.facebook %}<a href="{{ portfolio.facebook }}" class="group w-10 h-10 rounded-full flex items-center justify-center transition-all" style="background-color: rgba(255,255,255,0.05); color: var(--t-white);"><i class="fab fa-facebook-f text-lg text-white"></i></a>{% endif %}
+            {% if portfolio.instagram %}<a href="{{ portfolio.instagram }}" class="group w-10 h-10 rounded-full flex items-center justify-center transition-all" style="background-color: rgba(255,255,255,0.05); color: var(--t-white);"><i class="fab fa-instagram text-lg text-white"></i></a>{% endif %}
+        </div>
+
+        <div class="text-center md:text-right">
+            <p class="text-[11px] font-medium tracking-wide uppercase" style="color: var(--t-text-light);">
+                © {{ now|date:"Y" }} — Propulsé par <a href="/" class="font-bold" style="color: var(--t-primary);">WEBA</a>
+            </p>
+        </div>
+    </div>
+</footer>

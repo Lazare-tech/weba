@@ -1,0 +1,43 @@
+<nav x-data="{ open: false, scrolled: false }" 
+     @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+     class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 backdrop-blur-xl border rounded-2xl px-6 py-4 flex justify-between items-center transition-all duration-300"
+     :class="scrolled ? 'shadow-2xl translate-y-2' : ''"
+     style="background-color: rgba(var(--t-bg-rgb), 0.7); border-color: rgba(255,255,255,0.1);">
+    
+    <div class="flex items-center gap-2 font-bold tracking-tight" style="color: var(--t-text);">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" 
+             style="background-color: var(--t-primary); box-shadow: 0 0 15px var(--t-primary);">
+            <i class="fas fa-terminal text-xs text-white"></i>
+        </div>
+        <span class="truncate max-w-[150px] md:max-w-none">{{ portfolio.user.get_full_name|default:portfolio.user.username }}</span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-8 text-sm font-medium" style="color: var(--t-text); opacity: 0.7;">
+        <a href="#hero" class="hover:opacity-100 transition-opacity">Home</a>
+        <a href="#services" class="hover:opacity-100 transition-opacity">Stack</a>
+        <a href="#realisations" class="hover:opacity-100 transition-opacity">Projects</a>
+        <a href="#contact" class="hover:opacity-100 transition-opacity">Deploy</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <a href="#contact" 
+           class="hidden sm:block text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all active:scale-95"
+           style="background-color: var(--t-primary);">
+            Get Started
+        </a>
+        <!-- Mobile Toggle -->
+        <button @click="open = !open" class="md:hidden text-white">
+            <i class="fas" :class="open ? 'fa-times' : 'fa-bars'"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" @click.away="open = false" 
+         class="absolute top-20 left-0 w-full bg-slate-900 border border-white/10 rounded-2xl p-6 space-y-4 md:hidden shadow-3xl">
+        <a href="#hero" @click="open = false" class="block text-white opacity-70 hover:opacity-100">Home</a>
+        <a href="#services" @click="open = false" class="block text-white opacity-70 hover:opacity-100">Stack</a>
+        <a href="#realisations" @click="open = false" class="block text-white opacity-70 hover:opacity-100">Projects</a>
+        <a href="#contact" @click="open = false" class="block text-white opacity-70 hover:opacity-100">Deploy</a>
+    </div>
+</nav>

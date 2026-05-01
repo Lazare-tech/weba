@@ -1,0 +1,46 @@
+{% extends 'portfolio/themes/_base/layout.html' %}
+{% load static %}
+
+{% block theme_css %}
+<link rel="stylesheet" href="{% static 'portfolio/themes/bold_coral/theme.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% include 'portfolio/themes/bold_coral/sections/navbar.html' %}
+{% endblock %}
+
+{% block hero %}
+{% include 'portfolio/themes/bold_coral/sections/hero.html' %}
+{% endblock %}
+
+{% block stats %}
+{% include 'portfolio/themes/bold_coral/sections/stats.html' %}
+{% endblock %}
+
+{% block services %}
+{% include 'portfolio/themes/bold_coral/sections/services.html' %}
+{% endblock %}
+
+{% block works %}
+{% include 'portfolio/themes/bold_coral/sections/works.html' %}
+{% endblock %}
+
+{% block testimonials %}
+{% include 'portfolio/themes/bold_coral/sections/testimonials.html' %}
+{% endblock %}
+
+{% block contact %}
+{% include 'portfolio/themes/bold_coral/sections/contact.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'portfolio/themes/bold_coral/sections/footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Override Tailwind base pour respecter nos variables CSS */
+    body { background-color: var(--t-bg); color: var(--t-text); }
+</style>
+{% endblock %}

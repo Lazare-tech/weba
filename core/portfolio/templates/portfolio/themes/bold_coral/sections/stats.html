@@ -1,0 +1,33 @@
+<section class="py-10" style="background-color: var(--t-primary);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center text-white">
+            
+            {% for stat in portfolio.stats.all %}
+                {# AFFICHAGE DES STATS MANUELLES DU DASHBOARD #}
+                <div class="group">
+                    <p class="text-3xl font-black tracking-tighter">{{ stat.chiffre }}</p>
+                    <p class="text-[10px] uppercase font-bold opacity-70 tracking-widest mt-1">{{ stat.label }}</p>
+                </div>
+            {% empty %}
+                {# FALLBACK AUTOMATIQUE SI L'UTILISATEUR N'A RIEN SAISI #}
+                <div class="group">
+                    <p class="text-3xl font-black tracking-tighter">{{ realisations.count }}+</p>
+                    <p class="text-[10px] uppercase font-bold opacity-70 tracking-widest mt-1">Réalisations</p>
+                </div>
+                <div class="group">
+                    <p class="text-3xl font-black tracking-tighter">{{ services.count }}</p>
+                    <p class="text-[10px] uppercase font-bold opacity-70 tracking-widest mt-1">Services</p>
+                </div>
+                <div class="group">
+                    <p class="text-3xl font-black tracking-tighter">{{ temoignages.count|default:"10" }}</p>
+                    <p class="text-[10px] uppercase font-bold opacity-70 tracking-widest mt-1">Avis clients</p>
+                </div>
+                <div class="group">
+                    <p class="text-3xl font-black tracking-tighter">100%</p>
+                    <p class="text-[10px] uppercase font-bold opacity-70 tracking-widest mt-1">Satisfaction</p>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>

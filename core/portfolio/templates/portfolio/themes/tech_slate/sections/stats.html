@@ -1,0 +1,18 @@
+<section id="stats" class="py-20" style="background-color: var(--t-primary); border-radius: var(--t-radius);">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 px-6">
+        {% for stat in portfolio.stats.all %}
+        <div class="text-center group">
+            <div class="text-4xl font-mono font-bold text-white tracking-tighter">{{ stat.chiffre }}</div>
+            <p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-2 border-t border-white/10 pt-2 inline-block">
+                {{ stat.label }}
+            </p>
+        </div>
+        {% empty %}
+        <!-- Fallback Stats -->
+        <div class="text-center group"><div class="text-4xl font-mono font-bold text-white tracking-tighter">{{ realisations.count }}</div><p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-2 border-t border-white/10 pt-2 inline-block">Deployed_Units</p></div>
+        <div class="text-center group"><div class="text-4xl font-mono font-bold text-white tracking-tighter">99.9%</div><p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-2 border-t border-white/10 pt-2 inline-block">Uptime_System</p></div>
+        <div class="text-center group"><div class="text-4xl font-mono font-bold text-white tracking-tighter">{{ services.count }}</div><p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-2 border-t border-white/10 pt-2 inline-block">Stack_Modules</p></div>
+        <div class="text-center group"><div class="text-4xl font-mono font-bold text-white tracking-tighter">24/7</div><p class="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-2 border-t border-white/10 pt-2 inline-block">Monitoring</p></div>
+        {% endfor %}
+    </div>
+</section>

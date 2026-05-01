@@ -1,0 +1,62 @@
+<div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-bold text-gray-900">Apparence du Portfolio</h2>
+        <div id="status-template" class="text-xs font-medium text-emerald-600"></div>
+    </div>
+
+    <form hx-post="{% url 'portfolio:changer_template' %}" 
+          hx-target="#status-template" 
+          hx-swap="innerHTML"
+          class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% csrf_token %}
+
+        <label class="relative cursor-pointer group">
+            <input type="radio" name="template_choisi" value="minimal" 
+                   class="peer sr-only" {% if portfolio.template_choisi == 'minimal' %}checked{% endif %}
+                   onchange="this.form.dispatchEvent(new Event('submit'))">
+            <div class="border-2 border-gray-100 rounded-xl overflow-hidden peer-checked:border-emerald-500 peer-checked:ring-2 peer-checked:ring-emerald-500/20 transition-all">
+                <div class="aspect-video bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors">
+                   <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Minimaliste</span>
+                </div>
+                <div class="p-3 text-center bg-white">
+                    <p class="text-sm font-bold text-gray-700">Expert / Clean</p>
+                </div>
+            </div>
+        </label>
+
+        <label class="relative cursor-pointer group">
+            <input type="radio" name="template_choisi" value="showcase" 
+                   class="peer sr-only" {% if portfolio.template_choisi == 'showcase' %}checked{% endif %}
+                   onchange="this.form.dispatchEvent(new Event('submit'))">
+            <div class="border-2 border-gray-100 rounded-xl overflow-hidden peer-checked:border-emerald-500 peer-checked:ring-2 peer-checked:ring-emerald-500/20 transition-all">
+                <div class="aspect-video bg-slate-900 flex items-center justify-center group-hover:bg-slate-800 transition-colors">
+                   <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Showcase</span>
+                </div>
+                <div class="p-3 text-center bg-white">
+                    <p class="text-sm font-bold text-gray-700">Créatif / Sombre</p>
+                </div>
+            </div>
+        </label>
+
+        <label class="relative cursor-pointer group">
+            <input type="radio" name="template_choisi" value="business" 
+                   class="peer sr-only" {% if portfolio.template_choisi == 'business' %}checked{% endif %}
+                   onchange="this.form.dispatchEvent(new Event('submit'))">
+            <div class="border-2 border-gray-100 rounded-xl overflow-hidden peer-checked:border-emerald-500 peer-checked:ring-2 peer-checked:ring-emerald-500/20 transition-all">
+                <div class="aspect-video bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                   <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Business</span>
+                </div>
+                <div class="p-3 text-center bg-white">
+                    <p class="text-sm font-bold text-gray-700">Startup / Growth</p>
+                </div>
+            </div>
+        </label>
+    </form>
+
+    <div class="mt-6 pt-4 border-t border-gray-50 flex justify-center">
+        <a href="{{ portfolio.get_absolute_url }}" target="_blank" class="text-xs font-bold text-slate-500 hover:text-emerald-700 flex items-center transition">
+            <i data-lucide="external-link" class="w-3 h-3 mr-2"></i>
+            Prévisualiser mon site en direct
+        </a>
+    </div>
+</div>

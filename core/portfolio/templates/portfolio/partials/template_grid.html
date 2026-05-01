@@ -1,0 +1,56 @@
+{% for t in templates %}
+<div class="group relative bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+    <div class="absolute top-4 left-4 z-20">
+        {% if t.est_premium %}
+        <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+            <i class="fas fa-crown mr-1"></i> Premium
+        </span>
+        {% else %}
+        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+            Gratuit
+        </span>
+        {% endif %}
+    </div>
+
+    <div class="aspect-video relative overflow-hidden bg-slate-100">
+        {% if t.image_preview %}
+            <img src="{{ t.image_preview.url }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        {% else %}
+            <div class="w-full h-full flex flex-col items-center justify-center bg-slate-200 text-slate-400">
+                <i class="fas fa-image text-4xl mb-2"></i>
+            </div>
+        {% endif %}
+
+        <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+             <a href="{% url 'portfolio:portfolio_demo' t.slug %}" target="_blank" class="bg-white text-slate-900 px-6 py-2 rounded-lg font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                Démo Live
+             </a>
+        </div>
+
+        <div class="absolute bottom-4 left-0 right-0 px-4 flex justify-between items-center z-20 translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-white/90 backdrop-blur text-emerald-700 uppercase tracking-wider shadow-md">
+                <span class="flex h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
+                Demo
+            </span>
+
+            <a href="{% url 'portfolio:template_detail' t.slug %}" 
+               class="w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-slate-600 hover:text-emerald-600 hover:scale-110 transition-all shadow-md" 
+               title="Voir les détails">
+                <i class="fas fa-eye"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="p-5 border-t border-slate-50">
+        <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">{{ t.nom }}</h3>
+            {% if t.est_premium %}
+                <span class="text-xs font-black text-slate-900 bg-slate-100 px-2 py-1 rounded">{{ t.prix_cfa }} <small>CFA</small></span>
+            {% endif %}
+        </div>
+        <p class="text-[11px] text-slate-500 line-clamp-2 italic leading-relaxed">
+            {{ t.description_longue }}
+        </p>
+    </div>
+</div>
+{% endfor %}

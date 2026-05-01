@@ -1,0 +1,39 @@
+<section id="realisations" class="py-24 px-6" style="background-color: var(--t-bg-2);">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight" style="color: var(--t-text);">
+                Deployed_<span style="color: var(--t-primary);">Units</span>
+            </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for r in realisations %}
+            <div class="group relative overflow-hidden transition-all duration-500 border" 
+                 style="background-color: var(--t-bg); border-color: rgba(255,255,255,0.05); border-radius: var(--t-radius);">
+                
+                <div class="relative h-52 bg-slate-800 overflow-hidden">
+                    {% if r.image %}
+                        <img src="{{ r.image.url }}" class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-30 transition-all duration-700">
+                    {% endif %}
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
+                        {% if r.lien %}
+                        <a href="{{ r.lien }}" target="_blank" class="bg-white px-6 py-2 rounded-xl font-bold text-sm flex items-center gap-2 active:scale-95" 
+                           style="color: var(--t-primary);">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4">
+                    <h3 class="text-lg font-bold tracking-tight" style="color: var(--t-text);">{{ r.titre }}</h3>
+                    <p class="text-sm leading-relaxed opacity-60 font-light" style="color: var(--t-text);">{{ r.description|truncatechars:100 }}</p>
+                    <div class="pt-4 flex justify-between items-center border-t border-white/5">
+                        <span class="text-[10px] font-mono italic opacity-40">build_v1.0</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

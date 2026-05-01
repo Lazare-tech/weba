@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /pages/
+Disallow: /weba-admin/
+Disallow: /django-admin/
+Disallow: /analytics/
+
+Sitemap: http://localhost:8000/sitemap.xml

@@ -1,0 +1,20 @@
+<div class="group flex justify-between items-center bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 transition-all"
+     id="stat-{{ stat.id }}">
+    
+    <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-slate-50 rounded-lg flex flex-col items-center justify-center border border-slate-100">
+            <span class="text-emerald-600 font-black text-sm">{{ stat.chiffre }}</span>
+        </div>
+        <div>
+            <p class="font-bold text-gray-900 text-xs uppercase tracking-wider">{{ stat.label }}</p>
+        </div>
+    </div>
+
+    <button hx-delete="{% url 'portfolio:supprimer_stat' stat.id %}"
+        hx-target="#stat-{{ stat.id }}"
+        hx-swap="outerHTML"
+        class="p-2 text-gray-300 hover:text-red-600 transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+</div>
+<script>if(window.lucide) lucide.createIcons();</script>

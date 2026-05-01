@@ -1,0 +1,95 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WEBA{% endblock %}</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% tailwind_css %}
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.5/sweetalert2.all.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50">
+
+    <header>{% include 'navbar/navbar.html' %}</header>
+
+    <main class="pt-16 min-h-screen">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <footer>{% include 'footer/footer.html' %}</footer>
+
+    <script>
+        // Initialisation de Lucide (si tu l'utilises)
+        lucide.createIcons();
+
+        // Configuration CSRF pour HTMX
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            evt.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        });
+
+        // Fonction de prévisualisation
+        function previewImage(input, previewId) {
+            const previewContainer = document.getElementById(previewId);
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewContainer.innerHTML = `
+                        <img src="${e.target.result}" 
+                             class="w-full h-full rounded-lg object-cover border-2 border-emerald-500 shadow-md animate-in zoom-in duration-300">
+                    `;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fonction de suppression UNIFIÉE
+            function confirmerSuppression(btn) {
+    const url = btn.getAttribute('data-url');
+    const target = btn.getAttribute('data-target');
+    const titre = btn.getAttribute('data-titre') || 'cet élément';
+
+    Swal.fire({
+        title: `Supprimer ${titre} ?`,
+        text: "Cette action est irréversible.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        confirmButtonText: 'Oui, supprimer',
+        cancelButtonText: 'Annuler',
+        customClass: {
+            popup: 'rounded-[2.5rem] border-none shadow-2xl',
+            confirmButton: 'rounded-xl font-bold px-6 py-3',
+            cancelButton: 'rounded-xl font-bold px-6 py-3'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            htmx.ajax('DELETE', url, {
+                target: target,
+                swap: 'outerHTML'
+            });
+
+            Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            }).fire({
+                icon: 'success',
+                title: 'Supprimé avec succès'
+            });
+        }
+    });
+}
+    </script>
+</body>
+</html>

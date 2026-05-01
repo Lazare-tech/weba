@@ -1,0 +1,49 @@
+{% if resultats %}
+    {% for e in resultats %}
+    <div
+        x-data="{ confirmer: false }"
+        class="bg-white border border-gray-200 rounded-xl px-5 py-4 flex justify-between items-center shadow-sm hover:shadow-md transition"
+    >
+        <div>
+            <p class="font-semibold text-gray-800">{{ e.nom }}</p>
+            <p class="text-sm text-gray-500 mt-0.5">{{ e.secteur }} · {{ e.ville }}</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+
+            <button
+                x-show="!confirmer"
+                @click="confirmer = true"
+                class="text-sm text-red-500 border border-red-300 px-3 py-1 rounded-lg hover:bg-red-50 transition"
+            >
+                Supprimer
+            </button>
+
+            <div x-show="confirmer" class="flex items-center gap-2">
+                <span class="text-sm text-gray-500">Confirmer ?</span>
+                <button
+                    hx-delete="/supprimer/{{ e.pk }}/"
+                    hx-target="#resultats"
+                    hx-swap="outerHTML"
+                    class="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition"
+                >
+                    Oui
+                </button>
+                <button
+                    @click="confirmer = false"
+                    class="text-sm border border-gray-300 px-3 py-1 rounded-lg hover:bg-gray-50 transition"
+                >
+                    Non
+                </button>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+{% else %}
+    <div class="text-center py-12 text-gray-400">
+        <p class="text-4xl mb-3">🔍</p>
+        <p>Aucune entreprise trouvée pour <strong>"{{ query }}"</strong></p>
+    </div>
+{% endif %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; }
+        .header { background: #0F6E56; padding: 30px; text-align: center; border-radius: 12px 12px 0 0; }
+        .header h1 { color: white; margin: 0; font-size: 24px; }
+        .body { background: #f9f9f9; padding: 30px; border-radius: 0 0 12px 12px; }
+        .btn { display: inline-block; background: #0F6E56; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bienvenue sur WEBA !</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong>{{ username }}</strong>,</p>
+        <p>
+            Votre blog <strong>"{{ nom_blog }}"</strong> est maintenant en ligne.
+            Commencez à publier vos premiers articles pour améliorer
+            votre visibilité sur Google.
+        </p>
+        <a href="{{ blog_url }}" class="btn">Voir mon blog →</a>
+        <p>Votre blog est accessible à l'adresse :</p>
+        <p><strong>{{ blog_url }}</strong></p>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+        <p style="font-size: 13px; color: #666;">
+            Pour améliorer votre SEO, pensez à :
+            <ul style="font-size: 13px; color: #666;">
+                <li>Publier au moins 5 articles</li>
+                <li>Ajouter des tags à chaque article</li>
+                <li>Compléter votre profil avec une description</li>
+            </ul>
+        </p>
+    </div>
+    <div class="footer">
+        <p>WEBA — La visibilité digitale pour l'Afrique de l'Ouest</p>
+    </div>
+</body>
+</html>

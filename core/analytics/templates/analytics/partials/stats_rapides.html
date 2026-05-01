@@ -1,0 +1,16 @@
+{% if stats %}
+<div class="grid grid-cols-2 gap-3 mt-4">
+    <div class="bg-emerald-50 rounded-lg p-3 text-center">
+        <p class="text-xl font-bold text-emerald-700">{{ stats.visitors.value|default:"0" }}</p>
+        <p class="text-xs text-emerald-600">Visiteurs (7j)</p>
+    </div>
+    <div class="bg-emerald-50 rounded-lg p-3 text-center">
+        <p class="text-xl font-bold text-emerald-700">{{ stats.pageviews.value|default:"0" }}</p>
+        <p class="text-xs text-emerald-600">Pages vues (7j)</p>
+    </div>
+</div>
+{% else %}
+<div class="mt-4 text-center text-gray-400 text-xs py-2">
+    Analytics non disponible
+</div>
+{% endif %}

@@ -1,0 +1,41 @@
+<section id="contact" class="py-24" style="background-color: var(--t-bg);">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+        <div class="bg-white border p-12 shadow-2xl text-center relative overflow-hidden"
+             style="border-radius: var(--t-radius-xl); border-color: var(--t-border);">
+            
+            <div class="relative z-10">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em]" style="color: var(--t-primary);">Réservation</span>
+                <h2 class="text-4xl md:text-5xl font-serif italic mt-4 mb-8" style="color: var(--t-text);">Écrivons votre <span class="not-italic font-sans font-black uppercase tracking-tighter" style="color: var(--t-primary);">Histoire</span></h2>
+                
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest ml-2" style="color: var(--t-text-light);">Votre Nom</label>
+                        <input type="text" class="w-full px-6 py-4 bg-slate-50 border-0 focus:ring-2 focus:ring-emerald-500 transition-all" 
+                               style="border-radius: var(--t-radius-md);">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest ml-2" style="color: var(--t-text-light);">Type d'événement</label>
+                        <select class="w-full px-6 py-4 bg-slate-50 border-0 focus:ring-2 focus:ring-emerald-500 transition-all" 
+                                style="border-radius: var(--t-radius-md);">
+                            <option>Mariage</option>
+                            <option>Baptême</option>
+                            <option>Cérémonie Laïque</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest ml-2" style="color: var(--t-text-light);">Votre Message</label>
+                        <textarea rows="4" class="w-full px-6 py-4 bg-slate-50 border-0 focus:ring-2 focus:ring-emerald-500 transition-all" 
+                                  style="border-radius: var(--t-radius-md);"></textarea>
+                    </div>
+                    <div class="md:col-span-2 pt-4">
+                        <button class="w-full py-5 text-white font-bold uppercase tracking-widest shadow-xl transition-all hover:opacity-90"
+                                style="background-color: var(--t-primary); border-radius: var(--t-radius);">
+                            Envoyer la demande
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

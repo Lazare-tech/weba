@@ -1,0 +1,99 @@
+.input-custom {
+    border:1.8px solid #d1d1d1;
+    border-radius:7px;
+    height:48px;
+}
+
+.input-custom:focus {
+    border-color: var(--shine-gold);
+    box-shadow: 0 0 4px rgba(196,161,58,.6);
+}
+
+.modal-content .form-control,
+.modal-content .form-select {
+    border-radius:12px;
+    padding:12px;
+}
+@media (max-width: 767.98px) {
+
+   
+    .form-control-email-news {
+        font-size: 0.875rem;   /* équivalent form-control-sm */
+        padding: 0.375rem 0.75rem;
+        height: auto;
+    }
+
+    
+
+}
+/* Barre de progression améliorée */
+.progress-step {
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #6c757d;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+.progress-step.active {
+    background: #122046; /* Ton bleu foncé */
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(18, 32, 70, 0.2);
+}
+
+.progress-step.completed {
+    background: #c39d3b; /* Ton doré */
+    color: white;
+}
+
+.step-line {
+    height: 3px; width: 50px;
+    background: #e0e0e0; transition: 0.4s;
+}
+
+.step-line.active { background: #c39d3b; }
+
+/* Transitions de pages */
+.hidden { display: none !important; }
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Validation visuelle */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+.newsletter-bourses{
+    background-color: #122046;
+     overflow: hidden;
+}
+.newsletter-bourses .btn-warning:hover {
+    background-color: #bfa030 !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.newsletter-bourses .form-control:focus {
+    border-color: #d4af37 !important;
+    box-shadow: none !important;
+}
+
+/* Animation subtile pour attirer l'oeil */
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.newsletter-bourses .btn-warning {
+    animation: pulse-gold 3s infinite;
+}

@@ -1,0 +1,43 @@
+{% extends 'portfolio/themes/_base/layout.html' %}
+{% load static %}
+
+{% block theme_css %}
+<link rel="stylesheet" href="{% static 'portfolio/themes/minimal_blanc/theme.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% include 'portfolio/themes/minimal_blanc/sections/navbar.html' %}
+{% endblock %}
+
+{% block hero %}
+{% include 'portfolio/themes/minimal_blanc/sections/hero.html' %}
+{% endblock %}
+
+{% block stats %}
+{% include 'portfolio/themes/minimal_blanc/sections/stats.html' %}
+{% endblock %}
+
+{% block services %}
+{% include 'portfolio/themes/minimal_blanc/sections/services.html' %}
+{% endblock %}
+
+{% block works %}
+{% include 'portfolio/themes/minimal_blanc/sections/works.html' %}
+{% endblock %}
+
+{% block testimonials %}
+{% include 'portfolio/themes/minimal_blanc/sections/testimonials.html' %}
+{% endblock %}
+
+{% block contact %}
+{% include 'portfolio/themes/minimal_blanc/sections/contact.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'portfolio/themes/minimal_blanc/sections/footer.html' %}
+{% endblock %}
+
+{% block extra_css %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; }
+        .header { background: #854F0B; padding: 30px; text-align: center; border-radius: 12px 12px 0 0; }
+        .header h1 { color: white; margin: 0; font-size: 20px; }
+        .body { background: #f9f9f9; padding: 30px; border-radius: 0 0 12px 12px; }
+        .alerte { background: #FAEEDA; border: 1px solid #EF9F27; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .btn { display: inline-block; background: #0F6E56; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Votre abonnement expire bientôt</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong>{{ username }}</strong>,</p>
+        <div class="alerte">
+            <p style="margin: 0;">
+                Votre abonnement <strong>plan {{ plan }}</strong> expire le
+                <strong>{{ date_fin }}</strong>.
+            </p>
+        </div>
+        <p>
+            Renouvelez maintenant pour continuer à profiter de toutes vos
+            fonctionnalités sans interruption.
+        </p>
+        <a href="{{ tarification_url }}" class="btn">Renouveler mon abonnement →</a>
+    </div>
+    <div class="footer">
+        <p>WEBA — La visibilité digitale pour l'Afrique de l'Ouest</p>
+    </div>
+</body>
+</html>

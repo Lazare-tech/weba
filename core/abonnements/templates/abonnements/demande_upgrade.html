@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Passer au plan {{ plan }} — WEBA{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+
+    <div class="text-center mb-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">
+            Passer au plan {{ plan }}
+        </h1>
+        <p class="text-gray-500">
+            {{ plan.prix_mensuel|floatformat:0 }} FCFA / mois
+        </p>
+    </div>
+
+    <!-- Instructions paiement -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+        <h3 class="font-semibold text-blue-800 mb-3">
+            📱 Comment payer ?
+        </h3>
+        <div class="space-y-2 text-sm text-blue-700">
+            <p><strong>Wave :</strong> Envoyez {{ plan.prix_mensuel|floatformat:0 }} FCFA au +226 XX XX XX XX</p>
+            <p><strong>Orange Money :</strong> Envoyez {{ plan.prix_mensuel|floatformat:0 }} FCFA au +226 XX XX XX XX</p>
+            <p class="mt-3 text-blue-600">
+                Après le paiement, copiez la <strong>référence de transaction</strong>
+                et collez-la ci-dessous.
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div>
+                <label class="text-sm font-medium text-gray-700 mb-1 block">
+                    Référence de paiement *
+                </label>
+                <input
+                    type="text"
+                    name="reference_paiement"
+                    placeholder="Ex: WV-2024-XXXXXXXX"
+                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                >
+            </div>
+
+            <div>
+                <label class="text-sm font-medium text-gray-700 mb-1 block">
+                    Message (optionnel)
+                </label>
+                <textarea
+                    name="message"
+                    rows="3"
+                    placeholder="Informations supplémentaires..."
+                    class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                ></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl font-medium transition">
+                Soumettre ma demande →
+            </button>
+
+            <a href="{% url 'tarification' %}"
+               class="block text-center text-sm text-gray-500 hover:text-gray-700">
+                ← Retour à la tarification
+            </a>
+        </form>
+    </div>
+
+</div>
+{% endblock content %}

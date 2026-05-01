@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ portfolio.titre }} — WEBA{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ portfolio.bio|truncatechars:160 }}">
+<meta property="og:title" content="{{ portfolio.titre }}">
+<meta property="og:description" content="{{ portfolio.bio|truncatechars:160 }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<div class="bg-white border border-gray-200 rounded-2xl p-8 mb-8 shadow-sm">
+    <div class="flex items-start gap-6 flex-wrap">
+
+        {% if portfolio.photo %}
+            <img src="{{ portfolio.photo.url }}"
+                 class="w-24 h-24 rounded-full object-cover border-2 border-gray-200">
+        {% else %}
+            <div class="w-24 h-24 rounded-full bg-emerald-100 flex items-center justify-center">
+                <span class="text-3xl font-bold text-emerald-700">
+                    {{ portfolio.user.username|first|upper }}
+                </span>
+            </div>
+        {% endif %}
+
+        <div class="flex-1">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ portfolio.titre }}</h1>
+            {% if portfolio.bio %}
+                <p class="text-gray-600 leading-relaxed mb-4">{{ portfolio.bio }}</p>
+            {% endif %}
+
+            <!-- Réseaux sociaux -->
+            <div class="flex gap-3 flex-wrap">
+                {% if portfolio.whatsapp %}
+                <a href="https://wa.me/{{ portfolio.whatsapp }}" target="_blank"
+                   class="bg-green-500 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-green-600 transition">
+                    WhatsApp
+                </a>
+                {% endif %}
+                {% if portfolio.facebook %}
+                <a href="{{ portfolio.facebook }}" target="_blank"
+                   class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-blue-700 transition">
+                    Facebook
+                </a>
+                {% endif %}
+                {% if portfolio.linkedin %}
+                <a href="{{ portfolio.linkedin }}" target="_blank"
+                   class="bg-sky-600 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-sky-700 transition">
+                    LinkedIn
+                </a>
+                {% endif %}
+                {% if portfolio.instagram %}
+                <a href="{{ portfolio.instagram }}" target="_blank"
+                   class="bg-pink-500 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-pink-600 transition">
+                    Instagram
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Contact rapide -->
+        {% if portfolio.telephone %}
+        <div class="text-right">
+            <p class="text-sm text-gray-500 mb-1">Contactez-moi</p>
+            <a href="tel:{{ portfolio.telephone }}"
+               class="text-xl font-bold text-emerald-700 hover:underline">
+                {{ portfolio.telephone }}
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Services -->
+{% if services %}
+<div class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Mes services</h2>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        {% for service in services %}
+        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-gray-800 mb-2">{{ service.titre }}</h3>
+            <p class="text-gray-500 text-sm mb-3">{{ service.description }}</p>
+            {% if service.prix %}
+            <span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium">
+                {{ service.prix }}
+            </span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Réalisations -->
+{% if realisations %}
+<div class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Mes réalisations</h2>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {% for r in realisations %}
+        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            {% if r.image %}
+            <img src="{{ r.image.url }}"
+                 class="w-full h-48 object-cover">
+            {% endif %}
+            <div class="p-5">
+                <h3 class="font-semibold text-gray-800 mb-2">{{ r.titre }}</h3>
+                <p class="text-gray-500 text-sm mb-3">{{ r.description }}</p>
+                <div class="flex justify-between items-center">
+                    {% if r.date %}
+                    <span class="text-xs text-gray-400">{{ r.date|date:"M Y" }}</span>
+                    {% endif %}
+                    {% if r.lien %}
+                    <a href="{{ r.lien }}" target="_blank"
+                       class="text-sm text-emerald-700 hover:underline">
+                        Voir le projet →
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Témoignages -->
+{% if temoignages %}
+<div class="mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">Avis clients</h2>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        {% for t in temoignages %}
+        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <!-- Étoiles -->
+            <div class="flex gap-1 mb-3">
+                {% for i in "12345" %}
+                <span class="text-{% if forloop.counter <= t.note %}amber-400{% else %}gray-200{% endif %}">
+                    ★
+                </span>
+                {% endfor %}
+            </div>
+            <p class="text-gray-600 text-sm mb-4 italic">"{{ t.contenu }}"</p>
+            <div>
+                <p class="font-medium text-gray-800 text-sm">{{ t.nom_client }}</p>
+                {% if t.entreprise %}
+                <p class="text-gray-400 text-xs">{{ t.entreprise }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Formulaire de contact -->
+<div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">Me contacter</h2>
+
+    <div id="zone-contact">
+        {% include 'portfolio/partials/form_contact.html' with portfolio=portfolio form=form_contact %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+/* THEME: M. LUXURY 
+   DESIGN: Minimaliste Haut de Gamme
+   VARS: Utilise les tokens injectés dans :root
+*/
+
+/* --- 1. TYPOGRAPHIE --- */
+/* On force l'aspect raffiné pour les titres Serif */
+.font-serif {
+    font-family: var(--t-font), 'Playfair Display', serif !important;
+    letter-spacing: -0.02em;
+    font-style: italic;
+}
+
+/* --- 2. LAYOUT & SPACING --- */
+body {
+    background-color: var(--t-bg);
+    color: var(--t-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- 3. COMPOSANTS RÉUTILISABLES --- */
+
+/* Boutons Luxury */
+.btn-luxury {
+    background-color: var(--t-primary);
+    color: #FFFFFF;
+    border-radius: var(--t-radius);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+
+.btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    filter: brightness(1.1);
+}
+
+/* Conteneurs de réalisations */
+.project-card {
+    border-radius: var(--t-radius);
+    background-color: var(--t-bg-2);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* --- 4. ANIMATIONS & INTERACTIONS --- */
+
+/* Effet de zoom fluide sur les images au survol */
+.group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+}
+
+/* Bordure animée pour les liens de navigation */
+.nav-link-hover {
+    position: relative;
+}
+
+.nav-link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--t-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link-hover:hover::after {
+    width: 100%;
+}
+
+/* --- 5. UTILS (Custom Variables) --- */
+
+/* Pour les éléments nécessitant un contraste léger */
+.text-muted {
+    color: var(--t-text);
+    opacity: 0.6;
+}
+
+/* Pour les bordures fines caractéristiques du luxe */
+.border-luxury {
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* --- 6. RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .font-serif {
+        letter-spacing: 0;
+    }
+}

@@ -1,0 +1,36 @@
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[150px] opacity-20" style="background-color: var(--t-primary);"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8">
+                <span class="inline-block text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style="color: var(--t-primary);">
+                    {% if is_demo %}Disponible pour Freelance{% else %}{{ portfolio.secteur|default:"Disponible pour Freelance" }}{% endif %}
+                </span>
+                <h1 class="text-6xl md:text-[100px] lg:text-[120px] font-black leading-[0.85] tracking-tighter uppercase mb-10">
+                    Design <br> <span class="text-outline">Sans</span> <br> Limites.
+                </h1>
+                <p class="text-xl md:text-2xl font-light max-w-xl opacity-60 italic">
+                    "{{ portfolio.bio|default:"Je transforme vos idées abstraites en expériences visuelles percutantes." }}"
+                </p>
+            </div>
+            
+            <div class="lg:col-span-4 relative">
+                <div class="aspect-[3/4] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" 
+                     style="border-radius: var(--t-radius-xl); border: 1px solid var(--t-border);">
+                    <div class="w-full h-full bg-[var(--t-bg-2)] flex items-center justify-center">
+                         {% if portfolio.photo %}
+                            <img src="{{ portfolio.photo.url }}" class="w-full h-full object-cover">
+                         {% else %}
+                            <i class="fas fa-user-ninja text-8xl opacity-10"></i>
+                         {% endif %}
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-2xl animate-bounce-slow">
+                    <p class="text-4xl font-black mb-0">5.0</p>
+                    <p class="text-[8px] uppercase font-bold tracking-widest opacity-50">Note Expert</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

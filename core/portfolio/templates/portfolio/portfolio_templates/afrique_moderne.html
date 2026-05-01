@@ -1,0 +1,157 @@
+
+<style>
+.t1 { font-family: var(--font-sans); background: #04342C; color: #E1F5EE; }
+.t1-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 32px; border-bottom: 0.5px solid #0F6E56; }
+.t1-logo { font-size: 18px; font-weight: 500; color: #9FE1CB; letter-spacing: 0.05em; }
+.t1-nav-links { display: flex; gap: 24px; font-size: 13px; color: #5DCAA5; }
+.t1-nav-cta { background: #1D9E75; color: #E1F5EE; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 500; }
+.t1-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 64px 32px; align-items: center; }
+.t1-badge { display: inline-block; background: #0F6E56; color: #9FE1CB; font-size: 11px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.08em; }
+.t1-h1 { font-size: 36px; font-weight: 500; line-height: 1.2; color: #E1F5EE; margin: 0 0 16px; }
+.t1-h1 span { color: #EF9F27; }
+.t1-sub { font-size: 15px; color: #9FE1CB; line-height: 1.6; margin: 0 0 32px; }
+.t1-btns { display: flex; gap: 12px; }
+.t1-btn-primary { background: #EF9F27; color: #412402; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.t1-btn-secondary { border: 0.5px solid #1D9E75; color: #5DCAA5; padding: 12px 24px; border-radius: 8px; font-size: 14px; }
+.t1-avatar { width: 100%; aspect-ratio: 1; background: #085041; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+.t1-avatar-inner { width: 80px; height: 80px; border-radius: 50%; background: #1D9E75; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 500; color: #E1F5EE; }
+.t1-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 32px; border-top: 0.5px solid #0F6E56; }
+.t1-stat-num { font-size: 28px; font-weight: 500; color: #EF9F27; }
+.t1-stat-label { font-size: 12px; color: #5DCAA5; margin-top: 2px; }
+.t1-services { padding: 48px 32px; background: #085041; }
+.t1-section-label { font-size: 11px; color: #5DCAA5; letter-spacing: 0.1em; margin-bottom: 8px; }
+.t1-section-title { font-size: 26px; font-weight: 500; color: #E1F5EE; margin: 0 0 32px; }
+.t1-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.t1-card { background: #04342C; border: 0.5px solid #0F6E56; border-radius: 12px; padding: 24px; }
+.t1-card-icon { width: 40px; height: 40px; background: #1D9E75; border-radius: 8px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
+.t1-card-title { font-size: 15px; font-weight: 500; color: #E1F5EE; margin-bottom: 8px; }
+.t1-card-desc { font-size: 13px; color: #9FE1CB; line-height: 1.5; }
+.t1-card-price { font-size: 13px; color: #EF9F27; font-weight: 500; margin-top: 12px; }
+.t1-works { padding: 48px 32px; }
+.t1-works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.t1-work-item { background: #085041; border-radius: 12px; overflow: hidden; }
+.t1-work-img { height: 120px; background: #0F6E56; display: flex; align-items: center; justify-content: center; color: #5DCAA5; font-size: 12px; }
+.t1-work-body { padding: 16px; }
+.t1-work-title { font-size: 14px; font-weight: 500; color: #E1F5EE; margin-bottom: 4px; }
+.t1-work-tag { font-size: 11px; color: #5DCAA5; }
+.t1-temoignages { padding: 48px 32px; background: #085041; }
+.t1-temo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.t1-temo { background: #04342C; border: 0.5px solid #0F6E56; border-radius: 12px; padding: 20px; }
+.t1-stars { color: #EF9F27; font-size: 14px; margin-bottom: 10px; }
+.t1-temo-text { font-size: 13px; color: #9FE1CB; line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+.t1-temo-author { font-size: 13px; font-weight: 500; color: #E1F5EE; }
+.t1-temo-co { font-size: 11px; color: #5DCAA5; }
+.t1-contact { padding: 48px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.t1-input { width: 100%; background: #085041; border: 0.5px solid #0F6E56; border-radius: 8px; padding: 10px 14px; color: #E1F5EE; font-size: 13px; margin-bottom: 12px; box-sizing: border-box; }
+.t1-textarea { width: 100%; background: #085041; border: 0.5px solid #0F6E56; border-radius: 8px; padding: 10px 14px; color: #E1F5EE; font-size: 13px; height: 100px; box-sizing: border-box; margin-bottom: 12px; }
+.t1-submit { width: 100%; background: #EF9F27; color: #412402; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; }
+.t1-contact-info { display: flex; flex-direction: column; gap: 16px; }
+.t1-contact-item { display: flex; gap: 12px; align-items: center; }
+.t1-contact-dot { width: 8px; height: 8px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+.t1-footer { padding: 24px 32px; border-top: 0.5px solid #0F6E56; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #5DCAA5; }
+</style>
+
+<div class="t1">
+  <nav class="t1-nav">
+    <div class="t1-logo">KABORÉ</div>
+    <div class="t1-nav-links">
+      <span>Accueil</span><span>Services</span><span>Réalisations</span><span>Avis</span><span>Contact</span>
+    </div>
+    <div class="t1-nav-cta">Me contacter</div>
+  </nav>
+
+  <div class="t1-hero">
+    <div>
+      <div class="t1-badge">Menuisier professionnel · Ouagadougou</div>
+      <h1 class="t1-h1">Façonnez vos espaces avec <span>l'excellence</span> africaine</h1>
+      <p class="t1-sub">Meubles sur mesure, portes, fenêtres et aménagements intérieurs. Plus de 15 ans d'expérience au service de votre habitat.</p>
+      <div class="t1-btns">
+        <div class="t1-btn-primary">Demander un devis</div>
+        <div class="t1-btn-secondary">Voir mes réalisations</div>
+      </div>
+      <div class="t1-stats">
+        <div><div class="t1-stat-num">250+</div><div class="t1-stat-label">Projets réalisés</div></div>
+        <div><div class="t1-stat-num">15 ans</div><div class="t1-stat-label">D'expérience</div></div>
+        <div><div class="t1-stat-num">98%</div><div class="t1-stat-label">Clients satisfaits</div></div>
+      </div>
+    </div>
+    <div class="t1-avatar">
+      <div style="text-align:center">
+        <div class="t1-avatar-inner" style="margin: 0 auto 12px">AK</div>
+        <div style="font-size:14px;font-weight:500;color:#E1F5EE">Adama Kaboré</div>
+        <div style="font-size:12px;color:#5DCAA5;margin-top:4px">Maître menuisier</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t1-services">
+    <div class="t1-section-label">CE QUE JE FAIS</div>
+    <div class="t1-section-title">Mes services</div>
+    <div class="t1-cards">
+      <div class="t1-card">
+        <div class="t1-card-icon"><svg width="20" height="20" fill="none" stroke="#E1F5EE" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="t1-card-title">Meubles sur mesure</div>
+        <div class="t1-card-desc">Tables, armoires, bibliothèques et tout meuble selon vos dimensions et goûts.</div>
+        <div class="t1-card-price">À partir de 25 000 FCFA</div>
+      </div>
+      <div class="t1-card">
+        <div class="t1-card-icon"><svg width="20" height="20" fill="none" stroke="#E1F5EE" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+        <div class="t1-card-title">Portes et fenêtres</div>
+        <div class="t1-card-desc">Fabrication et pose de portes intérieures, extérieures et menuiseries.</div>
+        <div class="t1-card-price">À partir de 40 000 FCFA</div>
+      </div>
+      <div class="t1-card">
+        <div class="t1-card-icon"><svg width="20" height="20" fill="none" stroke="#E1F5EE" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="t1-card-title">Aménagement intérieur</div>
+        <div class="t1-card-desc">Plafonds, parquets, dressing et aménagement complet de vos espaces.</div>
+        <div class="t1-card-price">Devis sur demande</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t1-works">
+    <div class="t1-section-label">MON TRAVAIL</div>
+    <div class="t1-section-title">Réalisations récentes</div>
+    <div class="t1-works-grid">
+      <div class="t1-work-item"><div class="t1-work-img">Photo projet</div><div class="t1-work-body"><div class="t1-work-title">Villa Ouaga 2000</div><div class="t1-work-tag">Aménagement complet · 2024</div></div></div>
+      <div class="t1-work-item"><div class="t1-work-img">Photo projet</div><div class="t1-work-body"><div class="t1-work-title">Bureau direction BIB</div><div class="t1-work-tag">Mobilier bureau · 2024</div></div></div>
+      <div class="t1-work-item"><div class="t1-work-img">Photo projet</div><div class="t1-work-body"><div class="t1-work-title">Appartement Pissy</div><div class="t1-work-tag">Portes + dressing · 2023</div></div></div>
+      <div class="t1-work-item"><div class="t1-work-img">Photo projet</div><div class="t1-work-body"><div class="t1-work-title">Restaurant Le Cauri</div><div class="t1-work-tag">Mobilier restaurant · 2023</div></div></div>
+    </div>
+  </div>
+
+  <div class="t1-temoignages">
+    <div class="t1-section-label">AVIS CLIENTS</div>
+    <div class="t1-section-title">Ce qu'ils disent</div>
+    <div class="t1-temo-grid">
+      <div class="t1-temo"><div class="t1-stars">★★★★★</div><div class="t1-temo-text">"Travail impeccable, délais respectés. Mon salon est magnifique grâce à Adama."</div><div class="t1-temo-author">Fatou Sawadogo</div><div class="t1-temo-co">Particulier, Ouagadougou</div></div>
+      <div class="t1-temo"><div class="t1-stars">★★★★★</div><div class="t1-temo-text">"Professionnel et sérieux. Je recommande à 100% pour tout projet de menuiserie."</div><div class="t1-temo-author">Ibrahim Ouédraogo</div><div class="t1-temo-co">Directeur, BIB SA</div></div>
+    </div>
+  </div>
+
+  <div class="t1-contact">
+    <div>
+      <div class="t1-section-label">TRAVAILLONS ENSEMBLE</div>
+      <div class="t1-section-title">Me contacter</div>
+      <input class="t1-input" placeholder="Votre nom">
+      <input class="t1-input" placeholder="Email ou téléphone">
+      <textarea class="t1-textarea" placeholder="Décrivez votre projet..."></textarea>
+      <button class="t1-submit">Envoyer le message</button>
+    </div>
+    <div>
+      <div class="t1-section-label">COORDONNÉES</div>
+      <div class="t1-section-title" style="font-size:20px">Disponible 6j/7</div>
+      <div class="t1-contact-info">
+        <div class="t1-contact-item"><div class="t1-contact-dot"></div><div style="font-size:14px;color:#9FE1CB">+226 70 00 00 00</div></div>
+        <div class="t1-contact-item"><div class="t1-contact-dot"></div><div style="font-size:14px;color:#9FE1CB">adama@weba.bf</div></div>
+        <div class="t1-contact-item"><div class="t1-contact-dot"></div><div style="font-size:14px;color:#9FE1CB">Secteur 15, Ouagadougou</div></div>
+        <div class="t1-contact-item"><div class="t1-contact-dot"></div><div style="font-size:14px;color:#9FE1CB">Lun–Sam, 8h–18h</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t1-footer">
+    <span>© 2024 Adama Kaboré — WEBA</span>
+    <span>Menuiserie professionnelle · Ouagadougou, Burkina Faso</span>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="group flex justify-between items-center bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition-all duration-200"
+     id="service-{{ s.id }}"> <div class="flex items-center gap-4">
+        <div class="w-14 h-14 flex-shrink-0 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600">
+            <i data-lucide="tag" class="w-6 h-6"></i>
+        </div>
+        <div class="relative w-14 h-14 flex-shrink-0">
+            {% if s.image %}
+                <img src="{{ s.image.url }}" class="w-full h-full rounded-lg object-cover shadow-sm">
+            {% else %}
+                <div class="w-full h-full bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600">
+                    <i data-lucide="tag" class="w-6 h-6"></i>
+                </div>
+            {% endif %}
+        </div>
+        <div class="overflow-hidden">
+            <p class="font-bold text-gray-900 text-sm truncate">{{ s.titre }}</p>
+            <div class="flex items-center gap-2 mt-1">
+                <p class="text-gray-500 text-xs truncate max-w-[200px] md:max-w-md">
+                    {{ s.description|truncatechars:80 }}
+                </p>
+                {% if s.prix %}
+                <span class="inline-flex items-center text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">
+                    {{ s.prix }}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-3">
+        <button hx-get="{% url 'portfolio:modifier_service' s.id %}"
+                hx-target="#service-{{ s.id }}"
+                hx-swap="outerHTML"
+                class="p-2 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer">
+            <i data-lucide="edit-3" class="w-4 h-4"></i>
+        </button>
+      <button onclick="confirmerSuppression(this)"
+        data-url="{% url 'portfolio:supprimer_service' s.id %}"
+        data-target="#service-{{ s.id }}"
+        data-titre="ce service"
+        class="p-2 text-slate-400 hover:text-red-500 transition cursor-pointer">
+        <i class="fas fa-trash-alt text-xs"></i>
+
+</button>
+    </div>
+</div>
+<script>if(window.lucide) lucide.createIcons();</script>

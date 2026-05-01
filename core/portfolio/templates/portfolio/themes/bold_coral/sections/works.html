@@ -1,0 +1,31 @@
+<section id="realisations" class="relative py-24" style="background-color: var(--t-bg-2);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-16 gap-6">
+            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight" style="color: var(--t-text);">
+                Mes dernières <span style="color: var(--t-primary);">réalisations</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {% for r in realisations %}
+            <div class="group relative bg-white overflow-hidden border transition-all duration-500 hover:shadow-2xl"
+                 style="border-radius: var(--t-radius-xl); border-color: var(--t-border);">
+                <div class="relative h-64 overflow-hidden">
+                    {% if r.image %}
+                        <img src="{{ r.image.url }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(to bottom right, var(--t-primary), var(--t-accent));">
+                            <i class="fas fa-project-diagram text-white/20 text-7xl"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--t-text);">{{ r.titre }}</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--t-text-muted);">{{ r.description|truncatechars:100 }}</p>
+                    {% if r.lien %}<a href="{{ r.lien }}" target="_blank" class="text-xs font-bold uppercase tracking-widest" style="color: var(--t-primary);">Voir le projet</a>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

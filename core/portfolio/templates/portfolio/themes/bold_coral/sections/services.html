@@ -1,0 +1,46 @@
+<section id="services" class="relative py-24 overflow-hidden" style="background-color: var(--t-bg-2);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="max-w-2xl mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight" style="color: var(--t-text);">
+                Comment je peux vous <span style="color: var(--t-primary);">aider</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for s in services %}
+            <div class="group relative flex flex-col transition-all duration-500 border shadow-sm hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
+                 style="background-color: var(--t-bg); border-color: var(--t-border); border-radius: var(--t-radius-xl);">
+                
+                {# ZONE IMAGE OU ICONE #}
+                <div class="w-full h-52 overflow-hidden bg-slate-100 relative">
+                    {% if s.image %}
+                        <img src="{{ s.image.url }}" alt="{{ s.titre }}" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center opacity-20" style="background-color: var(--t-primary);">
+                            <i data-lucide=" briefcase" class="w-16 h-16 text-white"></i>
+                        </div>
+                    {% endif %}
+                    {# Badge flottant pour le prix #}
+                    <div class="absolute bottom-4 left-4 px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full backdrop-blur-md bg-white/80 shadow-sm" style="color: var(--t-primary);">
+                        {{ s.prix|default:"Sur devis" }}
+                    </div>
+                </div>
+
+                <div class="p-8 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--t-text);">{{ s.titre }}</h3>
+                    <p class="text-sm leading-relaxed mb-8 flex-1 opacity-80" style="color: var(--t-text);">{{ s.description }}</p>
+                    
+                    <div class="pt-6 border-t flex items-center justify-between" style="border-color: var(--t-bg-2);">
+                        <span class="text-[10px] font-black uppercase tracking-widest opacity-50" style="color: var(--t-text);">Service Professionnel</span>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center transition-all group-hover:rotate-45" 
+                             style="background-color: var(--t-bg-2); color: var(--t-primary);">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

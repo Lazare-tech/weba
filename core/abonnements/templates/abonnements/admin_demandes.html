@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Demandes d'upgrade — Admin WEBA{% endblock %}
+
+{% block content %}
+
+<h1 class="text-2xl font-bold text-gray-900 mb-6">
+    Demandes d'upgrade en attente ({{ demandes.count }})
+</h1>
+
+{% if demandes %}
+<div class="space-y-4">
+    {% for demande in demandes %}
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <div class="flex justify-between items-start flex-wrap gap-4">
+
+            <div>
+                <p class="font-semibold text-gray-800">
+                    {{ demande.user.username }}
+                    <span class="text-gray-400 font-normal text-sm ml-2">
+                        → Plan {{ demande.plan_demande }}
+                    </span>
+                </p>
+                <p class="text-sm text-gray-500 mt-1">
+                    📅 {{ demande.date_demande|date:"d/m/Y H:i" }}
+                </p>
+                <p class="text-sm text-gray-600 mt-2">
+                    💳 Référence : <strong>{{ demande.reference_paiement }}</strong>
+                </p>
+                {% if demande.message %}
+                <p class="text-sm text-gray-500 mt-1">
+                    💬 {{ demande.message }}
+                </p>
+                {% endif %}
+            </div>
+
+            <div class="flex gap-3">
+                <a href="{% url 'activer_plan' demande.user.id demande.plan_demande.nom %}"
+                   class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg text-sm transition">
+                    ✅ Activer le plan
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="text-center py-16 text-gray-400 bg-white border border-gray-200 rounded-xl">
+    <p class="text-4xl mb-3">🎉</p>
+    <p>Aucune demande en attente</p>
+</div>
+{% endif %}
+
+{% endblock content %}

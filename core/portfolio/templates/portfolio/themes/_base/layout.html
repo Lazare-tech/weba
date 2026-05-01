@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ portfolio.titre }} — WEBA</title>
+
+    <!-- SEO -->
+    <meta name="description" content="{{ portfolio.bio|truncatechars:160 }}">
+    <meta property="og:title" content="{{ portfolio.titre }}">
+    <meta property="og:description" content="{{ portfolio.bio|truncatechars:160 }}">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Police Google Fonts -->
+    {% if design_tokens.police_url %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="{{ design_tokens.police_url }}" rel="stylesheet">
+    {% endif %}
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Design Tokens injectés depuis la DB -->
+    <style>
+        :root {
+            --t-primary:  {{ design_tokens.couleur_primaire }};
+            --t-accent:   {{ design_tokens.couleur_accent }};
+            --t-bg:       {{ design_tokens.couleur_fond }};
+            --t-bg-2:     {{ design_tokens.couleur_fond_2 }};
+            --t-text:     {{ design_tokens.couleur_texte }};
+            --t-font:     {{ design_tokens.police_family }};
+            --t-radius:   {{ design_tokens.rayon_bordure }};
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--t-font) !important;
+            background-color: var(--t-bg);
+            color: var(--t-text);
+        }
+    </style>
+
+    {% block theme_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
+
+    {% if PLAUSIBLE_URL %}
+    <script defer data-domain="{{ request.get_host }}"
+            src="{{ PLAUSIBLE_URL }}/js/script.js"></script>
+    {% endif %}
+</head>
+<body>
+    {% block navbar %}{% endblock %}
+    {% block hero %}{% endblock %}
+    {% block stats %}{% endblock %}
+    {% block services %}{% endblock %}
+    {% block works %}{% endblock %}
+    {% block testimonials %}{% endblock %}
+    {% block contact %}{% endblock %}
+    {% block footer %}{% endblock %}
+
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <script>
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            evt.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        });
+        //script bouton supprimer
+        
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

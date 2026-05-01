@@ -1,0 +1,21 @@
+<section class="py-20 px-6 border-y border-white/5">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            {% for stat in portfolio.stats.all %}
+            <div>
+                <div class="text-5xl md:text-7xl font-black" style="color: var(--t-primary);">{{ stat.chiffre }}</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mt-2">{{ stat.label }}</div>
+            </div>
+            {% empty %}
+            <div>
+                <div class="text-5xl md:text-7xl font-black" style="color: var(--t-primary);">{{ realisations.count }}+</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mt-2">Projets Livrés</div>
+            </div>
+            <div>
+                <div class="text-5xl md:text-7xl font-black" style="color: var(--t-primary);">99%</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mt-2">Satisfaction</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

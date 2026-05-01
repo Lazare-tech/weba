@@ -1,0 +1,28 @@
+<section id="realisations" class="py-32" style="background-color: var(--t-bg-2);">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-20">
+            <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter">Derniers_Travaux</h2>
+            <div class="text-[10px] font-bold uppercase tracking-widest vertical-rl py-4">Faire_Défiler</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {% for r in realisations %}
+            <div class="{% if forloop.counter|divisibleby:3 %}md:col-span-12{% elif forloop.counter|add:1|divisibleby:3 %}md:col-span-4{% else %}md:col-span-8{% endif %} group relative overflow-hidden h-[500px]" style="border-radius: var(--t-radius);">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                {% if r.image %}
+                    <img src="{{ r.image.url }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                {% else %}
+                    <div class="w-full h-full bg-slate-800 transition-transform duration-700 group-hover:scale-110"></div>
+                {% endif %}
+                <div class="absolute bottom-8 left-8 z-20">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[var(--t-primary)]">Projet_{{ forloop.counter }}</span>
+                    <h3 class="text-3xl font-bold uppercase mt-2 text-white">{{ r.titre }}</h3>
+                    {% if r.lien %}
+                        <a href="{{ r.lien }}" target="_blank" class="mt-4 inline-block bg-white text-black px-6 py-2 rounded-full text-[10px] font-bold uppercase">Voir le Cas</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

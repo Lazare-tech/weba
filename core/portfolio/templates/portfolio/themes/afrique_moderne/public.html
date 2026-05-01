@@ -1,0 +1,38 @@
+{% extends 'portfolio/themes/_base/layout.html' %}
+{% load static %}
+{% block theme_css %}
+<link rel="stylesheet" href="{% static 'portfolio/themes/afrique_moderne/theme.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% include 'portfolio/themes/afrique_moderne/sections/navbar.html' %}
+{% endblock %}
+
+{% block hero %}
+{% include 'portfolio/themes/afrique_moderne/sections/hero.html' %}
+{% endblock %}
+
+{% block stats %}
+{% include 'portfolio/themes/afrique_moderne/sections/stats.html' %}
+{% endblock %}
+
+{% block services %}
+
+{% include 'portfolio/themes/afrique_moderne/sections/services.html' %}
+{% endblock %}
+
+{% block works %}
+{% include 'portfolio/themes/afrique_moderne/sections/works.html' %}
+{% endblock %}
+
+{% block testimonials %}
+{% include 'portfolio/themes/afrique_moderne/sections/testimonials.html' %}
+{% endblock %}
+
+{% block contact %}
+{% include 'portfolio/themes/afrique_moderne/sections/contact.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'portfolio/themes/afrique_moderne/sections/footer.html' %}
+{% endblock %}

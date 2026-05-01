@@ -1,0 +1,27 @@
+<section id="services" class="py-24 px-6" style="background-color: var(--t-bg);">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20 space-y-4">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tighter" style="color: var(--t-text);">
+                Expertise_<span style="color: var(--t-primary);">Modules</span>
+            </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for s in services %}
+            <div class="p-8 border transition-all duration-500 hover:border-[var(--t-primary)] group" 
+                 style="background-color: var(--t-bg-2); border-color: rgba(255, 255, 255, 0.05); border-radius: var(--t-radius);">
+                <div class="w-12 h-12 flex items-center justify-center mb-6 transition-transform group-hover:rotate-12"
+                     style="background-color: rgba(var(--t-primary-rgb), 0.1); color: var(--t-primary); border-radius: 12px;">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4" style="color: var(--t-text);">{{ s.titre }}</h3>
+                <p class="text-sm leading-relaxed" style="color: var(--t-text); opacity: 0.6;">{{ s.description }}</p>
+                <div class="mt-6 pt-4 border-t border-white/5 flex justify-between items-center">
+                    <span class="text-[10px] font-mono tracking-widest uppercase opacity-40">{{ s.prix|default:"Fixed_Rate" }}</span>
+                    <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-all" style="color: var(--t-primary);"></i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

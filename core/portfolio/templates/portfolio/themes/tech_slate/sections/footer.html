@@ -1,0 +1,14 @@
+<footer class="py-12 px-6 border-t border-white/5 bg-black/40">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-4 text-slate-500 text-xs font-mono">
+            <span>&copy; {{ now|date:"Y" }}</span>
+            <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
+            <span class="uppercase">{{ portfolio.user.username }}_SYS_V2.0</span>
+        </div>
+        
+        <div class="flex gap-6">
+            {% if portfolio.linkedin %}<a href="{{ portfolio.linkedin }}" class="text-slate-500 hover:text-[var(--t-primary)] transition-colors"><i class="fab fa-linkedin-in text-lg"></i></a>{% endif %}
+            {% if portfolio.whatsapp %}<a href="https://wa.me/{{ portfolio.whatsapp }}" class="text-slate-500 hover:text-[var(--t-primary)] transition-colors"><i class="fab fa-whatsapp text-lg"></i></a>{% endif %}
+        </div>
+    </div>
+</footer>

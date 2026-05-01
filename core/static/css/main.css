@@ -1,0 +1,19 @@
+@import "base/variables.css";
+
+@import "components/buttons.css";
+@import "components/cards.css";
+@import "components/forms.css";
+
+@import "layout/hero.css";
+@import "layout/destination.css";
+
+@import "pages/auth.css";
+@import "pages/about.css";
+
+@import "pages/bourses.css";
+
+@import "pages/dashboard.css";
+@import "pages/faq.css";
+@import "admin/custom_ck.css";
+
+@import "components/passcontent.css";

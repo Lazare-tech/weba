@@ -1,0 +1,27 @@
+<div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100" id="temoignage-{{ t.id }}">
+    <div class="flex-1">
+        <div class="flex items-center gap-2">
+            <span class="font-bold text-slate-900 text-sm">{{ t.nom_client }}</span>
+            <span class="text-[10px] text-slate-400 font-bold uppercase">{{ t.entreprise }}</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1 line-clamp-1">{{ t.contenu }}</p>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <button hx-post="{% url 'portfolio:approuver_temoignage' t.id %}"
+                hx-target="#temoignage-{{ t.id }}"
+                hx-swap="outerHTML"
+                class="px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-tighter transition-all 
+                {% if t.approuve %}bg-emerald-100 text-emerald-600{% else %}bg-amber-100 text-amber-600{% endif %}">
+            {% if t.approuve %}<i class="fas fa-check mr-1"></i> En ligne{% else %}<i class="fas fa-clock mr-1"></i> En attente{% endif %}
+        </button>
+
+       <button 
+    onclick="confirmerSuppression(this)"
+    data-url="{% url 'portfolio:supprimer_temoignage' t.id %}"
+    data-target="#temoignage-{{ t.id }}"
+    class="p-2 text-slate-300 hover:text-red-500 transition cursor-pointer">
+    <i class="fas fa-trash-alt text-xs"></i>
+</button>
+    </div>
+</div>

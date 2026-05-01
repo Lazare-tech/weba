@@ -1,0 +1,648 @@
+:root {
+    --shine-blue: #004aad;     /* Bleu Marine de l'AGENCY (Utilisé pour le fond si nécessaire, titres, etc.) */
+    --shine-dark-blue: #122046; /* Bleu très foncé (Utilisé pour les boutons, textes importants, etc.) */
+    --shine-gold: #c39d3b;     /* Or de SHINE (Boutons, accents, backgrounds) */
+    --bg-shine-gold: #c39d3b;   /* Maintenu pour la clarté */
+    --bg-shine-blue: #004aad;  /* Maintenu pour la clarté */
+        --gray:#6f7a8a;
+        --light:#f4f6fa;
+
+}
+/* --- BOUTONS UNIFIÉS --- */
+
+/* Bouton OR (Fond Or, Texte Blanc/Bleu Foncé) */
+.btn-agen-colr,
+.btn-responsive-warning {
+    background-color: var(--shine-gold);
+    color: white; /* Conserver le blanc car c'était le cas dans l'original */
+    transition: 0.5s;
+}
+
+.btn-agen-colr:hover,
+.btn-responsive-warning:hover {
+    background-color: #a67c2e; /* Version sombre de l'Or */
+    color: white;
+}
+
+/* Bouton OUTLINE (Contour Bleu Foncé, Texte Bleu Foncé) */
+.btn-outline-agen-colr {
+    border-color: var(--shine-dark-blue);
+    color: var(--shine-dark-blue);
+    transition: 0.5s;
+}
+
+.btn-outline-agen-colr:hover {
+    background-color: var(--shine-dark-blue);
+    color: white;
+}
+
+/* Bouton BLEU FONCÉ (Fond Bleu Foncé, Texte Blanc) */
+.btn-responsive-primaryl {
+    background-color: var(--shine-dark-blue);
+    color: white !important;
+    transition: 0.5s;
+}
+
+.btn-responsive-primaryl:hover {
+    background-color: #0e1b34; /* Version sombre du Bleu Foncé */
+    color: white;
+}
+/* --- HERO GLOBAL --- */
+.hero-banner {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.hero-faq {
+     position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hero-banner .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hero-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        115deg,
+        rgba(6, 22, 54, .92) 0%,
+        rgba(6, 22, 54, .88) 35%,
+        rgba(6, 22, 54, .45) 55%,
+        rgba(6, 22, 54, 0) 100%
+    );
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+}
+.hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.hero-text {
+    font-size: 17px;
+    opacity: .95;
+}
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 380px;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: 26px;
+    }
+    .hero-text {
+        font-size: 15px;
+    }
+}
+
+/* --- DIVERS --- */
+.circles {
+    display: flex;
+    gap: 10px;
+}
+.circles span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #444;
+}
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: .3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.bg-shine-gold {
+    background-color: var(--bg-shine-gold);
+}
+.text-title-gold {
+    color: var(--shine-gold);
+}
+
+
+.text-title-blue {
+    color: var(--shine-dark-blue);
+}
+.text-primary {
+    color: var(--shine-blue) !important;
+}
+
+/* --- ACCENTS ET COULEURS DANS LES FORMULAIRES/LISTES --- */
+.icon-color {
+    color: var(--shine-gold) !important;
+    font-weight: bold;
+}
+.contact-list li {
+    font-size: 0.95rem;
+    padding: 3px 0;
+    border-bottom: 1px dotted #e9ecef;
+}
+.contact-form-card {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* --- ONGLET VERTICAUX / MÉTHODE / MENTORAT LISTE --- */
+/* 
+.custom-v-pills .nav-link,
+.list-group-item {
+    border-left: 4px solid #eee; 
+        transition: all 0.3s;
+    
+}
+
+.custom-v-pills .nav-link {
+    margin-bottom: 10px;
+    padding: 15px;
+    text-align: left;
+    color: #343a40;
+
+}
+
+.custom-v-pills .nav-link:hover {
+    border-left-color: var(--shine-gold);
+    background-color: #f8f9fa;
+            cursor: pointer;
+
+}
+
+.custom-v-pills .nav-link.active {
+    border-left-color: var(--shine-blue);
+    background-color: #eaf1f8;
+    color: var(--shine-blue);
+    flex-direction: row;
+}
+
+.custom-v-pills .step-num {
+    background-color: var(--shine-gold);
+    color: var(--shine-blue);
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.custom-v-pills .nav-link.active .step-title {
+    color: var(--shine-blue);
+} */
+
+/* Style de survol pour la liste de mentorat (unifié avec le style des onglets) */
+.list-group-item:hover {
+    background-color: #eaf1f8; /* Léger fond bleu pour l'UX */
+}
+
+/* --- SECTION BLOG --- */
+.blog-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #dee2e6;
+    flex-shrink: 0;
+}
+.custom-card-blog .card-body {
+    padding: 1rem;
+}
+.col-lg-6.d-flex {
+    min-height: 450px;
+}
+
+/* --- TÉMOIGNAGES --- */
+.testimonial-section .card-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.avatar-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--shine-blue); /* Bordure autour de l'avatar */
+}
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.testimonial-section .rating,
+.text-warning i {
+    color: var(--shine-gold) !important; /* Utilisation de la variable Or pour les étoiles */
+}
+
+/* --- STYLE MENTORAT (CARTE AVANTAGES) --- */
+.mentor-advantage-card {
+    transition: transform 0.3s ease;
+}
+.mentor-advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+/* --- FAQ ACCORDÉON --- */
+.btn-faq-filter {
+    background-color: transparent;
+    color: var(--shine-blue);
+    border: 1px solid var(--shine-blue);
+    transition: all 0.3s ease;
+}
+.btn-faq-filter:hover {
+    background-color: var(--shine-blue);
+    color: #fff;
+    border-color: var(--shine-blue);
+}
+.btn-faq-filter.active {
+    background-color: var(--shine-gold);
+    color: #fff;
+    border-color: var(--shine-gold);
+}
+.accordion-button {
+    color: var(--shine-blue) !important;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #eaf1f8;
+    color: var(--shine-blue);
+    box-shadow: none;
+}
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0.5);
+}
+.accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+.accordion-body {
+    border-top: 1px solid #e9ecef;
+}
+/* infos bourses */
+
+.bourse-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.bourse-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+.badge {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.bourse-card:hover {
+    transform: translateY(-4px);
+    transition: .3s;
+}
+
+.info-card {
+    border-radius: 10px;
+    background: #fff;
+}
+.info-card:hover {
+    transform: scale(1.05);
+    transition: .3s;
+}
+.bg-gray-searc {
+    background-color: rgb(243, 243, 243);
+}
+.mini-card{
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.mini-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Icône ronde */
+.icon-round{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;        /* Centre verticalement */
+    justify-content:center;    /* Centre horizontalement */
+    margin: 0 auto;            /* Centre le cercle dans la card */
+}
+.icon-round i{
+        color:var(--shine-gold);
+
+}
+
+.icon-round h5{
+        color: var(--shine-blue);
+
+}
+.bg-primaryl {
+    background-color: var(--shine-blue) ;
+}
+/* LOGIN PAGE  */
+.shine-card{
+        max-width:480px;
+        margin:auto;
+        background:white;
+        border-radius:14px;
+        padding:35px;
+        box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    /* Sélection rôle */
+    .user-role-box{
+        display:flex;
+        gap:10px;
+        justify-content:center;
+        margin-bottom:22px;
+    }
+
+    .role-btn{
+        flex:1;
+        border:2px solid #C4A13A;
+        padding:5px 8px;
+        font-size:11px;
+        font-weight:600;
+        border-radius:8px;
+        background:white;
+        color:#C4A13A;
+        transition:.3s;
+    }
+
+    .role-btn.active, .role-btn:hover{
+        background:#C4A13A;
+        color:white;
+    }
+
+    .btn-shine{
+        background:#C4A13A;
+        border:none;
+        padding:12px;
+        font-size:17px;
+        font-weight:600;
+        border-radius:6px;
+        transition:.3s;
+    }
+    .btn-shine:hover{ background:#b18e26; }
+
+    .logo-area img{ width:170px; display:block; margin:auto; }
+
+    .input-custom{
+        border:1.8px solid #d1d1d1;
+        border-radius:7px;
+        height:48px;
+    }
+    .input-custom:focus{
+        border-color:#C4A13A;
+        box-shadow:0 0 4px rgba(196,161,58,.6);
+    }
+    .btn-toggle {
+    border-radius: 50rem !important;
+    transition: all .55s ease-in-out;
+}
+
+.active-btn {
+    background-color: var(--shine-dark-blue) !important; /* Couleur primaire BOOTSTRAP */
+    box-shadow: 0 3px 12px rgba(13,110,253,.45);
+    transform: scale(1.05);
+}
+
+.btn-toggle:hover:not(.active-btn) {
+    background-color: var(--shine-dark-blue);
+    transform: scale(1.03);
+color:white !important;
+}
+/* REGISTER PAGE  */
+
+.progress-step {
+    width:32px;height:32px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#d7d7d7;color:#fff;font-weight:700;
+    transition:.4s;flex-shrink:0;
+}
+.progress-step.active{background:var(--shine-gold);}
+.progress-step.done{background:var(--shine-dark-blue);}
+
+.step-line{
+    flex:1;height:3px;background:#d7d7d7;margin:0 8px;border-radius:6px;
+    transition:.4s;
+}
+.step-line.active{background:var(--shine-gold);}
+.step-line.done{background:var(--shine-dark-blue);}
+
+.shine-box{
+    background:#fff;padding:35px;border-radius:14px;
+    border-top:6px solid var(--shine-gold);
+    box-shadow:0 6px 28px rgba(0,0,0,.08);
+}
+.btn-shine{
+    background:var(--shine-gold);color:#fff;border-radius:8px;
+    padding:14px;font-size:17px;font-weight:700;width:100%;
+}
+.btn-shine:hover{background:#b88e2e;}
+
+.hidden{display:none;}
+/* adminclient */
+
+.dashboard-container{
+    max-width:1100px;margin:auto;padding:25px;
+}
+
+.card-box{
+    background:#fff;padding:25px;border-radius:10px;
+    box-shadow:0 6px 22px rgba(0,0,0,.08);
+    border-top:5px solid var(--shine-gold);transition:.3s;
+}
+.card-box:hover{transform:translateY(-4px);}
+
+.section-title{font-weight:800;color:var(--shine-dark-blue);}
+
+.progress-tracker{margin-top:15px;}
+.step-track{
+    border-left:4px solid var(--shine-gold);padding:10px 15px;margin-bottom:12px;
+    background:#fff; border-radius:5px;
+}
+.step-track.done{background:#e8f5e1;border-color:#28a745;}
+.step-track.pending{background:#fffbe7;border-color:#ffc107;}
+.step-track.wait{background:#f1f3f6;border-color:#b9c3d1;}
+
+.edit-btn{
+    background:var(--shine-gold);border:none;color:#fff;font-weight:600;
+    padding:10px 20px;border-radius:8px;transition:.3s;
+}
+.edit-btn:hover{background:#b48b32;}
+
+input,select{padding:10px;border-radius:6px;}
+/* SERVICES DETAILS PAGES  */
+/* ETUDES INTERNATIONALES */
+.premium-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #E5E9F5;
+    transition: all .3s ease;
+    height: 500px;
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.tarif {
+    font-size: 17px;
+    color: var(--shine-blue);
+    font-weight: 600;
+}
+
+.tarif span {
+    color: var(--shine-gold);
+    font-weight: 700;
+    font-size: 22px;
+}
+/* accompagnement etablissement scolaire */
+.edu-card {
+    background: #ffffff;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.edu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-left: 5px solid #122046;
+}
+/* education  */
+.edu-card-light {
+    background: #ffffff;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.edu-card-light:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    border-left: 5px solid #122046;
+}
+/* acceuil destinations card  */
+.destination-section{
+    background:#f4f6fa;
+}
+
+.destination-card{
+    position:relative;
+    display:block;
+    border-radius:18px;
+    overflow:hidden;
+    height:260px;
+    box-shadow:0 12px 30px rgba(18,32,70,.12);
+    transition:.4s ease;
+}
+
+.destination-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s ease;
+}
+
+/* Overlay sombre au hover */
+.destination-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(18,32,70,.35);
+    opacity:0.5;
+    transition:.4s ease;
+}
+
+.destination-card:hover::after{
+    opacity:0.7;
+}
+
+.destination-card:hover img{
+    transform:scale(1.06);
+}
+
+/* Nom du pays */
+.destination-label{
+    position:absolute;
+    bottom:18px;
+    right:50%;
+    padding:8px 22px;
+ 
+    color:white;
+    font-weight:700;
+   
+    z-index:2;
+    font-size: 20px;
+}
+
+/* Mobile */
+@media(max-width:576px){
+    .destination-card{
+        height:200px;
+    }
+}
+/* cta after section destination  */
+.cta-study-section{
+    background:
+        linear-gradient(120deg, rgba(18,32,70,.95), rgba(18,32,70,.85)),
+        url("/static/images/world-map.jpg") center/cover no-repeat;
+    color:#fff;
+    position:relative;
+}
+
+.text-gold{
+    color:#c39d3b;
+}
+
+
+.modal-content .form-control,
+.modal-content .form-select{
+    border-radius:12px;
+    border:1px solid #e5e5e5;
+    padding:12px 14px;
+    box-shadow:0 8px 25px rgba(18,32,70,.08);
+    transition:.3s ease;
+}
+
+.modal-content .form-control:focus,
+.modal-content .form-select:focus{
+    border-color:#c39d3b;
+    box-shadow:0 10px 30px rgba(195,157,59,.35);
+    outline:none;
+}

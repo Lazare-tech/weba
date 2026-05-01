@@ -1,0 +1,67 @@
+{% load static %}
+<div class="bg-slate-50 p-6 rounded-2xl border-2 border-dashed border-slate-200 mb-6 animate-in fade-in slide-in-from-top-4">
+    
+    <h3 class="text-sm font-bold text-slate-700 uppercase mb-4 flex items-center">
+        <i data-lucide="user-cog" class="w-4 h-4 mr-2"></i> 
+        Modifier mon identité pro
+    </h3>
+
+    <form hx-post="{% url 'portfolio:modifier_infos' %}" 
+          hx-encoding="multipart/form-data"
+          hx-target="#zone-identite" 
+          hx-swap="innerHTML"
+          class="space-y-4">
+        
+        {% csrf_token %}
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="col-span-1 flex flex-col items-center justify-center">
+                <div id="portfolio-photo-preview" class="w-24 h-24 bg-white rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-300 overflow-hidden relative">
+                    {% if portfolio.photo %}
+                        <img src="{{ portfolio.photo.url }}" class="w-full h-full object-cover">
+                    {% else %}
+                        <i data-lucide="camera" class="w-8 h-8"></i>
+                    {% endif %}
+                </div>
+                <label class="mt-2 cursor-pointer text-emerald-600 text-[10px] font-black uppercase">
+                    Choisir la photo
+                    <input type="file" name="photo" accept="image/*" class="hidden" 
+                           onchange="previewImage(this, 'portfolio-photo-preview')">
+                </label>
+            </div>
+
+            <div class="col-span-2 space-y-4">
+                <input type="text" name="titre" value="{{ portfolio.titre|default:'' }}" required placeholder="Titre professionnel (ex: Expert Immobilier)"
+                       class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="telephone" value="{{ portfolio.telephone|default:'' }}" placeholder="Téléphone / WhatsApp"
+                           class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                    
+                    <input type="email" name="email_contact" value="{{ portfolio.email_contact|default:'' }}" placeholder="Email de contact"
+                           class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+            </div>
+
+            <div class="col-span-3">
+                <textarea name="bio" rows="3" required placeholder="Votre biographie ou présentation courte..."
+                          class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">{{ portfolio.bio|default:'' }}</textarea>
+            </div>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-2">
+            <button type="button" 
+                    hx-get="{% url 'portfolio:modifier_infos' %}?cancel=1"
+                    hx-target="#zone-identite"
+                    class="px-4 py-2 text-xs font-bold text-slate-500 uppercase cursor-pointer">
+                Annuler
+            </button>
+
+            <button type="submit" class="bg-emerald-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold flex items-center transition shadow-lg shadow-emerald-100">
+                <i data-lucide="save" class="w-4 h-4 mr-2"></i> Sauvegarder
+            </button>
+        </div>
+    </form>
+</div>
+<script>lucide.createIcons();</script>

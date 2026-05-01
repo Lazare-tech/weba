@@ -1,0 +1,158 @@
+
+<style>
+.t3 { font-family: var(--font-sans); background: #FAFAF8; color: #2C2C2A; }
+.t3-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 36px; background: #fff; border-bottom: 0.5px solid #D3D1C7; }
+.t3-logo { font-size: 17px; font-weight: 500; color: #712B13; }
+.t3-links { display: flex; gap: 24px; font-size: 13px; color: #888780; }
+.t3-cta { background: #D85A30; color: #fff; padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 500; }
+.t3-hero { background: #fff; padding: 64px 36px 0; border-bottom: 0.5px solid #D3D1C7; }
+.t3-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+.t3-tag { display: inline-flex; align-items: center; gap: 6px; background: #FAECE7; color: #993C1D; font-size: 11px; padding: 5px 12px; border-radius: 20px; margin-bottom: 20px; }
+.t3-dot { width: 6px; height: 6px; border-radius: 50%; background: #D85A30; }
+.t3-h1 { font-size: 38px; font-weight: 500; line-height: 1.15; color: #2C2C2A; margin: 0 0 20px; }
+.t3-h1 em { color: #D85A30; font-style: normal; }
+.t3-sub { font-size: 15px; color: #5F5E5A; line-height: 1.7; margin: 0 0 32px; }
+.t3-hero-btns { display: flex; gap: 12px; margin-bottom: 48px; }
+.t3-btn3-p { background: #D85A30; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.t3-btn3-s { background: #FAECE7; color: #993C1D; padding: 12px 24px; border-radius: 8px; font-size: 14px; }
+.t3-hero-right { background: #FAECE7; border-radius: 12px 12px 0 0; padding: 32px; }
+.t3-profile-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.t3-avatar3 { width: 56px; height: 56px; border-radius: 50%; background: #D85A30; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 500; color: #fff; flex-shrink: 0; }
+.t3-profile-info-name { font-size: 15px; font-weight: 500; color: #712B13; }
+.t3-profile-info-role { font-size: 12px; color: #993C1D; }
+.t3-skills { display: flex; flex-wrap: wrap; gap: 8px; }
+.t3-skill { background: #fff; border: 0.5px solid #F5C4B3; color: #993C1D; font-size: 11px; padding: 5px 12px; border-radius: 20px; }
+.t3-band { background: #D85A30; padding: 20px 36px; display: flex; justify-content: space-around; }
+.t3-band-item { text-align: center; }
+.t3-band-num { font-size: 28px; font-weight: 500; color: #fff; }
+.t3-band-label { font-size: 11px; color: #F5C4B3; margin-top: 2px; }
+.t3-services3 { padding: 56px 36px; background: #fff; }
+.t3-section-eyebrow { font-size: 11px; letter-spacing: 0.12em; color: #D85A30; margin-bottom: 8px; }
+.t3-section-h2 { font-size: 28px; font-weight: 500; color: #2C2C2A; margin: 0 0 36px; }
+.t3-services3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.t3-svc3 { border: 0.5px solid #D3D1C7; border-radius: 10px; padding: 24px; transition: border-color 0.2s; }
+.t3-svc3-bar { height: 3px; width: 40px; background: #D85A30; border-radius: 2px; margin-bottom: 16px; }
+.t3-svc3-title { font-size: 15px; font-weight: 500; color: #2C2C2A; margin-bottom: 8px; }
+.t3-svc3-desc { font-size: 13px; color: #5F5E5A; line-height: 1.5; }
+.t3-svc3-price { font-size: 13px; color: #D85A30; font-weight: 500; margin-top: 12px; }
+.t3-works3 { padding: 56px 36px; background: #FAFAF8; }
+.t3-works3-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+.t3-work3-big { background: #FAECE7; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; }
+.t3-work3-sm { background: #fff; border: 0.5px solid #D3D1C7; border-radius: 10px; padding: 20px; }
+.t3-work3-label { font-size: 11px; color: #993C1D; letter-spacing: 0.08em; margin-bottom: 8px; }
+.t3-work3-title { font-size: 16px; font-weight: 500; color: #712B13; }
+.t3-work3-sm-title { font-size: 14px; font-weight: 500; color: #2C2C2A; margin-bottom: 6px; }
+.t3-work3-sm-tag { font-size: 11px; color: #888780; }
+.t3-temo3 { padding: 56px 36px; background: #fff; border-top: 0.5px solid #D3D1C7; }
+.t3-temo3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.t3-temo3-item { background: #FAFAF8; border-radius: 10px; padding: 20px; }
+.t3-temo3-stars { color: #D85A30; font-size: 13px; margin-bottom: 10px; }
+.t3-temo3-text { font-size: 13px; color: #5F5E5A; line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+.t3-temo3-name { font-size: 13px; font-weight: 500; color: #2C2C2A; }
+.t3-temo3-co { font-size: 11px; color: #888780; }
+.t3-contact3 { padding: 56px 36px; background: #FAECE7; }
+.t3-contact3-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.t3-input3 { width: 100%; background: #fff; border: 0.5px solid #F5C4B3; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #2C2C2A; margin-bottom: 12px; box-sizing: border-box; }
+.t3-submit3 { width: 100%; background: #D85A30; color: #fff; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; }
+.t3-contact3-info { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.t3-info3-row { display: flex; gap: 12px; align-items: flex-start; }
+.t3-info3-icon { width: 32px; height: 32px; background: #D85A30; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.t3-info3-label { font-size: 11px; color: #993C1D; }
+.t3-info3-val { font-size: 14px; font-weight: 500; color: #712B13; }
+.t3-footer3 { padding: 20px 36px; background: #712B13; display: flex; justify-content: space-between; font-size: 12px; color: #F5C4B3; }
+</style>
+
+<div class="t3">
+  <nav class="t3-nav">
+    <div class="t3-logo">Salif Diallo · Avocat</div>
+    <div class="t3-links"><span>Services</span><span>Dossiers</span><span>Témoignages</span><span>Contact</span></div>
+    <div class="t3-cta">Consultation gratuite</div>
+  </nav>
+
+  <div class="t3-hero">
+    <div class="t3-hero-inner">
+      <div>
+        <div class="t3-tag"><div class="t3-dot"></div>Disponible pour nouvelles affaires</div>
+        <h1 class="t3-h1">Votre défense, <em>ma mission</em> depuis 12 ans</h1>
+        <p class="t3-sub">Droit des affaires, droit de la famille et contentieux commercial. Barreau de Ouagadougou. Résultats prouvés dans 90% des dossiers traités.</p>
+        <div class="t3-hero-btns">
+          <div class="t3-btn3-p">Consultation gratuite</div>
+          <div class="t3-btn3-s">Mes domaines</div>
+        </div>
+      </div>
+      <div class="t3-hero-right">
+        <div class="t3-profile-row">
+          <div class="t3-avatar3">SD</div>
+          <div><div class="t3-profile-info-name">Maître Salif Diallo</div><div class="t3-profile-info-role">Avocat au Barreau du Burkina Faso</div></div>
+        </div>
+        <div class="t3-skills">
+          <div class="t3-skill">Droit des affaires</div>
+          <div class="t3-skill">Droit de la famille</div>
+          <div class="t3-skill">Contentieux</div>
+          <div class="t3-skill">Droit foncier</div>
+          <div class="t3-skill">Arbitrage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t3-band">
+    <div class="t3-band-item"><div class="t3-band-num">12 ans</div><div class="t3-band-label">D'expérience</div></div>
+    <div class="t3-band-item"><div class="t3-band-num">350+</div><div class="t3-band-label">Dossiers traités</div></div>
+    <div class="t3-band-item"><div class="t3-band-num">90%</div><div class="t3-band-label">Taux de succès</div></div>
+    <div class="t3-band-item"><div class="t3-band-num">3 pays</div><div class="t3-band-label">BF · CI · SN</div></div>
+  </div>
+
+  <div class="t3-services3">
+    <div class="t3-section-eyebrow">DOMAINES D'EXPERTISE</div>
+    <div class="t3-section-h2">Mes services juridiques</div>
+    <div class="t3-services3-grid">
+      <div class="t3-svc3"><div class="t3-svc3-bar"></div><div class="t3-svc3-title">Droit des affaires</div><div class="t3-svc3-desc">Création d'entreprise, contrats commerciaux, litiges entre sociétés et recouvrement.</div><div class="t3-svc3-price">Consultation : 15 000 FCFA</div></div>
+      <div class="t3-svc3"><div class="t3-svc3-bar"></div><div class="t3-svc3-title">Droit de la famille</div><div class="t3-svc3-desc">Divorce, garde d'enfants, succession et partage de patrimoine familial.</div><div class="t3-svc3-price">Consultation : 10 000 FCFA</div></div>
+      <div class="t3-svc3"><div class="t3-svc3-bar"></div><div class="t3-svc3-title">Droit foncier</div><div class="t3-svc3-desc">Titres fonciers, litiges de terrain, sécurisation et régularisation immobilière.</div><div class="t3-svc3-price">Consultation : 15 000 FCFA</div></div>
+    </div>
+  </div>
+
+  <div class="t3-works3">
+    <div class="t3-section-eyebrow">DOSSIERS MARQUANTS</div>
+    <div class="t3-section-h2">Affaires récentes</div>
+    <div class="t3-works3-grid">
+      <div class="t3-work3-big"><div><div class="t3-work3-label">DROIT DES AFFAIRES · 2024</div><div class="t3-work3-title">Restructuration d'une PME industrielle — 500M FCFA</div></div><div style="font-size:12px;color:#993C1D">Résultat favorable ✓</div></div>
+      <div class="t3-work3-sm"><div class="t3-work3-sm-title">Litige foncier Ouaga</div><div class="t3-work3-sm-tag">Droit foncier · 2023</div></div>
+      <div class="t3-work3-sm"><div class="t3-work3-sm-title">Succession internationale</div><div class="t3-work3-sm-tag">BF + France · 2023</div></div>
+    </div>
+  </div>
+
+  <div class="t3-temo3">
+    <div class="t3-section-eyebrow">TÉMOIGNAGES</div>
+    <div class="t3-section-h2">Ils me font confiance</div>
+    <div class="t3-temo3-grid">
+      <div class="t3-temo3-item"><div class="t3-temo3-stars">★★★★★</div><div class="t3-temo3-text">"Maître Diallo a résolu en 3 mois un litige qui durait depuis 2 ans. Exceptionnel."</div><div class="t3-temo3-name">Moussa Compaoré</div><div class="t3-temo3-co">Chef d'entreprise</div></div>
+      <div class="t3-temo3-item"><div class="t3-temo3-stars">★★★★★</div><div class="t3-temo3-text">"Très compétent et humain. Il m'a guidé dans ma succession avec beaucoup de clarté."</div><div class="t3-temo3-name">Aïcha Ouattara</div><div class="t3-temo3-co">Cliente depuis 2020</div></div>
+      <div class="t3-temo3-item"><div class="t3-temo3-stars">★★★★★</div><div class="t3-temo3-text">"Mon dossier de terrain a été sécurisé en un temps record. Je recommande vivement."</div><div class="t3-temo3-name">Paul Zagré</div><div class="t3-temo3-co">Promoteur immobilier</div></div>
+    </div>
+  </div>
+
+  <div class="t3-contact3">
+    <div class="t3-section-eyebrow">CONTACT</div>
+    <div class="t3-section-h2">Consultation gratuite de 30 min</div>
+    <div class="t3-contact3-inner">
+      <div>
+        <input class="t3-input3" placeholder="Votre nom complet">
+        <input class="t3-input3" placeholder="Téléphone">
+        <input class="t3-input3" placeholder="Votre affaire en une ligne">
+        <button class="t3-submit3">Demander la consultation gratuite</button>
+      </div>
+      <div class="t3-contact3-info">
+        <div class="t3-info3-row"><div class="t3-info3-icon"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.63 3.36 2 2 0 013.6 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.84a16 16 0 006.29 6.29l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="t3-info3-label">TÉLÉPHONE</div><div class="t3-info3-val">+226 25 00 00 00</div></div></div>
+        <div class="t3-info3-row"><div class="t3-info3-icon"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="t3-info3-label">EMAIL</div><div class="t3-info3-val">salif@weba.bf</div></div></div>
+        <div class="t3-info3-row"><div class="t3-info3-icon"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="t3-info3-label">CABINET</div><div class="t3-info3-val">Av. Kwame Nkrumah, Ouaga</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="t3-footer3">
+    <span>© 2024 Maître Salif Diallo — WEBA</span>
+    <span>Cabinet d'avocat · Ouagadougou, Burkina Faso</span>
+  </div>
+</div>

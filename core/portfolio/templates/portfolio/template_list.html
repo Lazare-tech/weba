@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class=" mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 bg-white">
+
+    <div class="text-center mb-16">
+        <div class="inline-flex items-center space-x-2 bg-emerald-50 px-3 py-1 rounded-full text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span>Designs Professionnels</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4 leading-[1.1]">
+            Trouvez le <span class="text-emerald-600">template parfait</span>
+        </h1>
+        <p class="text-lg text-slate-600 font-light max-w-2xl mx-auto">
+            Explorez notre collection de modèles haut de gamme conçus pour propulser votre business en Afrique.
+        </p>
+    </div>
+
+   <div class="flex items-center gap-3 overflow-x-auto pb-4">
+    <button hx-get="{% url 'portfolio:template_list' %}" 
+            hx-target="#template-grid" 
+            class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-bold">Tous</button>
+    
+    {% for cat in categories %}
+    <button hx-get="{% url 'portfolio:template_list' %}?categorie={{ cat.slug }}" 
+            hx-target="#template-grid" 
+            class="px-6 py-2 bg-white border border-slate-200 rounded-full text-sm hover:bg-slate-50">
+        {{ cat.nom }}
+    </button>
+    {% endfor %}
+</div>
+
+<div id="template-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {% include 'portfolio/partials/template_grid.html' %}
+</div>
+
+    <div class="mt-20 py-12 border-t border-slate-100 text-center">
+        <p class="text-slate-400 italic mb-4 tracking-widest uppercase text-[10px] font-bold tracking-[0.2em]">Propulsé par WEBA Africa</p>
+    </div>
+
+</main>
+
+{% endblock %}

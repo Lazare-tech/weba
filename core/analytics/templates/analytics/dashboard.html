@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %}Analytics — WEBA{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+    <div>
+        <h1 class="text-2xl font-bold text-gray-900">Analytics</h1>
+        {% if domaine %}
+        <p class="text-sm text-gray-500 mt-1">{{ domaine }}</p>
+        {% endif %}
+    </div>
+
+    <div class="flex gap-2">
+        <a href="?periode=7d"
+           class="px-3 py-1.5 rounded-lg text-sm border transition
+           {% if periode == '7d' %}bg-emerald-700 text-white border-emerald-700{% else %}border-gray-200 text-gray-600 hover:bg-gray-50{% endif %}">
+            7 jours
+        </a>
+        <a href="?periode=30d"
+           class="px-3 py-1.5 rounded-lg text-sm border transition
+           {% if periode == '30d' %}bg-emerald-700 text-white border-emerald-700{% else %}border-gray-200 text-gray-600 hover:bg-gray-50{% endif %}">
+            30 jours
+        </a>
+        <a href="?periode=6mo"
+           class="px-3 py-1.5 rounded-lg text-sm border transition
+           {% if periode == '6mo' %}bg-emerald-700 text-white border-emerald-700{% else %}border-gray-200 text-gray-600 hover:bg-gray-50{% endif %}">
+            6 mois
+        </a>
+        <a href="?periode=12mo"
+           class="px-3 py-1.5 rounded-lg text-sm border transition
+           {% if periode == '12mo' %}bg-emerald-700 text-white border-emerald-700{% else %}border-gray-200 text-gray-600 hover:bg-gray-50{% endif %}">
+            12 mois
+        </a>
+    </div>
+</div>
+
+{% if not domaine %}
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-8 text-center">
+    <p class="text-2xl mb-3">📊</p>
+    <p class="font-medium text-amber-800 mb-2">Analytics en cours de configuration</p>
+    <p class="text-amber-700 text-sm">
+        Votre tableau de bord analytics sera disponible sous 24h après activation de votre plan.
+    </p>
+</div>
+
+{% elif not stats %}
+<div class="bg-red-50 border border-red-200 rounded-xl p-8 text-center">
+    <p class="text-2xl mb-3">⚠️</p>
+    <p class="font-medium text-red-800 mb-2">Impossible de charger les analytics</p>
+    <p class="text-red-700 text-sm">Le service analytics est temporairement indisponible.</p>
+</div>
+
+{% else %}
+
+<div class="grid grid-cols-2 gap-4 mb-6 lg:grid-cols-4">
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-emerald-700">{{ stats.visitors.value|default:"0" }}</p>
+        <p class="text-sm text-gray-500 mt-1">Visiteurs uniques</p>
+    </div>
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-emerald-700">{{ stats.pageviews.value|default:"0" }}</p>
+        <p class="text-sm text-gray-500 mt-1">Pages vues</p>
+    </div>
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-emerald-700">{{ stats.bounce_rate.value|default:"0" }}%</p>
+        <p class="text-sm text-gray-500 mt-1">Taux de rebond</p>
+    </div>
+    <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-emerald-700">{{ stats.visit_duration.value|default:"0" }}s</p>
+        <p class="text-sm text-gray-500 mt-1">Durée moyenne</p>
+    </div>
+</div>
+
+{% if series %}
+<div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+    <h3 class="text-sm font-medium text-gray-700 mb-4">Évolution des visiteurs</h3>
+    <div style="position:relative; height:200px;">
+        <canvas id="chart-serie"></canvas>
+    </div>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-sm font-medium text-gray-700 mb-4">Pages populaires</h3>
+        <div class="space-y-3">
+            {% for page in pages %}
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-600 truncate max-w-xs">{{ page.page }}</span>
+                <span class="text-emerald-700 font-medium ml-2">{{ page.visitors }}</span>
+            </div>
+            {% empty %}
+            <p class="text-gray-400 text-sm">Pas encore de données</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-sm font-medium text-gray-700 mb-4">Sources de trafic</h3>
+        <div class="space-y-3">
+            {% for source in sources %}
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-600">{{ source.source|default:"Direct" }}</span>
+                <span class="text-emerald-700 font-medium">{{ source.visitors }}</span>
+            </div>
+            {% empty %}
+            <p class="text-gray-400 text-sm">Pas encore de données</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-sm font-medium text-gray-700 mb-4">Pays des visiteurs</h3>
+        <div class="space-y-3">
+            {% for p in pays %}
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-600">{{ p.country }}</span>
+                <span class="text-emerald-700 font-medium">{{ p.visitors }}</span>
+            </div>
+            {% empty %}
+            <p class="text-gray-400 text-sm">Pas encore de données</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endif %}
+
+{% if series %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const labels = [{% for s in series %}"{{ s.date }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+const visitors = [{% for s in series %}{{ s.visitors }}{% if not forloop.last %},{% endif %}{% endfor %}];
+
+new Chart(document.getElementById('chart-serie'), {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Visiteurs',
+            data: visitors,
+            borderColor: '#1D9E75',
+            backgroundColor: '#E1F5EE',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 3,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#888' } },
+            y: { grid: { color: '#f0f0f0' }, ticks: { font: { size: 11 }, color: '#888' } }
+        }
+    }
+});
+</script>
+{% endif %}
+
+{% endblock content %}

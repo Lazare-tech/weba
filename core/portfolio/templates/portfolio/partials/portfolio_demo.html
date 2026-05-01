@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Démo : {{ template.nom }}</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Masquer la scrollbar de la page parente */
+        body { scrollbar-width: none; -ms-overflow-style: none; }
+        body::-webkit-scrollbar { display: none; }
+        
+        /* Animation de transition douce pour le changement de device */
+        .device-transition { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body x-data="{ device: 'desktop' }" class="h-screen flex flex-col bg-slate-50 font-sans">
+
+    <!-- Barre de Navigation Haut de Gamme -->
+    <nav class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 flex items-center justify-between shadow-sm z-50">
+        <div class="flex items-center gap-4">
+            <a href="{% url 'portfolio:template_detail' template.slug %}"
+               class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-slate-900 hover:text-white transition-all group">
+                <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+            </a>
+            <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Aperçu du modèle</p>
+                <span class="font-bold text-slate-900">{{ template.nom }}</span>
+            </div>
+        </div>
+
+        <!-- Sélecteur de device central -->
+        <div class="hidden md:flex bg-slate-200/50 p-1 rounded-2xl gap-1">
+            <button @click="device = 'mobile'"
+                    :class="device === 'mobile' ? 'bg-white text-emerald-600 shadow-md scale-105' : 'text-slate-400 hover:text-slate-600'"
+                    class="w-12 py-2.5 rounded-xl transition-all duration-300" title="Mobile">
+                <i class="fas fa-mobile-alt"></i>
+            </button>
+            <button @click="device = 'tablet'"
+                    :class="device === 'tablet' ? 'bg-white text-emerald-600 shadow-md scale-105' : 'text-slate-400 hover:text-slate-600'"
+                    class="w-12 py-2.5 rounded-xl transition-all duration-300" title="Tablette">
+                <i class="fas fa-tablet-alt"></i>
+            </button>
+            <button @click="device = 'desktop'"
+                    :class="device === 'desktop' ? 'bg-white text-emerald-600 shadow-md scale-105' : 'text-slate-400 hover:text-slate-600'"
+                    class="w-12 py-2.5 rounded-xl transition-all duration-300" title="Desktop">
+                <i class="fas fa-desktop"></i>
+            </button>
+        </div>
+
+        <!-- Bouton Action -->
+        <div class="flex items-center gap-3">
+            <a href="{% url 'portfolio:appliquer_et_customiser' template.slug_technique %}"
+               class="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-black text-[11px] uppercase tracking-widest hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-100 transition-all active:scale-95 flex items-center gap-2">
+                <i class="fas fa-magic"></i>
+                Choisir ce modèle
+            </a>
+        </div>
+    </nav>
+
+    <!-- Zone de Visualisation -->
+    <main class="flex-1 p-4 md:p-8 flex justify-center items-center overflow-hidden relative">
+        
+        <!-- Le Châssis (Device Simulator) -->
+        <div class="device-transition bg-slate-900 relative shadow-[0_0_0_2px_rgba(0,0,0,0.1),0_20px_50px_-12px_rgba(0,0,0,0.3)] flex flex-col"
+             :class="{
+                'w-[340px] h-[680px] rounded-[3.5rem] border-[10px] border-slate-900': device === 'mobile',
+                'w-[768px] h-[1024px] max-h-[90%] rounded-[3rem] border-[10px] border-slate-900': device === 'tablet',
+                'w-full h-full border-0 rounded-none': device === 'desktop'
+             }">
+
+            <!-- Haut-parleur / Encoche pour Mobile/Tablette -->
+            <div x-show="device !== 'desktop'" 
+                 class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-900 rounded-b-2xl z-30 flex items-center justify-center">
+                <div class="w-10 h-1 bg-slate-800 rounded-full"></div>
+            </div>
+
+            <!-- Conteneur Iframe avec coins arrondis forcés -->
+            <div class="w-full h-full overflow-hidden relative"
+                 :class="device !== 'desktop' ? 'rounded-[2.5rem] bg-white' : ''">
+                
+                <!-- Iframe -->
+                <iframe
+                    id="demo-iframe"
+                    src="{% url 'portfolio:portfolio_demo_apercu' template.slug %}"
+                    class="w-full h-full border-0"
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- Bouton Home (Barre de navigation iOS) -->
+            <div x-show="device !== 'desktop'" 
+                 class="absolute bottom-1 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-slate-800/50 rounded-full z-30">
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

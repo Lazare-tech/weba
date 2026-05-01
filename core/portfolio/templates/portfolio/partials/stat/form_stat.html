@@ -1,0 +1,17 @@
+<div class="bg-slate-50 p-6 rounded-2xl border-2 border-dashed border-slate-200 mb-6">
+    <form hx-post="{% url 'portfolio:ajouter_stat' %}" 
+          hx-target="#liste-stats" 
+          hx-swap="afterbegin" 
+          hx-on::after-request="this.reset(); document.getElementById('form-stat').innerHTML=''"
+          class="flex flex-col md:flex-row gap-3">
+        {% csrf_token %}
+        <input type="text" name="chiffre" required placeholder="Chiffre (ex: 15+)"
+               class="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm outline-none focus:ring-2 focus:ring-emerald-500">
+        <input type="text" name="label" required placeholder="Label (ex: Projets terminés)"
+               class="flex-[2] px-4 py-2.5 border border-slate-200 rounded-xl text-sm outline-none focus:ring-2 focus:ring-emerald-500">
+        
+        <button type="submit" class="bg-emerald-700 text-white px-6 py-2 rounded-xl text-sm font-bold">Ajouter</button>
+        <button type="button" onclick="document.getElementById('form-stat').innerHTML=''" class="text-slate-400 text-xs px-2">X</button>
+    </form>
+</div>
+<script>lucide.createIcons();</script>  

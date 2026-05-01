@@ -1,0 +1,36 @@
+<section id="contact" class="py-32 px-6" style="background-color: var(--t-bg-2);">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <div class="lg:col-span-7">
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12">
+                    Créons_ <br> <span class="text-[var(--t-primary)]">Ensemble</span>
+                </h2>
+                
+                <form hx-post="{% url 'portfolio:envoyer_message' portfolio.slug %}" hx-target="#contact-feedback" hx-swap="innerHTML" class="space-y-4" id="contact-form">
+                    {% csrf_token %}
+                    <div id="contact-feedback"></div>
+                    <input type="text" name="nom" required placeholder="Votre Nom" class="w-full bg-transparent border-b border-white/20 py-6 outline-none focus:border-[var(--t-primary)] transition-colors text-2xl text-white">
+                    <input type="email" name="email" required placeholder="Adresse Email" class="w-full bg-transparent border-b border-white/20 py-6 outline-none focus:border-[var(--t-primary)] transition-colors text-2xl text-white">
+                    <textarea name="message" required placeholder="Parlez-moi de votre projet" class="w-full bg-transparent border-b border-white/20 py-6 outline-none focus:border-[var(--t-primary)] transition-colors text-2xl h-32 resize-none text-white"></textarea>
+                    
+                    <button type="submit" class="mt-12 bg-white text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:bg-[var(--t-primary)] hover:text-white transition-all active:scale-95">
+                        Envoyer_Message
+                    </button>
+                </form>
+            </div>
+            
+            <div class="lg:col-span-5 flex flex-col justify-end gap-10">
+                <div class="space-y-2">
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Contact Rapide</p>
+                    <a href="mailto:{{ portfolio.email_contact }}" class="text-2xl md:text-4xl font-bold hover:text-[var(--t-primary)] transition-colors text-white">
+                        {{ portfolio.email_contact }}
+                    </a>
+                </div>
+                <div class="flex gap-6">
+                    {% if portfolio.instagram %}<a href="{{ portfolio.instagram }}" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all text-white"><i class="fab fa-instagram"></i></a>{% endif %}
+                    {% if portfolio.whatsapp %}<a href="https://wa.me/{{ portfolio.whatsapp }}" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all text-white"><i class="fab fa-whatsapp"></i></a>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

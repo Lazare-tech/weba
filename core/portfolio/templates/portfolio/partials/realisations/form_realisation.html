@@ -1,0 +1,79 @@
+{% load static %}
+<div class="bg-slate-50 p-6 rounded-2xl border-2 border-dashed border-slate-200 mb-6 animate-in fade-in slide-in-from-top-4"
+     {% if realisation %}id="realisation-{{ realisation.id }}"{% endif %}>
+    
+    <h3 class="text-sm font-bold text-slate-700 uppercase mb-4 flex items-center">
+        <i data-lucide="{% if realisation %}edit{% else %}plus-circle{% endif %}" class="w-4 h-4 mr-2"></i> 
+        {% if realisation %}Modifier réalisation{% else %}Nouvelle réalisation{% endif %}
+    </h3>
+    
+    <form hx-post="{% if realisation %}{% url 'portfolio:modifier_realisation' realisation.id %}{% else %}{% url 'portfolio:ajouter_realisation' %}{% endif %}" 
+          hx-encoding="multipart/form-data"
+          {% if realisation %}
+            hx-target="#realisation-{{ realisation.id }}" 
+            hx-swap="outerHTML"
+          {% else %}
+            hx-target="#liste-realisations" 
+            hx-swap="afterbegin"
+          {% endif %}
+          hx-on::after-request="{% if not realisation %}if(event.detail.successful) { this.reset(); document.getElementById('form-realisation').innerHTML=''; }{% endif %}"
+          class="space-y-4">
+        
+        {% csrf_token %}
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-1 flex flex-col items-center justify-center">
+                {% with preview_id=realisation.id|default:'new_real' %}
+                <div id="real-preview-{{ preview_id }}" class="w-24 h-24 bg-white rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-300 overflow-hidden relative">
+                    {% if realisation.image %}
+                        <img src="{{ realisation.image.url }}" class="w-full h-full object-cover">
+                    {% else %}
+                        <i data-lucide="image-plus" class="w-8 h-8"></i>
+                    {% endif %}
+                </div>
+                <label class="mt-2 cursor-pointer text-emerald-600 text-[10px] font-black uppercase">
+                    Choisir l'image
+                    <input type="file" name="image" accept="image/*" class="hidden" 
+                           onchange="previewImage(this, 'real-preview-{{ preview_id }}')">
+                </label>
+                {% endwith %}
+            </div>
+
+            <div class="col-span-2 space-y-4">
+                <input type="text" name="titre" value="{{ realisation.titre|default:'' }}" required placeholder="Titre du projet"
+                       class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                
+                <input type="url" name="lien" value="{{ realisation.lien|default:'' }}" placeholder="Lien du projet (https://...)"
+                       class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+            </div>
+
+            <div class="col-span-3">
+                <textarea name="description" rows="3" required placeholder="Description de la réalisation..."
+                          class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">{{ realisation.description|default:'' }}</textarea>
+            </div>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-2">
+            {% if realisation %}
+                <button type="button" 
+                        hx-get="{% url 'portfolio:modifier_realisation' realisation.id %}?cancel=1"
+                        hx-target="#realisation-{{ realisation.id }}"
+                        hx-swap="outerHTML"
+                        class="px-4 py-2 text-xs font-bold text-slate-500 uppercase cursor-pointer">
+                    Annuler
+                </button>
+            {% else %}
+                <button type="button" 
+                        onclick="document.getElementById('form-realisation').innerHTML=''"
+                        class="px-4 py-2 text-xs font-bold text-slate-500 uppercase cursor-pointer">
+                    Annuler
+                </button>
+            {% endif %}
+
+            <button type="submit" class="bg-emerald-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold flex items-center transition shadow-lg shadow-emerald-100">
+                <i data-lucide="save" class="w-4 h-4 mr-2"></i> Sauvegarder
+            </button>
+        </div>
+    </form>
+</div>
+<script>lucide.createIcons();</script>

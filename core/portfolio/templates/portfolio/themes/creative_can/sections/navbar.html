@@ -1,0 +1,23 @@
+<nav x-data="{ scrolled: false }" 
+     @scroll.window="scrolled = (window.pageYOffset > 50)"
+     :class="scrolled ? 'py-4' : 'py-8'"
+     class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6">
+        <div :class="scrolled ? 'glass px-6 py-3 rounded-full' : ''" 
+             class="flex justify-between items-center transition-all duration-500">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--t-primary)] to-[var(--t-accent)] animate-spin-slow"></div>
+                <span class="font-black text-xl tracking-tighter uppercase italic">
+                    {{ portfolio.user.username }}_Visual
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#realisations" class="text-[10px] font-bold uppercase tracking-widest hover:text-[var(--t-primary)] transition-colors">Portfolio</a>
+                <a href="#avis" class="text-[10px] font-bold uppercase tracking-widest hover:text-[var(--t-primary)] transition-colors">Avis</a>
+                <a href="#contact" class="bg-[var(--t-primary)] text-black px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:scale-105 transition-transform">Démarrer_Projet</a>
+            </div>
+        </div>
+    </div>
+</nav>

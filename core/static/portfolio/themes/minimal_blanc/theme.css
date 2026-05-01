@@ -1,0 +1,51 @@
+
+.t2 { font-family: var(--font-sans); background: #fff; color: #2C2C2A; }
+.t2-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 0.5px solid #D3D1C7; }
+.t2-logo { font-family: var(--font-serif); font-size: 20px; color: #042C53; }
+.t2-links { display: flex; gap: 28px; font-size: 13px; color: #5F5E5A; }
+.t2-cta { border: 0.5px solid #042C53; color: #042C53; padding: 8px 20px; border-radius: 4px; font-size: 13px; }
+.t2-hero { display: grid; grid-template-columns: 3fr 2fr; gap: 64px; padding: 80px 40px; align-items: center; border-bottom: 0.5px solid #D3D1C7; }
+.t2-eyebrow { font-size: 11px; letter-spacing: 0.15em; color: #888780; margin-bottom: 20px; }
+.t2-h1 { font-family: var(--font-serif); font-size: 42px; line-height: 1.15; color: #042C53; margin: 0 0 20px; font-weight: 400; }
+.t2-sub { font-size: 15px; color: #5F5E5A; line-height: 1.7; margin: 0 0 36px; }
+.t2-btns { display: flex; gap: 16px; align-items: center; }
+.t2-btn-p { background: #042C53; color: #fff; padding: 12px 28px; border-radius: 4px; font-size: 14px; }
+.t2-btn-s { font-size: 14px; color: #185FA5; border-bottom: 0.5px solid #185FA5; padding-bottom: 2px; }
+.t2-photo { background: #E6F1FB; border-radius: 8px; aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; }
+.t2-photo-inner { text-align: center; }
+.t2-avatar2 { width: 72px; height: 72px; border-radius: 50%; background: #185FA5; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 500; color: #fff; margin: 0 auto 12px; }
+.t2-metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid #D3D1C7; }
+.t2-metric { padding: 32px 40px; border-right: 0.5px solid #D3D1C7; }
+.t2-metric:last-child { border-right: none; }
+.t2-metric-num { font-family: var(--font-serif); font-size: 36px; color: #042C53; }
+.t2-metric-label { font-size: 13px; color: #888780; margin-top: 4px; }
+.t2-services2 { padding: 64px 40px; border-bottom: 0.5px solid #D3D1C7; }
+.t2-services2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.t2-service-item { padding: 32px; border-right: 0.5px solid #D3D1C7; }
+.t2-service-item:last-child { border-right: none; }
+.t2-service-num { font-family: var(--font-serif); font-size: 36px; color: #D3D1C7; margin-bottom: 16px; }
+.t2-service-title { font-size: 15px; font-weight: 500; color: #042C53; margin-bottom: 8px; }
+.t2-service-desc { font-size: 13px; color: #5F5E5A; line-height: 1.6; }
+.t2-service-price { font-size: 13px; color: #185FA5; margin-top: 12px; }
+.t2-works2 { padding: 64px 40px; background: #F1EFE8; border-bottom: 0.5px solid #D3D1C7; }
+.t2-works2-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.t2-work2 { background: #fff; border-radius: 4px; overflow: hidden; }
+.t2-work2-img { height: 100px; background: #E6F1FB; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #888780; }
+.t2-work2-body { padding: 16px; }
+.t2-work2-title { font-size: 14px; color: #042C53; margin-bottom: 4px; }
+.t2-work2-date { font-size: 11px; color: #888780; }
+.t2-temo2 { padding: 64px 40px; border-bottom: 0.5px solid #D3D1C7; }
+.t2-temo2-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.t2-temo2-item { border-left: 2px solid #042C53; padding-left: 20px; }
+.t2-temo2-text { font-family: var(--font-serif); font-size: 16px; color: #2C2C2A; line-height: 1.6; margin-bottom: 16px; }
+.t2-temo2-name { font-size: 13px; font-weight: 500; color: #042C53; }
+.t2-temo2-co { font-size: 12px; color: #888780; }
+.t2-contact2 { display: grid; grid-template-columns: 1fr 1fr; }
+.t2-contact-left { padding: 64px 40px; background: #042C53; }
+.t2-contact-right { padding: 64px 40px; }
+.t2-c-label { font-size: 11px; letter-spacing: 0.15em; color: #85B7EB; margin-bottom: 16px; }
+.t2-c-title { font-family: var(--font-serif); font-size: 28px; color: #fff; margin: 0 0 32px; font-weight: 400; }
+.t2-c-info { font-size: 14px; color: #85B7EB; margin-bottom: 12px; }
+.t2-input2 { width: 100%; border: none; border-bottom: 0.5px solid #D3D1C7; padding: 10px 0; font-size: 14px; color: #2C2C2A; margin-bottom: 20px; box-sizing: border-box; background: transparent; outline: none; }
+.t2-submit2 { background: #042C53; color: #fff; padding: 12px 32px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; }
+.t2-footer2 { padding: 20px 40px; background: #F1EFE8; display: flex; justify-content: space-between; font-size: 12px; color: #888780; }
