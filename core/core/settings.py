@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'meta',
     'seo',
     'portfolio',
+    'aapmarket',
      'django_celery_beat',
     'django_celery_results',
 

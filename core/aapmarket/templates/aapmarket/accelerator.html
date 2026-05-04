@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold uppercase mb-4">Écosystème Numérique</span>
+                <h2 class="text-4xl md:text-6xl font-black text-[var(--brand-secondary)] mb-6 leading-tight">Accélérer les talents par la <span class="italic">technologie</span>.</h2>
+                <p class="text-lg text-[var(--text-muted)] mb-8">WEBA n'est pas seulement un outil, c'est un moteur de réussite. Nous collaborons avec les structures de formation pour transformer chaque étudiant en un professionnel visible à l'international dès le premier jour.</p>
+                
+                <div class="space-y-6 mb-10">
+                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[var(--brand-primary)] transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-[var(--brand-primary)]"><i class="fas fa-graduation-cap"></i></div>
+                        <div>
+                            <h4 class="font-bold">Partenariats Académiques</h4>
+                            <p class="text-xs text-slate-500">Intégration de WEBA dans les cursus pour certifier la présence en ligne des diplômés.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[var(--brand-primary)] transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-[var(--brand-primary)]"><i class="fas fa-rocket"></i></div>
+                        <div>
+                            <h4 class="font-bold">Incubation de Startups</h4>
+                            <p class="text-xs text-slate-500">Outils de visibilité immédiate pour les porteurs de projets en phase de lancement.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="bg-[var(--brand-secondary)] text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2">Découvrir l'Accélérateur <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="relative">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-[var(--brand-primary)] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+                    <div class="bg-slate-200 aspect-[4/5] flex items-center justify-center">
+                        <!-- Illustration de succès africain ou dashboard -->
+                        <span class="text-slate-400 font-bold">Visual Success WEBA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

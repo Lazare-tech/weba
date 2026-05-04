@@ -2,10 +2,6 @@ from django.shortcuts import render
 from .models import Entreprise
 # Create your views here.
 
-
-def index(request):
-    return render(request, 'search/index.html')
-
 def recherche(request):
     query = request.GET.get('q', '')
     resultats = Entreprise.objects.filter(

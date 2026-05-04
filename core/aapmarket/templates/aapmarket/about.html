@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="font-[var(--font-main)]">
+    <!-- Hero Section : Vision -->
+    <div class="bg-[var(--brand-secondary)] py-24 text-center px-4">
+        <span class="text-[var(--brand-primary)] font-bold uppercase tracking-widest text-sm">Notre Mission</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white mt-4 mb-6">Propulser l'excellence <br>en Afrique de l'Ouest.</h1>
+        <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
+            WEBA est né d'une conviction simple : le talent n'a pas de frontières, mais il a besoin d'outils. 
+            Sous l'impulsion de notre marque parente <strong>UNI</strong>, nous bâtissons l'infrastructure numérique 
+            qui permet aux créatifs et entrepreneurs de la zone UEMOA de briller à l'échelle globale.
+        </p>
+    </div>
+
+    <!-- Valeurs & Impact -->
+    <div class="max-w-7xl mx-auto py-20 px-4">
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="space-y-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] text-2xl">
+                    <i class="fas fa-fingerprint"></i>
+                </div>
+                <h3 class="text-xl font-bold">Identité Locale</h3>
+                <p class="text-[var(--text-muted)] text-sm">Nous respectons les codes et les besoins spécifiques des marchés de Bobo-Dioulasso à Abidjan.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="text-xl font-bold">Performance Tech</h3>
+                <p class="text-[var(--text-muted)] text-sm">Vitesse, SEO et fiabilité. Nos outils sont conçus pour fonctionner même sur des réseaux instables.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="text-xl font-bold">Collaboration</h3>
+                <p class="text-[var(--text-muted)] text-sm">Nous travaillons main dans la main avec les écoles professionnelles pour former la relève digitale.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Engagement -->
+    <div class="bg-[var(--bg-light)] py-20 px-4 text-center">
+        <h2 class="text-3xl font-black mb-8 italic text-[var(--brand-secondary)]">"L'Afrique ne consomme pas seulement le digital, elle le crée."</h2>
+        <p class="text-slate-500 max-w-xl mx-auto">WEBA Technologies s'engage à reverser une partie de ses ressources pour le soutien aux incubateurs locaux dans la région des Hauts-Bassins.</p>
+    </div>
+</section>
+{% endblock %}

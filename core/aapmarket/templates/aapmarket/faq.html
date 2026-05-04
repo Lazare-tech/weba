@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="py-20 bg-slate-50 font-[var(--font-main)]">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black mb-4">Questions Fréquentes</h2>
+            <p class="text-slate-500">Tout ce que vous devez savoir pour démarrer avec WEBA.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Question 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center group">
+                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Quels sont les modes de paiement acceptés ?</span>
+                    <i class="fas fa-chevron-down text-slate-400"></i>
+                </button>
+                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                    Nous acceptons les paiements par Carte Bancaire (Visa, Mastercard) et les solutions de Mobile Money locales (Orange Money, Moov Money) pour faciliter l'accès à nos services au Burkina Faso, en Côte d'Ivoire et dans toute la zone UEMOA.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center group">
+                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Puis-je utiliser mon propre nom de domaine ?</span>
+                    <i class="fas fa-chevron-down text-slate-400"></i>
+                </button>
+                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                    Oui ! Les utilisateurs du plan Entrepreneur Pro et Institutionnel peuvent lier leur propre nom de domaine (.com, .bf, .ci, etc.) à leur portfolio ou leur blog WEBA.
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                <button class="w-full p-6 text-left flex justify-between items-center group">
+                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Comment fonctionne l'Accélérateur pour les écoles ?</span>
+                    <i class="fas fa-chevron-down text-slate-400"></i>
+                </button>
+                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                    L'Accélérateur est un programme dédié aux structures de formation. Nous fournissons des licences groupées, une interface de gestion simplifiée et des formations techniques pour que vos apprenants puissent bâtir leur identité numérique pendant leur cursus.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

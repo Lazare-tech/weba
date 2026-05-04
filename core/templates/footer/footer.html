@@ -18,29 +18,29 @@
         <h3 class="mb-4 text-sm font-semibold uppercase text-white tracking-wider">Plateforme</h3>
         <ul class="space-y-3 text-sm">
           <li><a href="#" class="hover:text-yellow-500 transition-colors">Templates Portfolio</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Moteur de Blog</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Tarifs</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Démonstration</a></li>
+          <li><a href="{% url 'aapmarket:blog_engine' %}" class="hover:text-yellow-500 transition-colors">Moteur de Blog</a></li>
+          <li><a href="{% url 'aapmarket:tarifs' %}" class="hover:text-yellow-500 transition-colors">Tarifs</a></li>
+          <li><a href="{% url 'aapmarket:demo'%}" class="hover:text-yellow-500 transition-colors">Démonstration</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="mb-4 text-sm font-semibold uppercase text-white tracking-wider">Entreprise</h3>
         <ul class="space-y-3 text-sm">
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">À propos</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Accélérateur</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Carrières</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Presse</a></li>
+          <li><a href="{% url 'aapmarket:a_propos' %}" class="hover:text-yellow-500 transition-colors">À propos</a></li>
+          <li><a href="{% url 'aapmarket:accelerateur' %}" class="hover:text-yellow-500 transition-colors">Accélérateur</a></li>
+          <li><a href="{% url 'aapmarket:careers' %}" class="hover:text-yellow-500 transition-colors">Carrières</a></li>
+          <li><a href="{% url 'aapmarket:press' %}" class="hover:text-yellow-500 transition-colors">Presse</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="mb-4 text-sm font-semibold uppercase text-white tracking-wider">Support</h3>
         <ul class="space-y-3 text-sm">
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Contact</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">FAQ</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Mentions Légales</a></li>
-          <li><a href="#" class="hover:text-yellow-500 transition-colors">Confidentialité</a></li>
+          <li><a href="{% url 'aapmarket:contact' %}" class="hover:text-yellow-500 transition-colors">Contact</a></li>
+          <li><a href="{% url 'aapmarket:faq' %}" class="hover:text-yellow-500 transition-colors">FAQ</a></li>
+          <li><a href="{% url 'aapmarket:legal' %}" class="hover:text-yellow-500 transition-colors">Mentions Légales</a></li>
+          <li><a href="{% url 'aapmarket:privacy' %}" class="hover:text-yellow-500 transition-colors">Confidentialité</a></li>
         </ul>
       </div>
 
