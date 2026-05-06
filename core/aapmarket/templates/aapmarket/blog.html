@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog WEBA | Conseils & Stratégies Digitales pour l'UEMOA{% endblock %}
+
+{% block content %}
+<section class="py-24 bg-[var(--bg-page)] font-[var(--font-main)]">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Header : Vision Éditoriale -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+            <div class="max-w-2xl">
+                <span class="text-[var(--brand-primary)] font-black uppercase tracking-[0.3em] text-xs mb-4 block">Le Mag UNI x WEBA</span>
+                <h2 class="weba-heading text-4xl md:text-6xl mb-4">
+                    Décrypter le <span class="text-[var(--brand-primary)]">Digital</span>.
+                </h2>
+                <p class="weba-body text-lg text-slate-600">
+                    Conseils stratégiques et analyses techniques pour les entrepreneurs de la zone UEMOA.
+                </p>
+            </div>
+        </div>
+
+        <!-- NAVIGATION PAR CATÉGORIES (Sujets Digital) -->
+        <div class="flex flex-wrap items-center gap-3 mb-16 pb-8 border-b border-slate-100">
+            <span class="text-xs font-black uppercase tracking-widest text-slate-400 mr-4">Explorer :</span>
+            <a href="#" class="px-5 py-2 rounded-full bg-[var(--brand-secondary)] text-white text-xs font-bold transition-all shadow-lg shadow-slate-200">Tous les sujets</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">SEO & Visibilité</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">Fintech & Paiement</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">Design & UX</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">Digitalisation B2B</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">IA & Futur</a>
+            <a href="#" class="px-5 py-2 rounded-full bg-slate-50 text-slate-600 text-xs font-bold hover:bg-[var(--brand-primary-soft)] hover:text-[var(--brand-primary)] transition-all">Cyber-Sécurité</a>
+        </div>
+
+        <!-- Grille des 6 Articles -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- Article 1 | SEO & Visibilité -->
+           <!-- Article 1 | SEO & Visibilité -->
+<article class="weba-card group relative border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+    <!-- Le lien invisible qui couvre toute la carte -->
+    <a href="{% url 'aapmarket:blog_detail' %}" class="absolute inset-0 z-10" aria-label="Lire l'article sur le SEO au Burkina"></a>
+    
+    <div class="aspect-video overflow-hidden bg-slate-200">
+        <img src="https://images.unsplash.com/photo-1562577353-f5f742f3104a?q=80&w=800&auto=format&fit=crop" 
+             alt="SEO Local" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    </div>
+    
+    <div class="p-8">
+        <span class="inline-block px-3 py-1 rounded-lg bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-widest mb-4">SEO & Visibilité</span>
+        
+        <!-- Titre avec lien (doublé pour le SEO) -->
+        <h3 class="weba-heading text-xl mb-4 group-hover:text-[var(--brand-primary)] transition-colors line-clamp-2">
+            Comment optimiser son référencement pour le marché Burkinabè ?
+        </h3>
+        
+        <p class="weba-body text-xs line-clamp-2 italic mb-6 text-slate-500">
+            Maîtrisez les algorithmes pour apparaître en tête des recherches à Ouagadougou et Bobo-Dioulasso.
+        </p>
+        
+        <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6 relative z-20">
+            <span class="text-[10px] font-bold text-slate-400 italic">5 min de lecture</span>
+            <!-- L'icône indique l'action de sortie/ouverture -->
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--brand-primary)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+        </div>
+    </div>
+</article>
+            <!-- Article 2 | Fintech & Paiement -->
+            <article class="weba-card group border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+                <div class="aspect-video overflow-hidden bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=800&auto=format&fit=crop" 
+                         alt="Mobile Money" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4">Fintech & Paiement</span>
+                    <h3 class="weba-heading text-xl mb-4 group-hover:text-blue-600 transition-colors line-clamp-2">L'essor du Mobile Money : Un levier de croissance pour votre PME.</h3>
+                    <p class="weba-body text-xs line-clamp-2 italic mb-6">Intégrer Orange Money et Moov Money pour sécuriser vos transactions en ligne.</p>
+                    <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6">
+                        <span class="text-[10px] font-bold text-slate-400 italic">7 min de lecture</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-blue-600"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 | Design & UX -->
+            <article class="weba-card group border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+                <div class="aspect-video overflow-hidden bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800&auto=format&fit=crop" 
+                         alt="UX Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest mb-4">Design & UX</span>
+                    <h3 class="weba-heading text-xl mb-4 group-hover:text-indigo-600 transition-colors line-clamp-2">Pourquoi le design "Mobile-First" est vital en Afrique de l'Ouest ?</h3>
+                    <p class="weba-body text-xs line-clamp-2 italic mb-6">Adaptez votre interface aux usages locaux : 90% du trafic passe par le smartphone.</p>
+                    <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6">
+                        <span class="text-[10px] font-bold text-slate-400 italic">4 min de lecture</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-indigo-600"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 | Entrepreneuriat -->
+            <article class="weba-card group border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+                <div class="aspect-video overflow-hidden bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" 
+                         alt="Freelance" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                </div>
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-widest mb-4">Entrepreneuriat</span>
+                    <h3 class="weba-heading text-xl mb-4 group-hover:text-emerald-600 transition-colors line-clamp-2">Freelance au Burkina : Comment fixer ses tarifs en 2026 ?</h3>
+                    <p class="weba-body text-xs line-clamp-2 italic mb-6">Guide complet pour évaluer votre valeur sur le marché numérique régional.</p>
+                    <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6">
+                        <span class="text-[10px] font-bold text-slate-400 italic">6 min de lecture</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-emerald-600"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 | Digitalisation B2B -->
+            <article class="weba-card group border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+                <div class="aspect-video overflow-hidden bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" 
+                         alt="Data" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-rose-50 text-rose-600 text-[10px] font-black uppercase tracking-widest mb-4">Digitalisation B2B</span>
+                    <h3 class="weba-heading text-xl mb-4 group-hover:text-rose-600 transition-colors line-clamp-2">Transformer une école en institution digitale en 30 jours.</h3>
+                    <p class="weba-body text-xs line-clamp-2 italic mb-6">Étude de cas sur l'Accélérateur WEBA pour les centres de formation.</p>
+                    <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6">
+                        <span class="text-[10px] font-bold text-slate-400 italic">8 min de lecture</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-rose-600"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6 | IA & Futur -->
+            <article class="weba-card group border-none bg-[var(--bg-alt)] p-0 overflow-hidden hover:bg-white hover:shadow-[var(--shadow-lg)] transition-all duration-500">
+                <div class="aspect-video overflow-hidden bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" 
+                         alt="IA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest mb-4">IA & Futur</span>
+                    <h3 class="weba-heading text-xl mb-4 group-hover:text-[var(--brand-primary)] transition-colors line-clamp-2">L'IA générative : Quel impact pour les créatifs africains ?</h3>
+                    <p class="weba-body text-xs line-clamp-2 italic mb-6">Comment l'intelligence artificielle redéfinit la création de contenu locale.</p>
+                    <div class="flex items-center justify-between border-t border-[var(--border-color)] pt-6">
+                        <span class="text-[10px] font-bold text-slate-400 italic">5 min de lecture</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-900"></i>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+    <!-- SECTION : NEWSLETTER (Nouveau - Expert UI) -->
+    <section class="py-21 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]"></div>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+            <div class="bg-emerald-600 rounded-[3rem] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
+                <div class="max-w-xl text-center lg:text-left">
+                    <h2 class="weba-heading text-white text-3xl md:text-5xl">Restez à la pointe du digital.</h2>
+                    <p class="text-emerald-100 mt-4 weba-body">Rejoignez +2 000 entrepreneurs et recevez nos conseils hebdomadaires pour faire croître votre business en Afrique.</p>
+                </div>
+                <div class="w-full max-w-md">
+                    <form class="flex flex-col sm:flex-row gap-4 p-2 bg-white/10 rounded-2xl backdrop-blur-md">
+                        <input type="email" placeholder="votre@email.com" class="flex-grow bg-white rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-white border-none text-slate-900 font-medium">
+                        <button type="submit" class="bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-black transition-all">S'inscrire</button>
+                    </form>
+                    <p class="text-[10px] text-emerald-200 mt-4 text-center lg:text-left tracking-wider uppercase font-bold">Pas de spam. Désinscription en un clic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

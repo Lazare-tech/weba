@@ -1,47 +1,103 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 
-<section class="py-20 bg-slate-50 font-[var(--font-main)]">
+{% block title %}FAQ | Questions Fréquentes WEBA{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-[var(--bg-alt)] font-[var(--font-main)]">
     <div class="max-w-4xl mx-auto px-4">
+        <!-- En-tête -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-black mb-4">Questions Fréquentes</h2>
-            <p class="text-slate-500">Tout ce que vous devez savoir pour démarrer avec WEBA.</p>
+            <h2 class="weba-heading text-4xl mb-4">Questions <span class="text-[var(--brand-primary)]">Fréquentes</span></h2>
+            <p class="weba-body">Tout ce que vous devez savoir pour propulser votre présence numérique avec WEBA.</p>
         </div>
 
-        <div class="space-y-4">
+        <!-- Accordéons avec Alpine.js -->
+        <div class="space-y-4" x-data="{ active: null }">
+            
             <!-- Question 1 -->
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group">
-                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Quels sont les modes de paiement acceptés ?</span>
-                    <i class="fas fa-chevron-down text-slate-400"></i>
+            <div class="bg-white rounded-[var(--radius-card)] border border-[var(--border-color)] overflow-hidden transition-all shadow-[var(--shadow-sm)]">
+                <button 
+                    @click="active !== 1 ? active = 1 : active = null"
+                    class="w-full p-6 text-left flex justify-between items-center group focus:outline-none"
+                >
+                    <span class="font-bold text-lg text-[var(--brand-secondary)] group-hover:text-[var(--brand-primary)] transition-colors">
+                        Quels sont les modes de paiement acceptés ?
+                    </span>
+                    <i data-lucide="chevron-down" 
+                       class="text-slate-400 transition-transform duration-300"
+                       :class="active === 1 ? 'rotate-180 text-[var(--brand-primary)]' : ''">
+                    </i>
                 </button>
-                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
-                    Nous acceptons les paiements par Carte Bancaire (Visa, Mastercard) et les solutions de Mobile Money locales (Orange Money, Moov Money) pour faciliter l'accès à nos services au Burkina Faso, en Côte d'Ivoire et dans toute la zone UEMOA.
+                <div 
+                    x-show="active === 1" 
+                    x-collapse
+                    class="px-6 pb-6"
+                >
+                    <p class="weba-body text-sm leading-relaxed">
+                        Nous facilitons l'accès à nos services au <strong>Burkina Faso</strong>, en <strong>Côte d'Ivoire</strong> et dans toute la zone <strong>UEMOA</strong>. Nous acceptons les paiements par Carte Bancaire (Visa, Mastercard) ainsi que les solutions de Mobile Money locales telles qu'Orange Money et Moov Money.
+                    </p>
                 </div>
             </div>
 
             <!-- Question 2 -->
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group">
-                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Puis-je utiliser mon propre nom de domaine ?</span>
-                    <i class="fas fa-chevron-down text-slate-400"></i>
+            <div class="bg-white rounded-[var(--radius-card)] border border-[var(--border-color)] overflow-hidden transition-all shadow-[var(--shadow-sm)]">
+                <button 
+                    @click="active !== 2 ? active = 2 : active = null"
+                    class="w-full p-6 text-left flex justify-between items-center group focus:outline-none"
+                >
+                    <span class="font-bold text-lg text-[var(--brand-secondary)] group-hover:text-[var(--brand-primary)] transition-colors">
+                        Puis-je utiliser mon propre nom de domaine ?
+                    </span>
+                    <i data-lucide="chevron-down" 
+                       class="text-slate-400 transition-transform duration-300"
+                       :class="active === 2 ? 'rotate-180 text-[var(--brand-primary)]' : ''">
+                    </i>
                 </button>
-                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
-                    Oui ! Les utilisateurs du plan Entrepreneur Pro et Institutionnel peuvent lier leur propre nom de domaine (.com, .bf, .ci, etc.) à leur portfolio ou leur blog WEBA.
+                <div 
+                    x-show="active === 2" 
+                    x-collapse
+                    class="px-6 pb-6"
+                >
+                    <p class="weba-body text-sm leading-relaxed">
+                        Absolument ! Les utilisateurs des plans <strong>Entrepreneur Pro</strong> et <strong>Institutionnel</strong> ont la possibilité de lier leur propre nom de domaine avec des extensions telles que .com, .bf ou .ci à leur plateforme WEBA.
+                    </p>
                 </div>
             </div>
 
             <!-- Question 3 -->
-            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-                <button class="w-full p-6 text-left flex justify-between items-center group">
-                    <span class="font-bold text-lg group-hover:text-[var(--brand-primary)] transition-colors">Comment fonctionne l'Accélérateur pour les écoles ?</span>
-                    <i class="fas fa-chevron-down text-slate-400"></i>
+            <div class="bg-white rounded-[var(--radius-card)] border border-[var(--border-color)] overflow-hidden transition-all shadow-[var(--shadow-sm)]">
+                <button 
+                    @click="active !== 3 ? active = 3 : active = null"
+                    class="w-full p-6 text-left flex justify-between items-center group focus:outline-none"
+                >
+                    <span class="font-bold text-lg text-[var(--brand-secondary)] group-hover:text-[var(--brand-primary)] transition-colors">
+                        Comment fonctionne l'Accélérateur pour les écoles ?
+                    </span>
+                    <i data-lucide="chevron-down" 
+                       class="text-slate-400 transition-transform duration-300"
+                       :class="active === 3 ? 'rotate-180 text-[var(--brand-primary)]' : ''">
+                    </i>
                 </button>
-                <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
-                    L'Accélérateur est un programme dédié aux structures de formation. Nous fournissons des licences groupées, une interface de gestion simplifiée et des formations techniques pour que vos apprenants puissent bâtir leur identité numérique pendant leur cursus.
+                <div 
+                    x-show="active === 3" 
+                    x-collapse
+                    class="px-6 pb-6"
+                >
+                    <p class="weba-body text-sm leading-relaxed">
+                        L'Accélérateur est un programme conçu pour les structures de formation. Nous fournissons des licences groupées, une interface de gestion simplifiée et un accompagnement technique pour permettre à vos apprenants de bâtir leur identité numérique professionnelle durant leur cursus.
+                    </p>
                 </div>
             </div>
+
+        </div>
+
+        <!-- CTA de fin -->
+        <div class="mt-16 text-center p-8 bg-white rounded-[var(--radius-card)] border border-[var(--border-color)]">
+            <p class="weba-body mb-6">Vous ne trouvez pas la réponse à votre question ?</p>
+            <a href="{% url 'aapmarket:contact' %}" class="btn-dark">
+                Contacter le support <i data-lucide="message-circle" class="ml-2 w-4 h-4"></i>
+            </a>
         </div>
     </div>
 </section>

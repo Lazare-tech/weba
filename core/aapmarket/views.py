@@ -16,6 +16,7 @@ class BlogEngineView(TemplateView):
     """Présentation du moteur de blog no-code"""
     template_name = "aapmarket/blog_engine.html"
 
+
 class TarifsView(TemplateView):
     """Grille tarifaire (Initial, Pro, Institution)"""
     template_name = "aapmarket/pricing.html"
@@ -28,7 +29,19 @@ class DemoView(TemplateView):
 # ==========================================
 # 2. ENTREPRISE (Vision & Marque)
 # ==========================================
+class ServicesView(TemplatesView):
+    """Présentation des services de WEBA"""
+    template_name = "aapmarket/services.html"
 
+class BlogView(TemplateView):
+    """Présentation du blog de WEBA"""
+    template_name = "aapmarket/blog.html"
+
+
+class BlogDetailView(TemplateView):
+    """Détails d'un article de blog"""
+    template_name = "aapmarket/blog_detail_article.html"
+    
 class AProposView(TemplateView):
     """Histoire de WEBA et lien avec UNI"""
     template_name = "aapmarket/about.html"

@@ -114,6 +114,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
         'abonnements.context_processors.plan_utilisateur',  # ← ajoute
          'portfolio.context_processors.portfolio_tokens',
+         'portfolio.context_processors.template_context',
 
             ],
         },

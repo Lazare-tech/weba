@@ -12,6 +12,9 @@ urlpatterns = [
     path('demo/', views.DemoView.as_view(), name='demo'),
 
     # --- Entreprise ---
+    path('blog/', views.BlogView.as_view(), name='blog'),
+    path('blog/detail/', views.BlogDetailView.as_view(), name='blog_detail'),
+    path('services/', views.ServicesView.as_view(), name='services'),
     path('a-propos/', views.AProposView.as_view(), name='a_propos'),
     path('accelerateur/', views.AccelerateurView.as_view(), name='accelerateur'),
     path('carrieres/', views.CareersView.as_view(), name='careers'),

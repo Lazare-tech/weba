@@ -1,49 +1,83 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Notre Vision | WEBA & UNI{% endblock %}
+
 {% block content %}
-<section class="font-[var(--font-main)]">
-    <!-- Hero Section : Vision -->
-    <div class="bg-[var(--brand-secondary)] py-24 text-center px-4">
-        <span class="text-[var(--brand-primary)] font-bold uppercase tracking-widest text-sm">Notre Mission</span>
-        <h1 class="text-4xl md:text-6xl font-black text-white mt-4 mb-6">Propulser l'excellence <br>en Afrique de l'Ouest.</h1>
-        <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
-            WEBA est né d'une conviction simple : le talent n'a pas de frontières, mais il a besoin d'outils. 
-            Sous l'impulsion de notre marque parente <strong>UNI</strong>, nous bâtissons l'infrastructure numérique 
-            qui permet aux créatifs et entrepreneurs de la zone UEMOA de briller à l'échelle globale.
-        </p>
+<section class="font-[var(--font-main)] bg-[var(--bg-page)]">
+    <!-- Hero Section : Vision (Slate Background) -->
+    <div class="bg-[var(--brand-secondary)] py-24 text-center px-4 relative overflow-hidden">
+        <!-- Décoration subtile -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-[var(--brand-primary)] opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="relative z-10">
+            <span class="text-[var(--brand-primary)] font-black uppercase tracking-[0.3em] text-xs">Notre Mission</span>
+            <h1 class="text-4xl md:text-7xl font-black text-white mt-6 mb-8 leading-[1.1]">
+                Propulser l'excellence <br><span class="text-[var(--brand-primary)]">en Afrique de l'Ouest.</span>
+            </h1>
+            <p class="text-slate-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-medium">
+                WEBA est né d'une conviction simple : le talent n'a pas de frontières, mais il a besoin d'outils performants. 
+                Sous l'impulsion de notre marque parente <strong class="text-white">UNI</strong>, nous bâtissons l'infrastructure numérique 
+                qui permet aux créatifs de la zone UEMOA de briller à l'échelle globale.
+            </p>
+        </div>
     </div>
 
-    <!-- Valeurs & Impact -->
-    <div class="max-w-7xl mx-auto py-20 px-4">
+    <!-- Valeurs & Impact (Emerald & Slate mix) -->
+    <div class="max-w-7xl mx-auto py-24 px-4">
         <div class="grid md:grid-cols-3 gap-12">
-            <div class="space-y-4">
-                <div class="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] text-2xl">
-                    <i class="fas fa-fingerprint"></i>
+            <!-- Identité -->
+            <div class="weba-card group hover:border-[var(--brand-primary)] transition-all">
+                <div class="w-14 h-14 bg-[var(--brand-primary-soft)] rounded-2xl flex items-center justify-center text-[var(--brand-primary)] mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="fingerprint" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold">Identité Locale</h3>
-                <p class="text-[var(--text-muted)] text-sm">Nous respectons les codes et les besoins spécifiques des marchés de Bobo-Dioulasso à Abidjan.</p>
+                <h3 class="weba-heading text-2xl mb-4 text-[var(--brand-secondary)]">Identité Locale</h3>
+                <p class="weba-body text-sm">
+                    Nous respectons les codes et les besoins spécifiques des marchés locaux, de <strong>Bobo-Dioulasso</strong> à <strong>Abidjan</strong>.
+                </p>
             </div>
-            <div class="space-y-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl">
-                    <i class="fas fa-bolt"></i>
+
+            <!-- Performance -->
+            <div class="weba-card group hover:border-blue-400 transition-all">
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="zap" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold">Performance Tech</h3>
-                <p class="text-[var(--text-muted)] text-sm">Vitesse, SEO et fiabilité. Nos outils sont conçus pour fonctionner même sur des réseaux instables.</p>
+                <h3 class="weba-heading text-2xl mb-4 text-[var(--brand-secondary)]">Performance Tech</h3>
+                <p class="weba-body text-sm">
+                    Vitesse, SEO et fiabilité. Nos outils sont conçus pour offrir une expérience fluide, même sur des réseaux mobiles instables.
+                </p>
             </div>
-            <div class="space-y-4">
-                <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl">
-                    <i class="fas fa-handshake"></i>
+
+            <!-- Collaboration -->
+            <div class="weba-card group hover:border-indigo-400 transition-all">
+                <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="users" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold">Collaboration</h3>
-                <p class="text-[var(--text-muted)] text-sm">Nous travaillons main dans la main avec les écoles professionnelles pour former la relève digitale.</p>
+                <h3 class="weba-heading text-2xl mb-4 text-[var(--brand-secondary)]">Collaboration</h3>
+                <p class="weba-body text-sm">
+                    Nous travaillons main dans la main avec les écoles professionnelles pour former et certifier la relève digitale africaine.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Section Engagement -->
-    <div class="bg-[var(--bg-light)] py-20 px-4 text-center">
-        <h2 class="text-3xl font-black mb-8 italic text-[var(--brand-secondary)]">"L'Afrique ne consomme pas seulement le digital, elle le crée."</h2>
-        <p class="text-slate-500 max-w-xl mx-auto">WEBA Technologies s'engage à reverser une partie de ses ressources pour le soutien aux incubateurs locaux dans la région des Hauts-Bassins.</p>
+    <!-- Section Engagement & Signature -->
+    <div class="bg-[var(--bg-alt)] py-24 px-4 text-center border-y border-[var(--border-color)]">
+        <div class="max-w-4xl mx-auto">
+            <i data-lucide="quote" class="w-12 h-12 text-[var(--brand-primary)] mx-auto mb-8 opacity-20"></i>
+            <h2 class="weba-heading text-3xl md:text-4xl mb-10 italic">
+                "L'Afrique ne consomme pas seulement le digital, <span class="text-[var(--brand-primary)] text-not-italic">elle le crée.</span>"
+            </h2>
+            <p class="weba-body max-w-2xl mx-auto text-lg">
+                <strong>WEBA Technologies</strong> s'engage activement pour l'écosystème local. Nous reversons une partie de nos ressources pour le soutien aux incubateurs de la région des <strong>Hauts-Bassins</strong>.
+            </p>
+            
+            <div class="mt-12 flex items-center justify-center gap-4">
+                <div class="h-px w-12 bg-[var(--border-color)]"></div>
+                <span class="text-[var(--brand-secondary)] font-black uppercase tracking-widest text-xs">Propulsé par UNI</span>
+                <div class="h-px w-12 bg-[var(--border-color)]"></div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

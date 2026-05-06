@@ -1,5 +1,7 @@
+from django.shortcuts import render
+from portfolio.models import TemplateMetadata
 from .utils import construire_context_portfolio, get_tokens_pour_template
-
+from .models import CategorieTemplate
 
 def portfolio_tokens(request):
     """
@@ -33,3 +35,11 @@ def portfolio_tokens(request):
 
     # Cas 3 — vrai portfolio → selon est_personnalise
     return {'design_tokens': construire_context_portfolio(portfolio)}
+
+#
+def template_context(request):
+    """Rend les templates accessibles partout (Home, Services, etc.)"""
+    return {
+        'templates': TemplateMetadata.objects.all()[:3], # Top 3 pour la Home
+        'all_categories': CategorieTemplate.objects.all(),
+    }

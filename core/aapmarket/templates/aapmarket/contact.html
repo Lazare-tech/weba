@@ -1,52 +1,68 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Contactez-nous | WEBA{% endblock %}
+
 {% block content %}
-<section class="py-20 bg-white font-[var(--font-main)]">
+<section class="py-20 bg-[var(--bg-page)] font-[var(--font-main)]">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="grid lg:grid-cols-2 gap-20">
+        <div class="grid lg:grid-cols-2 gap-20 items-start">
             
             <!-- Colonne Info & Réseaux -->
             <div class="space-y-8">
                 <div>
-                    <h2 class="text-4xl font-black text-[var(--brand-secondary)] mb-4">Parlons de votre <span class="text-[var(--brand-primary)]">projet</span>.</h2>
-                    <p class="text-[var(--text-muted)]">Une question technique ? Un projet de partenariat pour votre école ou structure ? Notre équipe est à votre écoute.</p>
+                    <h2 class="weba-heading text-4xl mb-4">Parlons de votre <span class="text-[var(--brand-primary)]">projet</span>.</h2>
+                    <p class="weba-body">Une question technique ? Un projet de partenariat pour votre école ou structure ? Notre équipe est à votre écoute.</p>
                 </div>
 
                 <div class="space-y-6">
+                    <!-- Email -->
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-[var(--bg-light)] flex items-center justify-center text-[var(--brand-secondary)]"><i class="fas fa-envelope"></i></div>
+                        <div class="w-12 h-12 rounded-2xl bg-[var(--brand-primary-soft)] flex items-center justify-center text-[var(--brand-primary)]">
+                            <i data-lucide="mail"></i>
+                        </div>
                         <div>
-                            <p class="text-xs font-bold uppercase text-slate-400">Email</p>
-                            <p class="font-bold">contact@weba.africa</p>
+                            <p class="text-xs font-black uppercase text-slate-400">Email</p>
+                            <p class="font-bold text-[var(--brand-secondary)]">contact@weba.africa</p>
                         </div>
                     </div>
+                    <!-- Localisation -->
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-[var(--bg-light)] flex items-center justify-center text-[var(--brand-secondary)]"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i data-lucide="map-pin"></i>
+                        </div>
                         <div>
-                            <p class="text-xs font-bold uppercase text-slate-400">Siège Social</p>
-                            <p class="font-bold">Bobo-Dioulasso, Burkina Faso</p>
+                            <p class="text-xs font-black uppercase text-slate-400">Siège Social</p>
+                            <p class="font-bold text-[var(--brand-secondary)]">Bobo-Dioulasso, Burkina Faso</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-6 rounded-3xl bg-[var(--brand-secondary)] text-white">
-                    <h4 class="font-bold mb-2">Support Prioritaire</h4>
-                    <p class="text-sm text-slate-400 mb-4">Client Pro ou Institutionnel ? Utilisez votre ligne dédiée via votre console de gestion.</p>
-                    <a href="#" class="text-[var(--brand-primary)] font-bold text-sm">Accéder au Dashboard →</a>
+                <!-- Card Support Prioritaire -->
+                <div class="p-8 rounded-[var(--radius-card)] bg-[var(--brand-secondary)] text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h4 class="font-bold text-xl mb-2">Support Prioritaire</h4>
+                        <p class="text-sm text-slate-400 mb-6">Client Pro ou Institutionnel ? Utilisez votre ligne dédiée via votre console de gestion.</p>
+                        <a href="#" class="text-[var(--brand-primary)] font-black text-sm flex items-center gap-2 hover:translate-x-1 transition-transform">
+                            Accéder au Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <!-- Décoration en arrière-plan -->
+                    <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-[var(--brand-primary)] opacity-10 rounded-full"></div>
                 </div>
             </div>
 
             <!-- Formulaire de Contact Expert UI -->
-            <div class="bg-white p-8 rounded-[var(--radius-ui)] shadow-2xl border border-slate-100">
+            <div class="weba-card shadow-[var(--shadow-lg)]">
                 <form action="#" class="space-y-6">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label class="text-xs font-black uppercase">Nom complet</label>
-                            <input type="text" class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-[var(--brand-primary)] outline-none" placeholder="Ex: Jean Traoré">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Nom complet</label>
+                            <input type="text" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="Ex: Jean Traoré">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs font-black uppercase">Type de demande</label>
-                            <select class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-[var(--brand-primary)] outline-none">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Type de demande</label>
+                            <select class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all appearance-none">
                                 <option>Partenariat École</option>
                                 <option>Support Technique</option>
                                 <option>Demande de Devis</option>
@@ -55,14 +71,17 @@
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-xs font-black uppercase">Adresse Email</label>
-                        <input type="email" class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-[var(--brand-primary)] outline-none" placeholder="nom@entreprise.com">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Adresse Email</label>
+                        <input type="email" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="nom@entreprise.com">
                     </div>
                     <div class="space-y-2">
-                        <label class="text-xs font-black uppercase">Votre Message</label>
-                        <textarea rows="5" class="w-full p-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-[var(--brand-primary)] outline-none" placeholder="Dites-nous comment nous pouvons vous aider..."></textarea>
+                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Votre Message</label>
+                        <textarea rows="4" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="Dites-nous comment nous pouvons vous aider..."></textarea>
                     </div>
-                    <button type="submit" class="w-full py-4 bg-[var(--brand-secondary)] text-white font-black rounded-xl hover:bg-black transition-all">Envoyer le message</button>
+                    <!-- Bouton noir unifié -->
+                    <button type="submit" class="btn-dark w-full text-base py-5">
+                        Envoyer le message <i data-lucide="send" class="ml-2 w-4 h-4"></i>
+                    </button>
                 </form>
             </div>
         </div>

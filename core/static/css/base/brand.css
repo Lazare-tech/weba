@@ -1,35 +1,100 @@
 :root {
-    /* Palette de Couleurs - Institutionnel & Tech */
-    --brand-primary: #eab308;       /* Jaune Startup - Énergie */
-    --brand-primary-soft: #fefce8;
-    --brand-secondary: #0f172a;     /* Slate 900 - Sérieux Institutionnel */
-    --brand-accent: #3b82f6;        /* Bleu Tech - Confiance */
+    /* Palette de Couleurs issue du Template WEBA */
+    --brand-primary: #10b981;       /* Emerald 600 - Croissance & Succès */
+    --brand-primary-soft: #ecfdf5;  /* Emerald 50 - Badges & Hover */
+    --brand-secondary: #0f172a;     /* Slate 900 - Professionnalisme & Titres */
+    --brand-secondary-soft: #1e293b;/* Slate 800 - Hover Boutons Noirs */
+    --brand-accent: #eab308;        /* Yellow 500 - Attention & Energie */
     
     /* Typographie */
-    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
+    
+    /* Couleurs de Texte */
+    --text-main: #0f172a;           /* Slate 900 */
+    --text-muted: #475569;          /* Slate 600 */
+    --text-on-dark: #f8fafc;        /* Slate 50 */
     
     /* Éléments de Surface */
     --bg-page: #ffffff;
-    --bg-alt: #f8fafc;
-    --surface-card: #ffffff;
-    --border-color: #e2e8f0;
+    --bg-alt: #f8fafc;              /* Slate 50 */
+    --border-color: #e2e8f0;        /* Slate 200 */
     
     /* Design System */
-    --radius-button: 0.75rem;
-    --radius-card: 1.5rem;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+    --radius-button: 9999px;        /* Full Rounded comme dans le template */
+    --radius-card: 1.5rem;          /* 24px - Rounded-3xl */
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Classes Globales Expert UI */
-.weba-heading { font-family: var(--font-heading); font-weight: 800; color: var(--brand-secondary); }
-.weba-body { font-family: var(--font-body); color: #475569; line-height: 1.7; }
-.btn-primary { 
-    background: var(--brand-primary); 
-    border-radius: var(--radius-button); 
-    padding: 0.75rem 1.5rem;
+/* --- Classes Globales Expert UI --- */
+
+/* Titres (Expert UX) */
+.weba-heading { 
+    font-family: var(--font-heading); 
+    font-weight: 800; 
+    color: var(--brand-secondary); 
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+/* Texte courant (Expert Marketing) */
+.weba-body { 
+    font-family: var(--font-body); 
+    color: var(--text-muted); 
+    line-height: 1.625; 
+}
+
+/* --- Boutons Unifiés --- */
+
+/* Bouton Noir (Style Header/Hero) */
+.btn-dark {
+    background-color: var(--brand-secondary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-button);
     font-weight: 700;
-    transition: var(--brand-transition);
+    font-size: 0.875rem;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-dark:hover {
+    background-color: var(--brand-secondary-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Bouton Emerald (Style Call-to-Action) */
+.btn-primary { 
+    background-color: var(--brand-primary); 
+    color: white;
+    padding: 1.25rem 2.5rem;
+    border-radius: var(--radius-button);
+    font-weight: 900;
+    font-size: 1.125rem;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary:hover {
+    background-color: #059669; /* Emerald 700 */
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Cartes (SaaS Style) */
+.weba-card {
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    transition: var(--transition);
+}
+.weba-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
 }

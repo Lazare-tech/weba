@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nos Services | Accélération Digitale WEBA{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-[var(--bg-page)] font-[var(--font-main)]">
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Header -->
+        <div class="text-center mb-20">
+            <h1 class="weba-heading text-4xl md:text-6xl mb-6">
+                Propulsez votre <span class="text-[var(--brand-primary)]">présence digitale</span>.
+            </h1>
+            <p class="weba-body text-xl max-w-3xl mx-auto">
+                Des solutions concrètes pour les entrepreneurs burkinabè, du portfolio au conseil stratégique.
+            </p>
+        </div>
+
+        <!-- ZONE 1 : LE PRODUIT PHARE (Prêt à l'emploi) -->
+        <div class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="weba-heading text-3xl">Services <span class="text-emerald-600">Actifs</span></h2>
+                <div class="h-px flex-grow bg-slate-100"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Portfolio : Ton parcours complet -->
+                <div class="weba-card border-2 border-emerald-500 shadow-xl relative overflow-hidden group">
+                    <div class="absolute top-4 right-4 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
+                        Disponible
+                    </div>
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout"></i>
+                    </div>
+                    <h3 class="weba-heading text-2xl mb-4">Templates Portfolios</h3>
+                    <p class="weba-body text-sm mb-6">Notre solution la plus complète. Créez une vitrine pro, listez vos services et brillez en ligne en quelques minutes.</p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Parcours utilisateur 100% opérationnel</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Optimisation Mobile & SEO</li>
+                    </ul>
+                    <a href="{% url 'portfolio:template_list' %}" class="btn-primary w-full text-center">Lancer mon Portfolio</a>
+                </div>
+
+                <!-- Conseil & Noms de domaine (Ton expertise UNI) -->
+                <div class="weba-card border-2 border-slate-900 bg-slate-900 text-white group">
+                    <div class="w-14 h-14 bg-white/10 text-[var(--brand-primary)] rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <h3 class="weba-heading text-2xl mb-4 text-white">Identité & Nom de domaine</h3>
+                    <p class="text-slate-400 text-sm mb-6">Plus qu'une adresse, votre nom de domaine est votre marque. Nous vous guidons pour choisir entre une extension locale (.bf) ou internationale (.com, .net).</p>
+                    <div class="bg-white/5 p-4 rounded-xl mb-6">
+                        <p class="text-xs font-bold text-[var(--brand-primary)] uppercase tracking-widest mb-2 italic">Le conseil de l'expert :</p>
+                        <p class="text-xs text-slate-300">Le .bf renforce votre souveraineté et votre confiance locale, tandis que le .com vous ouvre les portes de l'international.</p>
+                    </div>
+                    <a href="{% url 'aapmarket:contact' %}" class="text-[var(--brand-primary)] font-bold text-sm flex items-center gap-2">
+                        Demander un conseil <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ZONE 2 : LA VISION (Bientôt disponible) -->
+        <div class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="weba-heading text-3xl">Évolutions <span class="text-blue-600">Futures</span></h2>
+                <div class="h-px flex-grow bg-slate-100"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-70">
+                <!-- Blog Engine -->
+                <div class="weba-card border-dashed border-2 border-slate-200 grayscale hover:grayscale-0 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="pen-tool"></i>
+                        </div>
+                        <span class="text-[8px] font-black bg-blue-50 text-blue-600 px-2 py-1 rounded-full uppercase tracking-tighter">Coming Soon</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Moteur de Blog</h3>
+                    <p class="text-xs text-slate-500">Pour établir votre autorité avec des articles et du contenu dynamique.</p>
+                </div>
+
+                <!-- Automatisations n8n -->
+                <div class="weba-card border-dashed border-2 border-slate-200 grayscale hover:grayscale-0 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <span class="text-[8px] font-black bg-purple-50 text-purple-600 px-2 py-1 rounded-full uppercase tracking-tighter">Configuration</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Workflows n8n</h3>
+                    <p class="text-xs text-slate-500">Automatisez vos tâches répétitives via notre infrastructure sécurisée.</p>
+                </div>
+
+                <!-- Site Vitrine -->
+                <div class="weba-card border-dashed border-2 border-slate-200 grayscale hover:grayscale-0 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="monitor"></i>
+                        </div>
+                        <span class="text-[8px] font-black bg-orange-50 text-orange-600 px-2 py-1 rounded-full uppercase tracking-tighter">Roadmap</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Site Vitrine complet</h3>
+                    <p class="text-xs text-slate-500">Des structures multi-pages complexes pour les entreprises établies.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section>
+<!-- Section "Pourquoi nous choisir" (Expert aapmarket) -->
+<div class="bg-[var(--bg-alt)] rounded-[var(--radius-card)] p-12 border border-[var(--border-color)]">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="weba-heading text-3xl mb-6">L'infrastructure <span class="text-[var(--brand-primary)]">UNI</span> au service de votre talent.</h2>
+            <p class="weba-body mb-8">
+                Nos services ne sont pas de simples outils ; ils sont le fruit d'une compréhension profonde des défis numériques en Afrique de l'Ouest.
+            </p>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="flex flex-col gap-2">
+                    <span class="text-2xl font-black text-[var(--brand-secondary)]">99.9%</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Disponibilité</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-2xl font-black text-[var(--brand-secondary)]">< 2 min</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Déploiement</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="relative bg-white p-8 rounded-3xl shadow-xl">
+            <div class="space-y-4">
+                <!-- Déploiement Performant (Ajouté) -->
+                <div class="flex items-center gap-4 border-b pb-4">
+                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center"><i data-lucide="server"></i></div>
+                    <span class="font-bold text-sm">Déploiement performant (VPS)</span>
+                </div>
+
+                <div class="flex items-center gap-4 border-b pb-4">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="database"></i></div>
+                    <span class="font-bold text-sm">Commencez avec votre Portfolio aujourd'hui.</span>
+                </div>
+
+                <div class="flex items-center gap-4 border-b pb-4">
+                    <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center"><i data-lucide="smartphone"></i></div>
+                    <span class="font-bold text-sm">Expérience Mobile-First</span>
+                </div>
+
+                <!-- Évolution Future (Grisé) -->
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-slate-50 text-slate-400 rounded-lg flex items-center justify-center"><i data-lucide="zap"></i></div>
+                    <span class="font-bold text-sm text-slate-400 italic">Évoluez vers le Blog et l'Automatisation demain.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

@@ -1,57 +1,97 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Démonstration Live | WEBA{% endblock %}
+
 {% block content %}
-<section class="py-20 bg-[var(--bg-light)] font-[var(--font-main)]">
+<section class="py-20 bg-[var(--bg-alt)] font-[var(--font-main)]">
     <div class="max-w-7xl mx-auto px-4">
+        <!-- En-tête Marketing -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black text-[var(--brand-secondary)] mb-4">Testez la <span class="text-[var(--brand-primary)]">Puissance</span>.</h2>
-            <p class="text-[var(--text-muted)] max-w-2xl mx-auto">Pas besoin de compte. Découvrez comment l'écosystème WEBA transforme la création numérique en un jeu d'enfant.</p>
+            <h2 class="weba-heading text-4xl md:text-5xl mb-4">
+                Testez la <span class="text-[var(--brand-primary)]">Puissance</span>.
+            </h2>
+            <p class="weba-body max-w-2xl mx-auto">
+                Pas besoin de compte. Découvrez comment l'écosystème WEBA transforme la création numérique en un jeu d'enfant pour les entrepreneurs d'Afrique de l'Ouest.
+            </p>
         </div>
 
         <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Espace Vidéo Demo -->
+            <!-- Espace Vidéo Demo (Lecteur SaaS Style) -->
             <div class="lg:col-span-2 space-y-6">
-                <div class="bg-white p-4 rounded-[2rem] shadow-xl border border-slate-200">
-                    <div class="aspect-video bg-[var(--brand-secondary)] rounded-[1.5rem] flex items-center justify-center relative overflow-hidden group">
-                        <i class="fas fa-play text-white text-6xl group-hover:scale-110 transition-transform cursor-pointer"></i>
-                        <span class="absolute bottom-6 left-6 text-white/50 text-xs font-mono">demo_web_accelerator_v2.mp4</span>
+                <div class="bg-white p-4 rounded-[var(--radius-card)] shadow-[var(--shadow-lg)] border border-[var(--border-color)]">
+                    <div class="aspect-video bg-[var(--brand-secondary)] rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                        <!-- Icône de lecture Emerald -->
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform cursor-pointer">
+                            <i data-lucide="play" class="text-[var(--brand-primary)] fill-[var(--brand-primary)] w-8 h-8 ml-1"></i>
+                        </div>
+                        <span class="absolute bottom-6 left-6 text-white/30 text-[10px] font-mono tracking-widest uppercase">Stream: weba_demo_2026.mp4</span>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-sm mb-2">Interface No-Code</h4>
-                        <p class="text-xs text-slate-500">Zéro ligne de code nécessaire pour un résultat professionnel.</p>
+                
+                <!-- Micro-Features -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="weba-card p-6 flex items-start gap-4">
+                        <div class="p-3 bg-[var(--brand-primary-soft)] text-[var(--brand-primary)] rounded-xl">
+                            <i data-lucide="layout"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-[var(--brand-secondary)]">Interface No-Code</h4>
+                            <p class="text-xs text-slate-500 mt-1">Zéro ligne de code nécessaire pour un résultat professionnel immédiat.</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-sm mb-2">Temps de déploiement</h4>
-                        <p class="text-xs text-slate-500">Moins de 2 minutes pour passer du concept à la mise en ligne.</p>
+                    <div class="weba-card p-6 flex items-start gap-4">
+                        <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-[var(--brand-secondary)]">Vitesse de Déploiement</h4>
+                            <p class="text-xs text-slate-500 mt-1">Moins de 2 minutes pour passer de l'idée à la mise en ligne réelle.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar interactive -->
-            <div class="bg-white p-8 rounded-[2rem] border border-slate-200 flex flex-col">
-                <h3 class="font-bold text-xl mb-6">Prêt à essayer ?</h3>
-                <div class="space-y-4 mb-8">
-                    <div class="p-4 rounded-xl bg-slate-50 border-l-4 border-[var(--brand-primary)]">
-                        <p class="text-xs font-black uppercase text-slate-400 mb-1">Étape 1</p>
-                        <p class="text-sm font-bold">Choisissez un modèle</p>
+            <!-- Sidebar interactive / Étapes -->
+            <div class="bg-white p-8 rounded-[var(--radius-card)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] flex flex-col">
+                <h3 class="weba-heading text-xl mb-8 text-center lg:text-left">Prêt à essayer ?</h3>
+                
+                <div class="space-y-6 mb-12">
+                    <!-- Étape 1 : Active -->
+                    <div class="relative pl-10">
+                        <div class="absolute left-0 top-0 w-7 h-7 bg-[var(--brand-primary)] text-white rounded-full flex items-center justify-center text-xs font-black shadow-lg shadow-emerald-100">1</div>
+                        <p class="text-sm font-bold text-[var(--brand-secondary)]">Choisissez un modèle</p>
+                        <p class="text-xs text-slate-400 mt-1">Sélectionnez un template adapté à votre secteur.</p>
                     </div>
-                    <div class="p-4 rounded-xl bg-white border border-slate-100">
-                        <p class="text-xs font-black uppercase text-slate-400 mb-1">Étape 2</p>
-                        <p class="text-sm font-bold text-slate-400">Personnalisez vos couleurs</p>
+                    
+                    <!-- Étape 2 -->
+                    <div class="relative pl-10 opacity-50">
+                        <div class="absolute left-0 top-0 w-7 h-7 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-xs font-black border border-slate-200">2</div>
+                        <p class="text-sm font-bold text-slate-500">Personnalisez vos couleurs</p>
                     </div>
-                    <div class="p-4 rounded-xl bg-white border border-slate-100">
-                        <p class="text-xs font-black uppercase text-slate-400 mb-1">Étape 3</p>
-                        <p class="text-sm font-bold text-slate-400">Publiez sur votre domaine</p>
+                    
+                    <!-- Étape 3 -->
+                    <div class="relative pl-10 opacity-50">
+                        <div class="absolute left-0 top-0 w-7 h-7 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-xs font-black border border-slate-200">3</div>
+                        <p class="text-sm font-bold text-slate-500">Publiez sur votre domaine</p>
                     </div>
                 </div>
+
+                <!-- Action unifiée -->
                 <div class="mt-auto">
-                    <p class="text-xs text-center text-slate-400 mb-6 italic">Rejoignez plus de 500 entrepreneurs ouest-africains.</p>
-                    <button class="w-full py-4 bg-[var(--brand-primary)] text-[var(--brand-secondary)] font-black rounded-xl shadow-lg">Lancer la démo live</button>
+                    <div class="flex items-center justify-center gap-2 mb-6">
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 shadow-sm"></div>
+                            <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300 shadow-sm"></div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Rejoignez +500 entrepreneurs</p>
+                    </div>
+                    <button class="btn-primary w-full text-base">
+                        Lancer la démo live <i data-lucide="external-link" class="ml-2 w-4 h-4"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </section>
-{% endblock%}
+{% endblock %}

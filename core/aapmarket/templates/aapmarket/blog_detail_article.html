@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Optimisation SEO Burkina | Mag WEBA{% endblock %}
+
+{% block content %}
+<article class="font-[var(--font-main)] bg-[var(--bg-page)] selection:bg-[var(--brand-primary)] selection:text-[var(--brand-secondary)]">
+    
+    <!-- 1. BREADCRUMB & HERO AREA -->
+    <header class="pt-8 pb-12 lg:pt-12 lg:pb-20 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            
+            <!-- Fil d'Ariane (Breadcrumb) - Position corrigée -->
+            <nav class="flex items-center space-x-2 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-10 translate-x-1">
+                <a href="/" class="hover:text-[var(--brand-primary)] transition-colors">Accueil</a>
+                <i data-lucide="chevron-right" class="w-3 h-3 opacity-50"></i>
+                <a href="/blog" class="hover:text-[var(--brand-primary)] transition-colors">Blog</a>
+                <i data-lucide="chevron-right" class="w-3 h-3 text-[var(--brand-primary)]"></i>
+                <span class="text-[var(--brand-secondary)] truncate max-w-[150px] sm:max-w-none">SEO au Burkina</span>
+            </nav>
+
+            
+            <h1 class="text-slate-900 font-black text-3xl md:text-6xl mb-8 leading-[1.1] tracking-tight weba-heading">
+                Comment optimiser son référencement pour le marché <span class="text-[var(--brand-primary)]">Burkinabè</span> ?
+            </h1>
+
+            <div class="flex flex-wrap items-center justify-between gap-6 pt-8 border-t border-slate-200">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-200 border-2 border-white shadow-sm overflow-hidden shrink-0">
+                        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=800&auto=format&fit=crop" alt="Auteur" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <p class="text-xs md:text-sm font-black text-slate-900 leading-tight">Expert Digital @ UNI</p>
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-400">Mis à jour le 06 Mai 2026</p>
+                    </div>
+                    
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
+                    SEO & Visibilité
+                </span>
+                <span class="text-slate-400 text-[10px] font-bold italic uppercase tracking-wider">6 min de lecture</span>
+            </div>
+                </div>
+                <div class="flex items-center gap-2">Partager
+                    <button class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-emerald-600 transition-all shadow-sm">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </button>
+                    <button class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-emerald-600 transition-all shadow-sm">
+                        <i data-lucide="twitter" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CONTENT AREA -->
+    <div class="max-w-7xl mx-auto px-6 py-12 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- Sidebar Sommaire (Desktop only) -->
+            <aside class="hidden lg:block lg:col-span-2 sticky top-32 h-fit">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-300 mb-6">Sommaire</p>
+                <nav class="space-y-4 text-sm font-bold text-slate-400">
+                    <a href="#intro" class="block hover:text-emerald-600 transition-colors border-l-2 border-transparent hover:border-emerald-600 pl-4 italic">Introduction</a>
+                    <a href="#marche" class="block hover:text-emerald-600 transition-colors border-l-2 border-transparent hover:border-emerald-600 pl-4 italic">Le Marché UEMOA</a>
+                    <a href="#strategie" class="block hover:text-emerald-600 transition-colors border-l-2 border-transparent hover:border-emerald-600 pl-4 italic">Stratégie Locale</a>
+                </nav>
+            </aside>
+
+            <!-- Corps de l'Article -->
+            <div class="lg:col-span-7">
+                <figure class="mb-12 lg:mb-16 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-slate-200">
+                    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1200" alt="SEO" class="w-full h-full object-cover aspect-video lg:aspect-auto">
+                </figure>
+
+                <div class="prose prose-slate max-w-none weba-body 
+                            prose-headings:font-black prose-headings:text-slate-900 prose-headings:weba-heading
+                            prose-p:text-slate-600 prose-p:leading-relaxed text-base lg:text-lg">
+                    
+                    <p id="intro" class="text-lg lg:text-xl text-slate-700 leading-relaxed font-medium">
+                        L'évolution rapide du paysage numérique en Afrique de l'Ouest impose aux entrepreneurs une agilité sans précédent.
+                    </p>
+
+                    <h2 id="marche">L'impact de la digitalisation régionale</h2>
+                    <p>
+                        Le marché burkinabè connaît une mutation profonde portée par la généralisation du haut débit mobile. 
+                        Désormais, une présence web n'est plus une option, c'est le socle de la confiance client.
+                    </p>
+
+                    <blockquote class="my-8 border-l-4 border-emerald-500 bg-emerald-50 p-6 lg:p-8 rounded-r-2xl italic text-slate-700">
+                        "Le succès numérique ne dépendra pas de la quantité de code, mais de la qualité de l'expérience utilisateur offerte localement."
+                    </blockquote>
+
+                    <h2 id="strategie">Stratégies de croissance</h2>
+                    <ul class="space-y-4 my-8 list-none p-0">
+                        <li class="flex gap-4 items-start">
+                            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex shrink-0 items-center justify-center text-[10px] font-black">1</span>
+                            <span>Optimisation Mobile-First pour les réseaux locaux.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tags -->
+                <div class="mt-12 pt-8 border-t border-slate-100 flex flex-wrap gap-2">
+                    <span class="text-[10px] font-black text-slate-400 mr-2 self-center uppercase tracking-widest">Tags :</span>
+                    <span class="px-3 py-1 bg-slate-100 rounded-lg text-[9px] font-black text-slate-500 uppercase tracking-tight">SaaS</span>
+                    <span class="px-3 py-1 bg-slate-100 rounded-lg text-[9px] font-black text-slate-500 uppercase tracking-tight">Burkina Faso</span>
+                </div>
+            </div>
+
+            <!-- Sidebar Conversion -->
+            <aside class="lg:col-span-3 space-y-10 mt-12 lg:mt-0">
+                <div class="p-8 rounded-[2rem] lg:rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden shadow-2xl group border border-white/5">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500 opacity-10 rounded-full blur-2xl -mr-12 -mt-12 group-hover:opacity-20 transition-opacity"></div>
+                    <h4 class="text-xl font-black mb-4 relative z-10 italic leading-tight">Besoin d'un produit <span class="text-emerald-400">unique</span> ?</h4>
+                    <p class="text-slate-400 text-xs mb-8 relative z-10 leading-relaxed">Confiez votre projet de développement sur-mesure à l'agence UNI.</p>
+                    
+                    <!-- Bouton Ajusté (Texte optimisé pour la taille) -->
+                    <a href="{% url 'aapmarket:contact' %}" class="btn-primary w-full py-4 text-xs font-black block text-center shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:scale-[1.02] transition-transform">
+                        Étude gratuite UNI
+                    </a>
+                </div>
+
+                <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                    <h4 class="font-black text-[10px] uppercase tracking-widest text-slate-900 mb-6 border-b border-slate-50 pb-4">À lire aussi</h4>
+                    <div class="space-y-6">
+                        <a href="#" class="group block">
+                            <span class="text-[9px] font-black text-emerald-600 uppercase tracking-widest mb-1 block">Fintech</span>
+                            <p class="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors leading-tight">L'essor du Mobile Money dans l'UEMOA.</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</article>
+
+<!-- Newsletter -->
+<section class="py-12 lg:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+        <div class="bg-emerald-600 rounded-[2.5rem] lg:rounded-[3rem] p-8 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+            <div class="max-w-xl text-center lg:text-left relative z-10">
+                <h2 class="weba-heading text-white text-3xl lg:text-5xl leading-tight">Restez à la pointe.</h2>
+                <p class="text-emerald-100 mt-4 weba-body text-base lg:text-lg">Rejoignez +2 000 entrepreneurs africains.</p>
+            </div>
+            <div class="w-full max-w-md relative z-10">
+                <form class="flex flex-col sm:flex-row gap-3 p-1.5 bg-white/10 rounded-2xl backdrop-blur-md border border-white/20">
+                    <input type="email" placeholder="votre@email.com" class="flex-grow bg-white rounded-xl px-5 py-4 outline-none text-slate-900 font-bold text-sm">
+                    <button type="submit" class="bg-slate-900 text-white font-black px-6 py-4 rounded-xl hover:bg-black transition-all text-sm">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    lucide.createIcons();
+</script>
+{% endblock %}
