@@ -1,6 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView, ListView
 from . import views
+from core import settings
+from django.conf.urls.static import static
 
 # Définition du namespace pour faciliter les liens dans les templates (ex: {% url 'aapmarket:tarifs' %})
 app_name = 'aapmarket'
@@ -26,3 +28,6 @@ urlpatterns = [
     path('mentions-legales/', views.LegalView.as_view(), name='legal'),
     path('confidentialite/', views.PrivacyView.as_view(), name='privacy'),
 ]
+# Servir les fichiers média en développement
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

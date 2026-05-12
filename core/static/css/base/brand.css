@@ -98,3 +98,30 @@
     box-shadow: var(--shadow-lg);
     border-color: transparent;
 }
+@keyframes shimmer {
+    0% { background-position: -468px 0; }
+    100% { background-position: 468px 0; }
+}
+
+.animate-shimmer {
+    background: linear-gradient(to right, #f1f5f9 8%, #e2e8f0 18%, #f1f5f9 33%);
+    background-size: 800px 104px;
+    animation: shimmer 1.5s linear infinite forwards;
+}
+/* Animation de défilement pour les captures Full Page */
+.template-scroll {
+    /* On s'assure que l'image garde sa largeur mais peut défiler en hauteur */
+    object-fit: cover; 
+    object-position: top;
+    
+    /* Timing fluide : 4 secondes pour parcourir toute la page */
+    transition: object-position 4s ease-in-out !important;
+    
+    /* Améliore le rendu des textes sur les captures d'écran */
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* État lors du survol du parent (la div avec la classe .group) */
+.group:hover .template-scroll {
+    object-position: bottom;
+}

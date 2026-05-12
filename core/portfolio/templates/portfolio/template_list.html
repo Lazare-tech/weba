@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
 
 <main class=" mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 bg-white">
@@ -17,15 +18,26 @@
         </p>
     </div>
 
-   <div class="flex items-center gap-3 overflow-x-auto pb-4">
+<div class="flex items-center gap-3 overflow-x-auto pb-4" 
+     hx-target="#template-grid"
+     hx-on:click="
+        let btns = event.target.closest('div').querySelectorAll('button');
+        btns.forEach(b => b.classList.remove('bg-slate-900', 'text-white', 'font-bold'));
+        btns.forEach(b => b.classList.add('bg-white', 'text-slate-600', 'border-slate-200'));
+        
+        event.target.classList.add('bg-slate-900', 'text-white', 'font-bold');
+        event.target.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+     ">
+    
+    <!-- Bouton TOUS -->
     <button hx-get="{% url 'portfolio:template_list' %}" 
-            hx-target="#template-grid" 
-            class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-bold">Tous</button>
+            class="px-6 py-2 bg-slate-900 text-white rounded-full text-sm font-bold border border-transparent transition-all">
+        Tous
+    </button>
     
     {% for cat in categories %}
     <button hx-get="{% url 'portfolio:template_list' %}?categorie={{ cat.slug }}" 
-            hx-target="#template-grid" 
-            class="px-6 py-2 bg-white border border-slate-200 rounded-full text-sm hover:bg-slate-50">
+            class="px-6 py-2 bg-white border border-slate-200 text-slate-600 rounded-full text-sm  transition-all">
         {{ cat.nom }}
     </button>
     {% endfor %}
@@ -40,5 +52,16 @@
     </div>
 
 </main>
+<script>
+    // S'exécute à chaque fois que HTMX injecte du nouveau contenu
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        // Initialisation des icônes Lucide pour le nouveau contenu
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+    });
+    
+</script>
 
 {% endblock %}

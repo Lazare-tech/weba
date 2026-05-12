@@ -34,10 +34,22 @@ class ServicesView(TemplatesView):
     template_name = "aapmarket/services.html"
 
 class BlogView(TemplateView):
-    """Présentation du blog de WEBA"""
+    """Présentation du blog de WEBA avec effet Skeleton si vide"""
     template_name = "aapmarket/blog.html"
 
-
+    def get_context_data(self, **kwargs):
+        # Appeler le contexte parent
+        context = super().get_context_data(**kwargs)
+        
+        # Simulation d'absence d'articles
+        articles = [] 
+        
+        # Injection des variables dans le contexte
+        context['articles'] = articles
+        context['is_loading'] = True  # Déclenche le Shimmer dans le template
+        
+        return context
+    
 class BlogDetailView(TemplateView):
     """Détails d'un article de blog"""
     template_name = "aapmarket/blog_detail_article.html"

@@ -16,6 +16,28 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     {% block extra_head %}{% endblock %}
+    <style>
+/* Animation de défilement fluide pour captures Full Page */
+.template-scroll {
+    object-fit: cover;
+    object-position: top;
+    /* On utilise une durée fixe de 4s pour un mouvement élégant */
+    transition: object-position 4s ease-in-out !important;
+    image-rendering: -webkit-optimize-contrast;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Déclencheur au survol */
+.group:hover .template-scroll {
+    object-position: bottom !important;
+}
+    /* Optionnel : Style pour le bouton actif */
+    .active-cat {
+        background: #0f172a !important; /* slate-900 */
+        color: white !important;
+    }
+</style>
 </head>
 <body class="bg-gray-50">
 
