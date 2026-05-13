@@ -15,7 +15,6 @@ urlpatterns = [
     # 1. CŒUR DU SYSTÈME (Views Principal)
     # ==========================================================
     path('portfolio/', views.dashboard_portfolio, name='dashboard_portfolio'),
-    path('portfolio/creer/', views.creer_portfolio, name='creer_portfolio'),
     path('portfolio/detail/', views.portfolio_detail, name='portfolio_detail'),
     path('modifier/', views.modifier_infos, name='modifier_infos'),
     path('p/preview/<slug:slug>/', views.portfolio_public, name='portfolio_public_preview'),

@@ -73,32 +73,6 @@ def portfolio_public(request, slug):
         'is_demo':      is_demo,
     })
 
-def creer_portfolio(request):
-    if hasattr(request.user, 'portfolio'):
-        return redirect('portfolio:dashboard_portfolio')
-
-    if request.method == 'POST':
-        template_slug = request.POST.get('template_choisi', 'minimal')
-        slug_base = slugify(request.user.username)
-        slug = slug_base
-        compteur = 1
-        while Portfolio.objects.filter(slug=slug).exists():
-            slug = f"{slug_base}-{compteur}"
-            compteur += 1
-            
-        Portfolio.objects.create(
-            user=request.user,
-            slug=slug,
-            template_choisi=template_slug,
-            titre=f"Portfolio de {request.user.username}",
-            bio="[Cliquez ici pour décrire votre activité et votre expertise]",
-            publie=True
-        )
-        
-        messages.success(request, "Félicitations ! Votre site est prêt.")
-        return redirect('portfolio:dashboard_portfolio')
-
-    return render(request, 'portfolio/choisir_template.html')
 
 @login_required
 def dashboard_portfolio(request):

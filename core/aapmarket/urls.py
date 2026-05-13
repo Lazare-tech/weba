@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView
 from . import views
 from core import settings
 from django.conf.urls.static import static
-
+from .views import newsletter_subscribe
 # Définition du namespace pour faciliter les liens dans les templates (ex: {% url 'aapmarket:tarifs' %})
 app_name = 'aapmarket'
 urlpatterns = [
@@ -18,6 +18,8 @@ urlpatterns = [
     path('blog/detail/', views.BlogDetailView.as_view(), name='blog_detail'),
     path('services/', views.ServicesView.as_view(), name='services'),
     path('a-propos/', views.AProposView.as_view(), name='a_propos'),
+    path('newsletter/subscribe/', newsletter_subscribe, name='newsletter_subscribe'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
     path('accelerateur/', views.AccelerateurView.as_view(), name='accelerateur'),
     path('carrieres/', views.CareersView.as_view(), name='careers'),
     path('presse/', views.PressView.as_view(), name='press'),

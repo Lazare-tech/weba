@@ -53,37 +53,52 @@
             </div>
 
             <!-- Formulaire de Contact Expert UI -->
-            <div class="weba-card shadow-[var(--shadow-lg)]">
-                <form action="#" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Nom complet</label>
-                            <input type="text" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="Ex: Jean Traoré">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Type de demande</label>
-                            <select class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all appearance-none">
-                                <option>Partenariat École</option>
-                                <option>Support Technique</option>
-                                <option>Demande de Devis</option>
-                                <option>Autre</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Adresse Email</label>
-                        <input type="email" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="nom@entreprise.com">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Votre Message</label>
-                        <textarea rows="4" class="w-full p-4 bg-[var(--bg-alt)] rounded-xl border border-transparent focus:border-[var(--brand-primary)] focus:bg-white outline-none transition-all" placeholder="Dites-nous comment nous pouvons vous aider..."></textarea>
-                    </div>
-                    <!-- Bouton noir unifié -->
-                    <button type="submit" class="btn-dark w-full text-base py-5">
-                        Envoyer le message <i data-lucide="send" class="ml-2 w-4 h-4"></i>
-                    </button>
-                </form>
+           <!-- Formulaire de Contact Expert UI -->
+<div class="weba-card shadow-[var(--shadow-lg)]">
+    <!-- Affichage des messages Django (Success/Error) -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mb-6 p-4 rounded-xl {% if message.tags == 'success' %}bg-emerald-50 text-emerald-700{% else %}bg-red-50 text-red-700{% endif %} text-sm font-bold">
+                {{ message }}
             </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="space-y-6">
+        {% csrf_token %} <!-- Sécurité CRSF obligatoire -->
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Nom complet</label>
+                {{ form.nom }}
+                {{ form.nom.errors }}
+            </div>
+            <div class="space-y-2">
+                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Type de demande</label>
+                <div class="relative">
+                    {{ form.type_demande }}
+                    <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Adresse Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Votre Message</label>
+            {{ form.message }}
+            {{ form.message.errors }}
+        </div>
+
+        <button type="submit" class="btn-dark w-full text-base py-5 cursor-pointer">
+            Envoyer le message <i data-lucide="send" class="ml-2 w-4 h-4"></i>
+        </button>
+    </form>
+</div>
         </div>
     </div>
 </section>

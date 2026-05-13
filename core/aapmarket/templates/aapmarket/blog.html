@@ -154,23 +154,7 @@
     </div>
 </section>
     <!-- SECTION : NEWSLETTER (Nouveau - Expert UI) -->
-    <section class="py-21 relative overflow-hidden">
-        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]"></div>
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-            <div class="bg-emerald-600 rounded-[3rem] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
-                <div class="max-w-xl text-center lg:text-left">
-                    <h2 class="weba-heading text-white text-3xl md:text-5xl">Restez à la pointe du digital.</h2>
-                    <p class="text-emerald-100 mt-4 weba-body">Rejoignez +2 000 entrepreneurs et recevez nos conseils hebdomadaires pour faire croître votre business en Afrique.</p>
-                </div>
-                <div class="w-full max-w-md">
-                    <form class="flex flex-col sm:flex-row gap-4 p-2 bg-white/10 rounded-2xl backdrop-blur-md">
-                        <input type="email" placeholder="votre@email.com" class="flex-grow bg-white rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-white border-none text-slate-900 font-medium">
-                        <button type="submit" class="bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-black transition-all">S'inscrire</button>
-                    </form>
-                    <p class="text-[10px] text-emerald-200 mt-4 text-center lg:text-left tracking-wider uppercase font-bold">Pas de spam. Désinscription en un clic.</p>
-                </div>
-            </div>
-        </div>
+   {% include "aapmarket/partials/newsletter.html" %}
     </section>
 
 {% endblock %}
